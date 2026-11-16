@@ -2,311 +2,639 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mr Tees(Moses Ntembwa) AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06152f">
+<title>Moses Ntembwa AI | Mr Tees Digital Assistance</title>
 <style>
-*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#000;overflow:hidden;
-background:radial-gradient(120% 60% at 15% 0%,#5fb3ff 0,rgba(95,179,255,0) 60%),linear-gradient(180deg,#1862e8 0%,#3b94fb 50%,#8fd0ff 100%)}
-#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-#app{position:relative;z-index:1;display:flex;height:100%;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-#side{width:270px;padding:18px 16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;background:rgba(255,255,255,.10);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-right:1px solid rgba(255,255,255,.3)}
-button{font:inherit;cursor:pointer}
-#newChat,#closeSide{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.85);color:#fff;font-weight:600;padding:11px 14px;border-radius:24px;transition:.2s}
-#newChat:hover,#closeSide:hover{background:rgba(255,255,255,.3)}
-#closeSide{display:none}
-.h{display:block;width:100%;text-align:left;background:none;border:0;color:#fff;padding:10px 10px;border-radius:10px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.2s}
-.h.on,.h:hover{background:rgba(255,255,255,.22);opacity:1}
-main{flex:1;display:flex;flex-direction:column;min-width:0}
-header{display:flex;align-items:center;justify-content:center;padding:16px 56px;position:relative;background:rgba(20,90,220,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.28)}
-h1{color:#fff;font-size:1.12rem;font-weight:700;letter-spacing:.2px;text-align:center;text-shadow:0 2px 10px rgba(0,40,140,.55)}
-#menu{display:none;position:absolute;left:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:1.6rem;padding:6px 10px}
-#msgs{flex:1;overflow-y:auto;padding:22px 20px 18px;max-width:860px;width:100%;margin:0 auto;scroll-behavior:smooth}
-.u,.a{margin:0 0 22px;line-height:1.65;white-space:pre-wrap;word-wrap:break-word;font-size:1rem;animation:in .35s ease both}
-.u{width:fit-content;margin-left:auto;max-width:82%;text-align:right;color:#fff;font-weight:600;text-shadow:0 1px 6px rgba(0,40,140,.6)}
-.a{max-width:88%;text-align:left;color:#000}
-.a a{color:#000;font-weight:700;text-decoration:underline;text-underline-offset:3px;word-break:break-all}
-.typing span{display:inline-block;width:7px;height:7px;margin-right:5px;border-radius:50%;background:#000;opacity:.25;animation:dot 1.1s infinite}
-.typing span:nth-child(2){animation-delay:.18s}.typing span:nth-child(3){animation-delay:.36s}
-@keyframes dot{0%,80%,100%{opacity:.25}40%{opacity:1}}
-@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.w{text-align:center;margin-top:5vh;animation:in .6s ease both}
-.w .g{color:#fff;font-size:1.9rem;font-weight:800;letter-spacing:-.3px;text-shadow:0 2px 14px rgba(0,40,140,.55)}
-.w .s{color:#fff;margin:8px 0 26px;font-size:1.02rem;text-shadow:0 1px 6px rgba(0,40,140,.45)}
-.q{display:block;width:100%;max-width:540px;margin:0 auto 11px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.8);color:#fff;padding:13px 18px;border-radius:26px;text-align:left;font-size:.98rem;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:.2s}
-.q:hover{background:rgba(255,255,255,.3);transform:translateY(-1px)}
-#form{padding:10px 16px 18px;max-width:860px;width:100%;margin:0 auto}
-.bar{display:flex;align-items:flex-end;gap:8px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:6px 6px 6px 18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-#input{flex:1;resize:none;background:none;border:0;color:#fff;font:inherit;padding:9px 0;outline:0;max-height:120px}
-#input::placeholder{color:rgba(255,255,255,.85)}
-#send{width:42px;height:42px;flex:none;border-radius:50%;border:0;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,50,160,.35);transition:.2s}
-#send:hover{transform:scale(1.07)}
-#send svg{width:20px;height:20px;fill:#1862e8}
-@media(max-width:720px){
-#side{position:fixed;z-index:4;inset:0 auto 0 0;background:#1862e8;transform:translateX(-100%);transition:.25s;padding-top:calc(18px + env(safe-area-inset-top))}
-#side.open{transform:none}#menu{display:block}#closeSide{display:block}
-.w .g{font-size:1.6rem}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+ :root{--navy:#06152f;--deep:#020817;--white:#fff;--green:#42f59b;--muted:#c4d8f3}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020817;color:var(--white)}
+body{overflow-x:hidden;background:radial-gradient(ellipse at 50% 0%,#174d8d 0%,#09244d 38%,#020817 82%);min-height:100vh}
+.sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:radial-gradient(circle at 78% 16%,rgba(92,155,255,.15),transparent 23%),linear-gradient(160deg,rgba(5,23,55,.2),rgba(0,0,0,.25))}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.75;box-shadow:0 0 9px #fff;animation:twinkle 3s infinite ease-in-out alternate}
+@keyframes twinkle{from{opacity:.18;transform:scale(.65)}to{opacity:1;transform:scale(1.65)}}
+.moon{position:absolute;top:7%;right:9%;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff,#d8e8ff 55%,#91b8ec);box-shadow:0 0 45px 15px rgba(170,210,255,.2)}
+.moon:after{content:"";position:absolute;left:25px;top:-9px;width:82px;height:82px;border-radius:50%;background:#0a2046}
+.orbit{position:absolute;border:1px solid rgba(127,190,255,.14);border-radius:50%;width:340px;height:100px;top:16%;left:-100px;transform:rotate(-25deg);animation:drift 24s linear infinite}
+.shooting{position:absolute;width:130px;height:2px;background:linear-gradient(90deg,transparent,#d9f0ff,transparent);top:24%;left:-150px;transform:rotate(-25deg);animation:shoot 13s linear infinite}
+@keyframes shoot{0%{left:-150px;top:20%;opacity:0}5%{opacity:1}18%{left:110%;top:45%;opacity:0}100%{left:110%;opacity:0}}
+@keyframes drift{to{transform:translate(70px,35px) rotate(-25deg)}}
+.app{position:relative;z-index:1;max-width:900px;margin:0 auto;min-height:100vh;padding:12px 16px;display:flex;flex-direction:column}
+header{position:relative;text-align:center;padding:14px 8px 8px;background:transparent;border:0;box-shadow:none;backdrop-filter:none}
+.brand{display:inline-block;font-weight:900;font-size:clamp(23px,5vw,34px);letter-spacing:.35px;animation:brandMove 8s ease-in-out infinite,brandColors 11s linear infinite}
+@keyframes brandMove{0%,100%{transform:translate(0,0)}25%{transform:translateY(-4px)}50%{transform:translateX(5px)}75%{transform:translateY(3px) translateX(-4px)}}
+@keyframes brandColors{0%{color:#ff4d4d}9%{color:#ff8c42}18%{color:#ffd43b}27%{color:#b7f34a}36%{color:#35e58b}45%{color:#27d7d7}54%{color:#36a3ff}63%{color:#6574ff}72%{color:#a66bff}81%{color:#ef70d5}90%{color:#ff78a8}100%{color:#ff4d4d}}
+.subtitle{font-size:13px;color:#d8e7ff;margin-top:5px;letter-spacing:1.2px}
+.star-launcher{display:flex;justify-content:center;margin:4px auto 7px}
+.star-button{width:76px;height:76px;border:0;background:transparent;cursor:pointer;position:relative;filter:drop-shadow(0 0 13px rgba(255,215,90,.45));animation:starFloat 3.6s ease-in-out infinite}
+.star-button svg{width:100%;height:100%;overflow:visible;animation:starSpin 14s linear infinite}
+.star-button .star-shape{fill:url(#starRainbow);stroke:#fff5bd;stroke-width:1.3;animation:starGlow 3.5s ease-in-out infinite alternate}
+@keyframes starFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes starSpin{to{rotate:360deg}}
+@keyframes starGlow{from{filter:drop-shadow(0 0 5px #ffdc67)}to{filter:drop-shadow(0 0 17px #71eaff)}}
+.star-menu{display:none;margin:0 auto 10px;width:100%;max-width:700px;padding:12px 14px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(2,12,31,.94);box-shadow:0 10px 35px #0008}
+.star-menu.open{display:block}
+.star-menu h2{font-size:15px;margin:0 0 10px;text-align:center;color:#fff}
+.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.question-grid button{border:1px solid rgba(132,185,255,.35);background:rgba(14,48,91,.65);color:#f3f8ff;border-radius:8px;padding:9px;text-align:left;font-size:12px;line-height:1.35;cursor:pointer}
+.question-grid button:active{background:#1d548b}
+.chat{flex:1;min-height:390px;max-height:calc(100vh - 245px);overflow-y:auto;padding:14px 9px;margin:0 0 10px;border:0;border-radius:0;background:transparent;backdrop-filter:none;scroll-behavior:smooth}
+.message{max-width:96%;padding:5px 0;margin:10px 0;line-height:1.55;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:none;border:0;border-radius:0;background:transparent}
+.user{margin-left:auto;color:#fff;text-align:right}
+.ai{margin-right:auto;color:var(--green);text-align:left}
+.msg-label{display:none}
+.message a{color:#a8eaff;text-decoration:underline}
+.typing{display:none;color:#9af3c0;font-size:12px;margin:4px 0 12px 8px}.typing.show{display:block}
+.composer{display:flex;gap:8px;padding:8px 0;border:0;border-radius:0;background:transparent}
+#messageInput{flex:1;min-width:0;resize:none;max-height:120px;border:1px solid #5275a4;border-radius:12px;padding:12px;background:rgba(3,17,40,.88);color:#fff;font-size:15px;outline:none}
+#messageInput::placeholder{color:#b1c4df}
+#sendBtn{border:0;border-radius:12px;padding:0 18px;background:#168b59;color:white;font-weight:bold;cursor:pointer}
+#sendBtn:disabled{opacity:.5}
+.whatsapp-wrap{display:none;margin:8px 0 15px;padding:12px 0;border:0;border-top:1px solid rgba(53,229,139,.35);border-radius:0;background:transparent}
+.whatsapp-wrap.show{display:block}
+.wa-info{font-size:13px;color:#d7fbe8;line-height:1.45;margin-bottom:9px}
+.wa-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.wa-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#25D366;color:#052515;padding:12px 17px;border-radius:25px;font-weight:bold;font-size:15px}
+.wa-link svg{width:22px;height:22px;display:block}
+#waMessage,.whatsapp-wrap label{display:none!important}
+.tools,.footer,.online,.notice,.quick{display:none!important}
+.small-btn{border:1px solid #31527f;background:rgba(14,47,91,.8);color:#eaf3ff;border-radius:18px;padding:8px 12px;font-size:12px;cursor:pointer}
+@media(max-width:520px){.app{padding:8px}.chat{max-height:calc(100vh - 245px);min-height:360px}.message{max-width:98%;font-size:14px}.moon{width:57px;height:57px}.moon:after{width:57px;height:57px;left:18px}.question-grid{grid-template-columns:1fr}.star-button{width:70px;height:70px}}
 </style>
 </head>
 <body>
-<div style="max-width: 600px; margin: 0 auto; text-align: center; font-family: sans-serif; padding: 20px;">
-  
-  <h1 style="color: #111; margin-bottom: 5px;">Welcome ❤️🌿</h1>
-  <p style="color: #666; margin-top: 0;">Thank you for visiting, I'm glad you're here.</p>
-
-  <video autoplay muted loop playsinline controls style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-    <source src="my_video.mp4" type="video/mp4">
-  </video>
-
-  <p style="color: #333; font-size: 16px; margin-top: 15px;">Please let me know how I can help you. Your message matters to me.</p>
-
-  <a href="https://mosesntembwa.github.io/Mrtee/" style="display: inline-block; background: #25D366; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 10px;">💬 Chat With Me</a>
-
+<div class="sky" aria-hidden="true" id="sky"><div class="moon"></div><div class="orbit"></div><div class="shooting"></div></div>
+<div class="app">
+<header>
+  <div class="brand">Moses Ntembwa AI</div>
+  <div class="subtitle">(Mr Tees Digital Assistance)</div>
+</header>
+<div class="star-launcher">
+ <button class="star-button" id="serviceStar" type="button" aria-label="Open 25 service questions" aria-expanded="false">
+  <svg viewBox="0 0 100 100" role="img" aria-label="Colourful star"><defs><linearGradient id="starRainbow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff06a"/><stop offset="25%" stop-color="#ff7bd5"/><stop offset="50%" stop-color="#72eaff"/><stop offset="75%" stop-color="#a58bff"/><stop offset="100%" stop-color="#70ffb5"/></linearGradient></defs><path class="star-shape" d="M50 4 L61 35 L94 36 L68 56 L77 89 L50 70 L23 89 L32 56 L6 36 L39 35 Z"/></svg>
+ </button>
 </div>
-<canvas id="sky"></canvas>
-<div id="app">
-  <aside id="side">
-    <button id="closeSide">Close</button>
-    <button id="newChat">+ Start new chat</button>
-    <div id="history"></div>
-  </aside>
-  <main>
-    <header><button id="menu" aria-label="Chats">&#9776;</button><h1>Mr Tees(Moses Ntembwa) AI</h1></header>
-    <section id="msgs"></section>
-    <form id="form"><div class="bar">
-      <textarea id="input" rows="1" placeholder="Type your question…"></textarea>
-      <button id="send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M3.4 20.4 21 12 3.4 3.6 3.3 10l12.6 2-12.6 2z"/></svg></button>
-    </div></form>
-  </main>
+<section class="star-menu" id="serviceMenu" aria-label="25 service questions">
+ <h2>Choose one of the 25 services</h2>
+ <div class="question-grid" id="serviceQuestionGrid"></div>
+</section>
+
+<div class="quick" aria-label="Suggested questions">
+  <button data-question="How can I apply for admission?">University admission</button>
+  <button data-question="Which public universities offer HELSB student loans?">HELSB universities</button>
+  <button data-question="Tell me more about HELSB.">About HELSB</button>
+  <button data-question="I want ECZ results verification.">ECZ verification</button>
+  <button data-question="I need help with a ZRA TPIN certificate.">TPIN certificate</button>
+  <button data-question="I made a mistake with my admission application.">Correct an application</button>
 </div>
+
+<main class="chat" id="chat" aria-live="polite"></main>
+<div class="typing" id="typing">Moses Ntembwa AI is typing…</div>
+<section class="whatsapp-wrap" id="whatsappPanel">
+  <div class="wa-info" id="waInfo">Your service request is ready. Tap WhatsApp to contact Moses.</div>
+  <div class="wa-row">
+    <a class="wa-link" id="waLink" href="#" target="_blank" rel="noopener" aria-label="Chat with Moses on WhatsApp">
+      <!-- Official WhatsApp-style brand mark, shown only for confirmed service requests -->
+      <svg viewBox="0 0 32 32" role="img" aria-label="WhatsApp">
+        <path fill="currentColor" d="M16.02 3.2A12.65 12.65 0 0 0 5.15 22.34L3.4 28.7l6.52-1.71A12.65 12.65 0 1 0 16.02 3.2Zm0 22.9c-1.95 0-3.86-.52-5.54-1.51l-.4-.24-3.87 1.02 1.03-3.77-.26-.42a10.25 10.25 0 1 1 9.04 4.92Zm5.63-7.68c-.31-.16-1.84-.91-2.12-1.02-.28-.1-.49-.16-.69.16-.2.31-.8 1.02-.98 1.23-.18.2-.36.23-.67.08-.31-.16-1.3-.48-2.47-1.52-.91-.81-1.52-1.81-1.7-2.12-.18-.31-.02-.48.13-.63.14-.14.31-.36.47-.54.16-.18.2-.31.31-.52.1-.2.05-.39-.03-.55-.08-.15-.69-1.66-.95-2.28-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.56s1.1 2.97 1.25 3.18c.15.2 2.17 3.31 5.26 4.64.73.31 1.3.5 1.74.64.73.23 1.4.2 1.93.12.59-.09 1.84-.75 2.1-1.48.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36Z"/>
+      </svg>
+      Chat with Moses
+    </a>
+    <button class="small-btn" id="hideWa" type="button">Hide</button>
+  </div>
+  <label for="waMessage" style="display:block;color:#bdf5d2;font-size:11px;margin-top:10px">Editable WhatsApp message</label>
+  <textarea id="waMessage"></textarea>
+</section>
+
+<div class="composer">
+  <textarea id="messageInput" rows="1" placeholder="Type your question here…" aria-label="Type your message"></textarea>
+  <button id="sendBtn" type="button">Send</button>
+</div>
+<div class="tools">
+  <button id="clearBtn" type="button">Clear chat on this device</button>
+  <button id="exportBtn" type="button">Download chat history</button>
+  <button id="unknownBtn" type="button">Export unanswered questions</button>
+</div>
+<div class="footer">Automated information assistant. Official institutions make admission and loan decisions. Never share passwords, PINs or bank details here.</div>
+</div>
+
 <script>
-window.CONFIG = { whatsapp: "260771043702", api: "" };
-(function () {
-var CFG = window.CONFIG, QS = [["hi","hello","hey","hallo","hie","hi there","heyy","hello are you there","good morning","good afternoon","good evening","good night"],["muli shani","muli bwanji","mwapoleni","mwauka bwanji","mwaiseni","shani","bwanji","ula shani","mwabombeni"],["how are you","how are you doing","how is it going","how do you feel","are you okay","are you fine","how was your day","how is your day","whats up","wassup","how are things","hope you are fine"],["i love you","love you","i love u","i really love you","i love you ai","i love your service","i love mr tees","we love you"],["i like you","i like your answers","i like this ai","you are my favourite","you are my friend","can we be friends","you are my best friend","i like how you talk"],["thank you","thanks","thanks a lot","thank you very much","thank you so much","thanks brother","god bless you","i appreciate you","appreciate your help","cheers","thanks for helping me","you have helped me"],["you are smart","you are good","you are amazing","great job","well done","nice answer","you are helpful","this is helpful","wow","you are clever","best ai","good work"],["moses is a good man","i like moses","god bless moses","moses is clever","moses is helpful"],["who made you","who created you","who built you","who is your boss","who owns you"],["what is your name","who are you","are you a robot","are you human","are you real","are you ai","do you have feelings","do you sleep","where do you live","how old are you","are you a boy or girl","do you eat"],["bye","goodbye","see you","see you later","i am leaving","talk to you later","ok bye","chat later","take care","have a nice day","i will come back","good night bye"],["ok","okay","alright","fine","yes","no","maybe","i see","i understand","cool","nice","sure","hmm","oh ok"],["i dont understand","explain again","what do you mean","say it simply","repeat","i am confused","you are not clear","use simple english"],["sorry","i am sorry","forgive me","you are useless","you are stupid","i hate you","you are annoying","you are wrong","this is not helping","you did not answer"],["tell me a joke","make me laugh","sing for me","tell me a story","tell me something interesting","do you know a riddle","are you funny","do you play games"],["i am sad","i am tired","i am stressed","i am lonely","i am bored","i am scared","i am worried about my future","i have no money","i am hungry"],["i am happy","i am excited","i am fine","i am good","today is a good day"],["i feel hopeless","i am depressed","i want to give up","life is hard","i feel like dying"],["do you have a girlfriend","will you marry me","do you love me","can i be your boyfriend","you are beautiful","you are handsome","are you single","send me your picture"],["what time is it","what is todays date","what day is today","what is the weather","is it raining","how is the weather"],["do you speak bemba","do you speak nyanja","can you speak french","speak swahili","can you talk in my language","do you speak english"],["is this real","can i trust you","is mr tees a scam","are you legit","is it safe","are you genuine"],["where is moses","where is your office","are you in lusaka","where are you located","what is your address","do you have a website"],["how can i contact moses","give me moses number","can i call moses","moses whatsapp","how do i reach you","i want to speak to moses"],["what is mr tees","who is moses","what do you do","how can you help me","what can you do","what can i ask you","why were you made","how does this work"],["i need help","help me","i have a problem","can i ask you something","i have a question","are you free","can you help me","i dont know where to start"],["is this free","do i pay to chat","do you charge","how much do you charge","how much are your services","your prices","price list","what are the fees"],["i finished grade 12","i passed grade 12","i failed grade 12","i have no course","i was rejected","i got admitted","i am a first year","i am in grade 12"],["motivate me","give me advice","how do i succeed","i want to be rich","how do i save money","how can i start a business","how do i pray","bless me","i need hope"],["sir","madam","bro","sis","boss","mukwai","ba mr tees"],["test","testing","1234","are you working","can you hear me","hello hello","anybody there","reply"],["you are doing a good job moses","may god bless this business","i will tell my friends","i will recommend you","i am happy with your service","your service was good","you helped me get admitted","i got my loan"],["i want to complain","i paid and nobody replied","i was scammed","i want my money back","i want to cancel","you are too slow","nobody has helped me"],["here is my password","my pin is","can i send my nrc","send my otp","my verification code is"],["pray for me","do you believe in god","are you christian","god is good","amen","praise the lord"],["who will win the match","who is the president","football","what do you think about politics","which party is best"],["send me nude pictures","talk dirty","fuck you","you are a fool","shut up"],["happy new year","merry christmas","happy birthday","happy independence day","happy easter","happy weekend","happy sunday","have a blessed day","eid mubarak"],["do you know me","do you know my name","what is my name","remember me","can you save my chat","can i delete my chats"],["can you do my homework","can you solve maths","can you translate","can you write a letter","can you read my document","can you send pictures","can you call me","can you check my account","can you whatsapp me"]];
-var A = [
-"{t}! Welcome to Mr Tees. How can I help you today?",
-"Ndi bwino, natotela (Ndili bwino, zikomo). How are you? How can I help you today?",
-"I am doing well, thank you for asking. How are you today? How can I help you?",
-"Thank you, that is very kind and I really appreciate it. I am an AI, so I cannot love like a person, but I am happy to help you. Moses will be glad that people value this work. What can I do for you today?",
-"Thank you so much, that makes me happy. I am always here to help you like a friend. What would you like to talk about?",
-"You are most welcome. God bless you too. Is there anything else you would like to ask?",
-"Thank you, I appreciate your kind words. Moses built this to help people like you. What else can I help you with?",
-"Thank you for the kind words about Moses. May God bless you too. He is a young student working hard to help school leavers. How can I help you today?",
-"I am Mr Tees(Moses Ntembwa) AI, an automated assistant for MR TEES Education Services. Moses Ntembwa, a Zambian university student and entrepreneur, is the founder. How can I help you?",
-"I am Mr Tees(Moses Ntembwa) AI, an automated assistant. I am not a human and I am not Moses. I do not sleep or eat, so I am here any time you need me. How can I help you?",
-"Thank you for chatting. Take care and God bless you. Come back any time you need help. Have a good {tl}!",
-"Alright. What would you like to know or do next?",
-"I am sorry, let me say it more simply. Please tell me which part was not clear, and I will explain it again step by step.",
-"Do not worry, I am sorry if I did not help well. Please tell me again what you need and I will try again.",
-"Here is a joke: why did the student bring a ladder to school? Because they wanted to go to higher education! Now, how can I help you?",
-"I am sorry you feel like this. You are not alone, and things can get better. What happened? I am listening.",
-"I am so happy for you! What is making you happy today? How can I help you?",
-"I am really sorry you are in so much pain. You matter. Please talk today to someone you trust, a family member, pastor or friend. If you think of hurting yourself, please get help right now from someone near you or the nearest clinic or hospital. I am here with you. What is happening?",
-"That is kind of you. I am an AI, so I have no body or picture and I cannot date or marry, but I value you as a friend. How can I help you?",
-"I cannot see your clock or the weather, so please check your phone. I can help with your education questions. What do you need?",
-"I can try Bemba, Nyanja and English, but I may make mistakes. For official matters, simple English is best. Which language do you prefer?",
-"I am an AI assistant, and chatting and information are always free. Any service fee is shown before work starts, is paid before work begins, and no results are promised. Please always confirm important things on official websites. What would you like to know?",
-"Moses studies at Kapasa Makasa University in Chinsali, Muchinga Province. MR TEES works online for people all over Zambia. If you want to contact him, use the WhatsApp link below.",
-"You can reach Moses on the official WhatsApp below.",
-"MR TEES Education Services was founded by Moses Ntembwa to help school leavers and students with university applications, HELSB, verification and digital support. You can ask me anything for free. What would you like to know?",
-"Yes, I am happy to help. What do you need help with? For example university, HELSB, a document, or a service.",
-"__PRICES__",
-"Thank you for sharing. Whatever your result is, you still have good options. What are you planning to do next: university, college, a job or a business?",
-"Be patient, work hard and stay honest. Small steps every day build a good future. God bless your efforts. What would you like to achieve?",
-"Hello, how can I help you today?",
-"Yes, I am working and ready. How can I help you?",
-"Thank you so much. I will keep your kind words for Moses. If you have good news, congratulations, the credit is yours and God’s. Do you need anything else?",
-"I am sorry about this. Please explain what happened to Moses directly, because it needs his personal attention.",
-"Please never share your password, PIN or verification code with anyone, including me. I do not need them. Type them only on the official website.",
-"I am an AI with no faith of my own, but I respect yours. May God bless you and guide you. How can I help you today?",
-"I will stay neutral on politics and sport. I am best at education, careers and applications. What can I help you with?",
-"I cannot help with that, but I am happy to help with education questions. How can I help you?",
-"Thank you, and the same to you! God bless you. How can I help you today?",
-"Your chats are saved on your own phone or browser, and you can start a new chat any time. How can I help you?",
-"I can explain, guide, plan and practise questions with you. I cannot call you, check private accounts or send files. If you want MR TEES to do a task for you, tell me which one and I will show the fee. What do you need?"
-];
-var WAG = [22, 23, 32];
-// n=name f=fee re=keywords w=what MR TEES does how=free self-help q=question note=extra
-var S = [
-{n:"HELSB appeal assistance",f:30,re:/appeal/,w:"understand your case, organise your supporting documents and prepare a professional appeal letter",how:"An appeal asks HELSB to look at your case again. 1. Find out why you were not selected. 2. Read the official appeal notice. 3. Write a short letter: who you are, why you appeal and your true situation. 4. Attach real evidence. HELSB makes the final decision, so nothing is guaranteed.",q:"What reason were you given for the result?"},
-{n:"HELSB returning student application",f:50,re:/returning|continuing student|renew|second year/,w:"update your details and guide you through the returning student application",how:"Returning students apply again for the new academic year. Read the latest HELSB advert, update your university and programme details and upload the documents listed there at https://portal.helsb.gov.zm/",q:"Are you continuing at the same university?"},
-{n:"HELSB application assistance",f:50,re:/helsb|student loan|loan application/,w:"explain the requirements, organise your documents and guide you step by step through the online application",how:"First get admitted to one of the 10 universities HELSB supports. Then read the latest HELSB advert and prepare your documents (your NRC, Grade 12 results, admission letter, guardian NRC and application letter) as PDF files under 5 MB. Apply on https://portal.helsb.gov.zm/ before the deadline, and apply early. A loan is never guaranteed.",q:"Which university admitted you?"},
-{n:"Scholarship application assistance",f:100,re:/scholarship|bursary/,w:"find the requirements, organise your documents and prepare your motivation letter and application",how:"Every scholarship has its own rules and deadlines. Read the provider’s official page, check that you qualify, prepare your results, ID and a personal statement, and apply before the closing date. Never pay anyone who promises you a scholarship.",q:"Which scholarship are you interested in?"},
-{n:"ECZ results verification",f:40,re:/\becz\b|results verification|verify.*(grade 12|results)|grade 12 results|examination council/,w:"guide you through the verification steps and organise your examination details",how:"ECZ confirms that your examination results are genuine. Check https://www.exams-council.org.zm/ for the current steps and fees, and keep your examination number, year and ID ready. ECZ does the actual verification.",q:"Which institution asked for the verified results?"},
-{n:"ZAQA certificate verification",f:40,re:/zaqa|certificate verif|verify.*certificate|qualification.*(verif|recogni)/,w:"explain the requirements, organise your certificates and guide you through the ZAQA process",how:"ZAQA is the Zambia Qualifications Authority. It verifies and recognises qualifications, including some from other countries. Check https://www.zaqa.gov.zm/ for the current steps. Prepare your certificate, transcripts and ID. The exact process depends on your qualification and why you need it. ZAQA does the actual verification.",q:"Where did you get the qualification, and what do you need it for?"},
-{n:"ZRA TPIN certificate assistance",f:30,re:/\btpin\b|\bzra\b|taxpayer/,w:"guide you through registration and getting your TPIN certificate",how:"A TPIN is your Taxpayer Identification Number from ZRA. It is not the same as your NRC. You can register or get your certificate yourself at https://www.zra.org.zm/ or at a ZRA office. If you forgot your number, use ZRA’s recovery option and do not register twice.",q:"Do you already have a TPIN, or is it a new one?"},
-{n:"CV writing",f:50,re:/\bcv\b|curriculum vitae|resume/,w:"write a professional CV using your true information",how:"A good CV has: 1. Personal details 2. A short profile 3. Education 4. Work experience or school activities 5. Skills 6. Referees. Keep it to one or two pages and write only true things.",q:"What is the CV for: a job, attachment or scholarship?"},
-{n:"Application letter writing",f:20,re:/application letter|cover letter|letter of application|write.*letter/,w:"write a clear, professional letter for your purpose",how:"An application letter has your address, the date, the receiver, a subject line, a short introduction, the main reason and a polite closing. Tell me what you are applying for and I can show you an example.",q:"What are you applying for?"},
-{n:"Past papers with solutions",f:30,pc:1,re:/past paper|past exam|exam paper/,w:"provide available past papers and solutions for one course",how:"Past papers are old exam questions for practice. Ask your department, lecturer or library for them, practise with a timer and learn from the answers.",q:"Which university, programme and course?"},
-{n:"Accommodation application",f:30,re:/accommodation|hostel|boarding/,w:"explain the process and help you complete the hostel application",how:"Check your university’s accommodation notice, fill in the hostel form, attach what is asked and apply early. The university decides who gets a room.",q:"Which university will you attend?"},
-{n:"Screening support",f:30,re:/screening/,w:"explain the instructions and prepare your document checklist",how:"Screening is when a university or HELSB checks your documents. Read the official notice, bring clear originals and copies, and arrive on time. I will not guess dates or places, so use the official notice.",q:"Is it university screening or HELSB screening?"},
-{n:"Document scanning and printing",f:20,re:/\bscan|print|photocopy|\bpdf\b/,w:"prepare clear digital copies and provide printing where available",how:"Use a phone scanner app, make sure every word is clear and save the file as PDF. Check the file size limit of the website you are using.",q:"How many documents do you have?"},
-{n:"Online application support",f:30,re:/online application|upload|submit/,w:"guide you through the website, uploads and submission",how:"Check the accepted file type and size, use a clear scan and a stable network, and keep your confirmation. If it still fails, contact the website’s support team.",q:"Which website or portal are you using?"},
-{n:"NRC application or replacement assistance",f:30,re:/\bnrc\b|national registration|identity card/,w:"explain the process and prepare your information",how:"NRCs are issued by the Department of National Registration. Visit the nearest office with the documents they ask for. Official charges are separate.",q:"Is it a new NRC or a replacement?"},
-{n:"Passport application assistance",f:50,re:/passport/,w:"explain the steps, organise your documents and guide you through the application",how:"Passports are issued by the Department of Immigration. Check their official requirements, prepare your documents and apply through their official process. They decide the processing time.",q:"Is it a new passport or a replacement?",note:" Government passport fees are separate and not included."},
-{n:"Business registration assistance",f:80,re:/business (registration|name)|register.*(business|company)|pacra|company registration|start a business/,w:"explain the options and guide you through the PACRA registration",how:"PACRA registers businesses in Zambia. Registering a business name is different from forming a company. Choose a few names, prepare your ID and details, and apply on the PACRA system.",q:"What type of business are you starting?",note:" PACRA fees are separate."},
-{n:"Attachment or internship application",f:50,re:/attachment|internship|industrial/,w:"prepare your CV and letters and guide you to apply",how:"Choose organisations related to your programme, prepare a CV and application letter, get your university introduction letter and apply early. Organisations choose who they accept.",q:"Which programme are you studying, and when does it start?"},
-{n:"Interview preparation",f:40,re:/interview/,w:"practise common questions and improve how you answer",how:"Learn about the organisation, then practise “Tell us about yourself”, your strengths and “Why should we choose you?”. Answer honestly, dress neatly and arrive early.",q:"What type of interview is it?"},
-{n:"Assignment and research help",f:50,re:/assignment|research|dissertation|homework/,w:"explain the question, plan your answer and improve your own draft (no copying)",how:"First find the key word in the question: explain, discuss, compare or calculate. Plan an introduction, main points and a conclusion. Write in your own words and cite your sources.",q:"Which course is it, and what is the question?"},
-{n:"Career and academic advice",f:30,re:/career|which course|what course|course to study|what to study|academic advice/,w:"give one-on-one guidance on courses and careers",how:"Think about your Grade 12 results, your interests and the job you want. Then compare programmes and their entry requirements before you choose.",q:"Which subjects did you do, and what careers interest you?"},
-{n:"WhatsApp and digital support",f:20,re:/digital (support|skills|help)|smartphone|phone settings|use whatsapp/,w:"guide you step by step with your phone and apps",how:"Tell me exactly what you are stuck on. For example, to send a PDF on WhatsApp: open the chat, tap the attachment icon, choose Document, pick the file and send.",q:"What exactly do you want to do?"},
-{n:"Email and account creation",f:20,re:/gmail|email|create.*account/,w:"set up your email or application account",how:"You can create a free Gmail account at accounts.google.com. Use your own details and keep your password private. Many applications send codes to your email.",q:"Which account do you need to create?"},
-{n:"University admission assistance",f:50,re:/universit|admission|unza|cbu|kmu|mulungushi|copperbelt|chalimbana|mukuba|\bzut\b|apply to|college/,w:"explain the requirements, choose a programme, organise your documents and complete the application",how:"1. Choose a university and programme. 2. Check the entry requirements and deadline on the official website. 3. Prepare your Grade 12 results, NRC, photo and email. 4. Apply on the official portal and keep your reference. 5. Watch your email for the result. The university decides who is admitted.",q:"Which university and programme are you thinking about?"}
-];
-var STRONG = / (help me|assist me|do it for me|for me|on my behalf|someone to|how much|price|prices|cost|fee|fees|charge|charges|i want you|can mr tees|can you (apply|write|verify|register|process|do|fill|prepare|submit|get|help)) /;
-var INFO = / (how do|how can|how to|how does|what is|what does|what are|explain|requirements?|steps|where do|where can|where to|meaning|difference|when do|when is|when does|tell me about|process|procedure|show me) /;
-var AMB = / (i want|i need|i would like|i am looking for|looking for|can i get) /;
-var HELSB_DL = "These are the 2026/27 HELSB closing dates: Mulungushi and Palabana 30 May, Kwame Nkrumah and Chalimbana 30 June, Mukuba 30 July, Copperbelt University 30 August, University of Zambia 30 September, and Kapasa Makasa, ZUT and Levy Mwanawasa 30 October. Dates change each year, so please read the latest advert at https://helsb.gov.zm/. Do not confuse these with university admission deadlines.";
-var X = [
-[/(my|your) (password|pin|otp)|password is|send.*(password|otp|verification code)/, "Please never share your password, PIN or verification code with anyone, including me. I do not need them. Type them only on the official website."],
-[/ (fake|forge|forged|falsify) |change my (results|date of birth)/, "I am sorry, I cannot help with fake or changed documents. It is dishonest and can cause serious trouble. I can help you get the genuine document through the right office. What do you need?"],
-[/ (scam|scammed|fraud|bribe|bribery) /, "Please be careful. No one can guarantee a HELSB loan or university admission for money. Only HELSB and the universities decide. Do not send money or codes to anyone who promises this, and check everything on https://helsb.gov.zm/. If your worry is about MR TEES, please speak to Moses directly."],
-[/complain|refund|money back|cancel my|poor service|nobody (has )?(replied|helped|responded)|paid.*(nobody|no one|not)/, "I am sorry about this. Please explain what happened to Moses directly, because it needs his personal attention.", 1],
-[/(contact|speak|talk|chat|call|reach|message) (to |with )?(moses|a human|human|someone|a person|the owner)|moses (number|whatsapp|contact)|your (number|whatsapp)|whatsapp number|phone number/, "You can reach Moses on the official WhatsApp below.", 1],
-[/repay|pay back|interest|grace period/, "A HELSB student loan must be repaid after you graduate. There is a one-year grace period after graduation. If you pay the full balance within that time, the standard 10% interest does not apply. Keep your loan records safe and read the loan terms."],
-[/(how|where|when).*\bpay\b|payment (method|details|number)|airtel|mtn|mobile money/, "I do not have payment details, and I never ask for money in this chat. Please get the payment details from Moses directly, and only pay after the service and its fee are clear.", 1],
-[/guarantee|promise|surely get|sure to get/, "No one can guarantee admission, a HELSB loan, a scholarship or any result. The universities and institutions decide. MR TEES helps you prepare and apply correctly, but I will never promise a result."],
-[/(what is|what does|what are|meaning of|explain) (the )?(helsb|higher education loans)|helsb stand/, "HELSB means Higher Education Loans and Scholarships Board. It is a Zambian government body that gives student loans and scholarships to eligible Zambian students. It is not a university and does not admit students. You must get admitted first, then apply for the loan. Official site: https://helsb.gov.zm/. Would you like to know the documents, the deadlines or how to apply?"],
-[/deadline|closing date|last day|(when|what time).*(clos|end)/, HELSB_DL],
-[/^(?=.*helsb)(?!.*appeal)(?=.*(document|requirement))/, "The main HELSB documents are your application letter, admission letter, Grade 12 results, your NRC and your parent or guardian’s NRC. Other documents may be asked for, such as death certificates, guardian or school letters, a disability card or an affidavit of means sworn before a Commissioner for Oaths. Upload PDFs under 5 MB each. Always check the latest HELSB advert."],
-[/^(?=.*(helsb|loan))(?=.*(qualify|eligib|who can))/, "To be considered for a HELSB loan you must be a Zambian citizen with a green NRC, be admitted to one of the 10 supported universities, meet the Grade 12 year and age limits in the latest advert, and show real financial need. Being poor alone does not guarantee a loan, and HELSB makes the final decision."],
-[/^(?=.*(helsb|loan|application))(?=.*(submitted|verified|shortlisted|awarded|pending|status))/, "Submitted means your application was sent. Verified means your information or documents were checked. Shortlisted means you reached a selection stage. Awarded means an official award. None of the first three guarantees a loan, and the exact meaning can change, so confirm with HELSB. What status do you see?"],
-[/^(?=.*helsb)(?=.*(email|phone|address|telephone|office|contact))/, "HELSB general email: info@helsb.gov.zm. Portal problems: support@helsb.gov.zm. Phone: +260 211 447 110. Office: UCZ House, 8 Mosi-oa-Tunya Road, Woodlands, Lusaka, Monday to Friday 08:00 to 17:00. Please confirm at https://www.helsb.gov.zm/contact because details can change."],
-[/support level|(100|75|50|25) ?(percent|%)/, "HELSB can support 100%, 75%, 50% or 25% of tuition fees. 100% is only for extremely vulnerable applicants. You ask for a level and give evidence, but HELSB decides. Allowances for meals, books and projects are separate."],
-[/who is moses|about moses|moses ntembwa|tell me about moses/, "Moses Ntembwa is a young Zambian university student and entrepreneur. He is the founder of MR TEES Education Services and began helping school leavers in 2025. He studies Information Systems and Business Analytics at Kapasa Makasa University. His dream is to build MR TEES into a trusted education and digital services organisation. What would you like to know?"]
-];
-var $ = function (i) { return document.getElementById(i); };
-var mem = {};
-function sget(k) { try { return localStorage.getItem(k); } catch (e) { return mem[k] || null; } }
-function sset(k, v) { try { localStorage.setItem(k, v); } catch (e) { mem[k] = v; } }
-var chats = []; try { chats = JSON.parse(sget('mt_chats')) || []; } catch (e) {}
-var cur = sget('mt_cur') || '', name = '', busy = false;
-try { var qn = new URLSearchParams(location.search).get('name'); if (qn) name = qn.replace(/[^\w .'-]/g, '').slice(0, 30); } catch (e) {}
-var QUESTIONS = ['How do I verify my certificate with ZAQA?', 'How do I apply for a HELSB student loan?', 'Can you help me apply to a university for me?', 'How can I verify my Grade 12 results with ECZ?', 'Can you write a professional CV for me?', 'Who is Moses Ntembwa?'];
-function norm(s) { return ' ' + s.toLowerCase().replace(/[’']/g, '').replace(/\bt[- ]pin\b/g, 'tpin').replace(/[^a-z0-9%]+/g, ' ').trim() + ' '; }
-var QN = QS.map(function (g) { return g.map(norm); });
-function tod() { var h = new Date().getHours(); return h >= 5 && h < 12 ? 'morning' : h >= 12 && h < 17 ? 'afternoon' : h >= 17 && h < 21 ? 'evening' : 'night'; }
-function prices() { return { t: "Chatting and information are free. These are the MR TEES service fees (not government fees):\n\n" + S.map(function (s) { return s.n + ": K" + s.f + (s.pc ? " per course" : ""); }).join("\n") + "\n\nFees are paid before work starts, and no results are guaranteed. Which service do you need?", w: 1 }; }
-function find(n) { for (var i = 0; i < S.length; i++) if (S[i].re.test(n)) return i; return -1; }
-function svc(i) { var s = S[i]; return { w: 1, t: "Yes, MR TEES can help you with " + s.n + ".\n\nWhat we do: " + s.w + ".\nService fee: K" + s.f + (s.pc ? " per course" : "") + "." + (s.note || "") + "\n\nThis is the MR TEES service charge, not a government or university fee. No result is guaranteed, and payment is made before the work starts.\n\n" + s.q }; }
-function info(i, n) {
-  var s = S[i], t = s.how;
-  if (s.n.indexOf('University') === 0) t += / unza /.test(n) ? " UNZA applications: https://applications.unza.zm/" : / cbu | copperbelt /.test(n) ? " CBU website: https://www.cbu.ac.zm/" : / kmu | kapasa /.test(n) ? " KMU website: https://www.kmu.ac.zm/" : " To check that a university is recognised, use https://online.hea.org.zm/";
-  return { t: t + "\n\n" + s.q };
-}
-function small(n) {
-  var words = n.trim().split(' ').length, best = -1, len = 0;
-  QN.forEach(function (g, gi) { g.forEach(function (q) { var ql = q.trim().split(' ').length; if (ql <= 2 && words > 4) return; if (n.indexOf(q) > -1 && q.length > len) { best = gi; len = q.length; } }); });
-  if (best < 0) return null;
-  if (A[best] === '__PRICES__') return prices();
-  return { t: A[best].replace('{t}', 'Good ' + tod()).replace('{tl}', tod()), w: WAG.indexOf(best) > -1 ? 1 : 0 };
-}
-function reply(raw, c) {
-  var n = norm(raw), words = n.trim().split(' ').length, i;
-  if (c.pend != null) {
-    var p = c.pend; c.pend = null;
-    if (/ (explain|how|steps|myself|free|teach|guide|1|first|information|info) /.test(n)) { c.last = p; return info(p, n); }
-    if (/ (do it|for me|service|you|2|second|yes|fee|help|assist|please|mr tees) /.test(n)) { c.last = p; return svc(p); }
+"use strict";
+
+/* =========================================================
+   CATEGORY 1 — DESIGN, CHAT SCREEN, HISTORY AND QUICK REPLIES
+   ========================================================= */
+const APP = {
+  name: "Moses Ntembwa AI",
+  subtitle: "Mr Tees Digital Assistance",
+  owner: "Moses Ntembwa (Mr Tees)",
+  whatsapp: "260766427244", // Zambia country code + number, without the leading 0
+  storageKey: "mrTeesAssistantHistoryV1",
+  unknownKey: "mrTeesAssistantUnknownV1"
+};
+const chatEl = document.getElementById("chat");
+const inputEl = document.getElementById("messageInput");
+const sendBtn = document.getElementById("sendBtn");
+const typingEl = document.getElementById("typing");
+const waPanel = document.getElementById("whatsappPanel");
+const waMessage = document.getElementById("waMessage");
+const waLink = document.getElementById("waLink");
+let history = [];
+let pendingService = null;
+let lastServiceExplained = false;
+let awaitingConfirmation = false;
+let currentContext = {};
+let greetingIndex = 0;
+
+(function createStars(){
+  const sky=document.getElementById("sky");
+  for(let i=0;i<85;i++){
+    const s=document.createElement("span");s.className="star";
+    s.style.left=(Math.random()*100)+"%";s.style.top=(Math.random()*100)+"%";
+    s.style.animationDelay=(Math.random()*4)+"s";
+    s.style.animationDuration=(2+Math.random()*4)+"s";sky.appendChild(s);
   }
-  if (c.last != null && words <= 7 && / (it|that|this) /.test(n) && / (how much|price|cost|fee|charge) /.test(n)) return svc(c.last);
-  for (var k = 0; k < X.length; k++) if (X[k][0].test(n)) return { t: X[k][1], w: X[k][2] || 0 };
-  i = find(n);
-  if (i > -1) {
-    if (STRONG.test(n)) { c.last = i; return svc(i); }
-    if (INFO.test(n)) { c.last = i; return info(i, n); }
-    if (AMB.test(n) || words <= 4) { c.pend = i; c.last = i; return { t: "I can help with " + S[i].n + ". Do you want me to explain how to do it yourself, which is free, or do you want MR TEES to do it for you? (the service fee is K" + S[i].f + ")" }; }
-  }
-  if (/ (price list|prices|fees|rates|charges) /.test(n) || / (what|which) services | services do you | what do you offer | list of services /.test(n)) return prices();
-  var st = small(n); if (st) return st;
-  if (i > -1) { c.last = i; return info(i, n); }
-  return { t: "To be honest, I do not have enough information to answer that correctly, and I do not want to mislead you. Please check the official website of the institution you are asking about. I can help with university applications, HELSB, ECZ, ZAQA, TPIN, CV writing and more. What would you like to know?" };
-}
-function save() { sset('mt_chats', JSON.stringify(chats)); sset('mt_cur', cur); }
-function getChat() { return chats.filter(function (c) { return c.id === cur; })[0]; }
-function newChat() {
-  var c = getChat(); if (c && !c.msgs.length) { render(); $('side').classList.remove('open'); return; }
-  var n = { id: 'c' + Date.now(), title: 'New chat', msgs: [], pend: null, last: null };
-  chats.unshift(n); cur = n.id; save(); render(); $('side').classList.remove('open');
-}
-function clean(t) { return t.replace(/\*\*|__|`{1,3}/g, '').replace(/^#+\s*/gm, ''); }
-function addAI(box, m) {
-  var d = document.createElement('div'); d.className = 'a';
-  clean(m.t).split(/(https?:\/\/[^\s)]*[^\s).,;])/).forEach(function (p, i) {
-    if (i % 2) { var a = document.createElement('a'); a.href = p; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p; d.appendChild(a); }
-    else d.appendChild(document.createTextNode(p));
-  });
-  if (m.w) {
-    var l = document.createElement('a'); l.target = '_blank'; l.rel = 'noopener';
-    l.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent('Hello Mr Tees, I need help with a service.');
-    l.textContent = 'Chat with Moses on WhatsApp: +' + CFG.whatsapp;
-    d.appendChild(document.createTextNode('\n\n')); d.appendChild(l);
-  }
-  box.appendChild(d);
-}
-function render() {
-  var box = $('msgs'), c = getChat(); box.innerHTML = '';
-  if (!c) return newChat();
-  if (!c.msgs.length) {
-    var w = document.createElement('div'); w.className = 'w';
-    w.innerHTML = '<div class="g"></div><div class="s">Welcome. Ask me anything about education and our services.</div>';
-    w.firstChild.textContent = 'Good ' + tod() + (name ? ', ' + name : '') + '!';
-    QUESTIONS.forEach(function (q) { var b = document.createElement('button'); b.className = 'q'; b.textContent = q; b.onclick = function () { send(q); }; w.appendChild(b); });
-    box.appendChild(w);
-  }
-  c.msgs.forEach(function (m) {
-    if (m.r === 'u') { var u = document.createElement('div'); u.className = 'u'; u.textContent = m.t; box.appendChild(u); } else addAI(box, m);
-  });
-  box.scrollTop = box.scrollHeight;
-  var h = $('history'); h.innerHTML = '';
-  chats.forEach(function (x) {
-    var b = document.createElement('button'); b.className = 'h' + (x.id === cur ? ' on' : ''); b.textContent = x.title;
-    b.onclick = function () { cur = x.id; save(); render(); $('side').classList.remove('open'); }; h.appendChild(b);
-  });
-}
-function send(text) {
-  text = (text || '').trim(); if (!text || busy) return;
-  var c = getChat(); busy = true;
-  c.msgs.push({ r: 'u', t: text }); if (c.title === 'New chat') c.title = text.slice(0, 40);
-  save(); render(); $('input').value = '';
-  var box = $('msgs'), p = document.createElement('div'); p.className = 'a typing'; p.innerHTML = '<span></span><span></span><span></span>'; box.appendChild(p); box.scrollTop = box.scrollHeight;
-  var done = function (r) { c.msgs.push({ r: 'a', t: r.t, w: r.w ? 1 : 0 }); busy = false; save(); render(); };
-  var local = function () { var r; try { r = reply(text, c); } catch (e) { r = { t: 'Sorry, something went wrong. Please try again.' }; } setTimeout(function () { done(r); }, 450 + Math.random() * 450); };
-  if (CFG.api && /^https?:/.test(location.protocol)) {
-    var payload = c.msgs.map(function (m) { return { role: m.r === 'u' ? 'user' : 'assistant', content: m.t }; });
-    var ctl = new AbortController(), tm = setTimeout(function () { ctl.abort(); }, 20000);
-    fetch(CFG.api, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: payload, name: name }), signal: ctl.signal })
-      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (d) { clearTimeout(tm); var t = d.reply || ''; var w = t.indexOf('[[WHATSAPP]]') > -1; done({ t: t.replace('[[WHATSAPP]]', '').trim(), w: w }); })
-      .catch(function () { clearTimeout(tm); local(); });
-  } else local();
-}
-$('form').onsubmit = function (e) { e.preventDefault(); send($('input').value); };
-$('input').onkeydown = function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(this.value); } };
-$('input').oninput = function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 120) + 'px'; };
-$('newChat').onclick = newChat;
-$('menu').onclick = function () { $('side').classList.toggle('open'); };
-$('closeSide').onclick = function () { $('side').classList.remove('open'); };
-document.addEventListener('click', function (e) { var s = $('side'); if (s.classList.contains('open') && !s.contains(e.target) && e.target.id !== 'menu') s.classList.remove('open'); });
-if (!getChat()) { chats.length ? cur = chats[0].id : newChat(); }
-render();
-// Moving stars
-var cv = $('sky'), cx = cv.getContext('2d'), stars = [], shoot = null, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-function size() { cv.width = innerWidth; cv.height = innerHeight; stars = []; for (var i = 0; i < Math.min(170, innerWidth / 5); i++) stars.push({ x: Math.random() * cv.width, y: Math.random() * cv.height, r: Math.random() * 1.7 + .4, v: Math.random() * .3 + .05, t: Math.random() * 6 }); }
-function draw() {
-  cx.clearRect(0, 0, cv.width, cv.height); cx.shadowColor = '#fff'; cx.shadowBlur = 6; cx.fillStyle = '#fff';
-  stars.forEach(function (s) {
-    s.y += s.v; s.x += s.v * .35; s.t += .03;
-    if (s.y > cv.height) { s.y = 0; s.x = Math.random() * cv.width; } if (s.x > cv.width) s.x = 0;
-    cx.globalAlpha = .5 + .5 * Math.sin(s.t); cx.beginPath(); cx.arc(s.x, s.y, s.r, 0, 6.283); cx.fill();
-  });
-  if (!shoot && Math.random() < .003) shoot = { x: Math.random() * cv.width + 120, y: 0, l: 0 };
-  if (shoot) { shoot.x -= 9; shoot.y += 5; shoot.l += 1; cx.globalAlpha = Math.max(0, 1 - shoot.l / 45); cx.strokeStyle = '#fff'; cx.lineWidth = 1.6; cx.beginPath(); cx.moveTo(shoot.x, shoot.y); cx.lineTo(shoot.x + 70, shoot.y - 39); cx.stroke(); if (shoot.l > 45) shoot = null; }
-  if (!still) requestAnimationFrame(draw);
-}
-addEventListener('resize', size); size(); draw();
 })();
+function saveHistory(){try{localStorage.setItem(APP.storageKey,JSON.stringify(history.slice(-150)));}catch(e){}}
+function safeText(text){return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function addMessage(text,who,save=true){
+  const box=document.createElement("div");box.className="message "+(who==="user"?"user":"ai");
+  const label=document.createElement("span");label.className="msg-label";
+  label.textContent=who==="user"?"YOU":APP.name+" • "+APP.subtitle;
+  const body=document.createElement("div");body.textContent=text;
+  box.append(label,body);chatEl.appendChild(box);chatEl.scrollTop=chatEl.scrollHeight;
+  if(save){history.push({who,text,at:new Date().toISOString()});saveHistory();}
+}
+function restoreHistory(){
+  try{const saved=JSON.parse(localStorage.getItem(APP.storageKey)||"[]");
+    if(Array.isArray(saved)&&saved.length){
+      history=saved.slice(-150);
+      history.forEach(m=>addMessage(m.text,m.who,false));
+      addMessage("Welcome back! It is good to continue with you. I can use the messages still saved on this device to follow our conversation. What would you like us to work on now?","ai",true);
+      return;
+    }
+  }catch(e){}
+  addMessage(getTimeGreeting()+" and welcome to Moses Ntembwa AI (Mr Tees Digital Assistance). I help with Zambian public universities, HELSB information, applications, verification guidance and other student services. What would you like help with today?","ai");
+}
+function showTyping(){typingEl.classList.add("show");}
+function hideTyping(){typingEl.classList.remove("show");}
+function getTimeGreeting(){
+  const h=new Date().getHours();
+  if(h>=5&&h<12)return "Good morning";
+  if(h>=12&&h<17)return "Good afternoon";
+  if(h>=17&&h<21)return "Good evening";
+  return "Good night";
+}
+function normalize(s){
+ return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+ .replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+}
+function containsAny(text,words){return words.some(w=>text.includes(w));}
+function hideWhatsApp(){waPanel.classList.remove("show");}
+function showWhatsApp(service){
+  const greeting=getTimeGreeting();
+  const fee=service.price==="K30 to K50"?"The service fee will be confirmed by Moses after reviewing the work.":"The service fee is "+service.price+".";
+  const draft=`${greeting} Moses Ntembwa, I am asking for assistance with ${service.name}. ${fee} I am ready to discuss the requirements and arrange the service fee.`;
+  waMessage.value=draft;
+  updateWhatsAppLink();
+  document.getElementById("waInfo").textContent="Tap the WhatsApp button to send Moses a message already prepared for this service and its listed fee.";
+  waPanel.classList.add("show");waPanel.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function updateWhatsAppLink(){
+  waLink.href="https://wa.me/"+APP.whatsapp+"?text="+encodeURIComponent(waMessage.value);
+}
+waMessage.addEventListener("input",updateWhatsAppLink);
+document.getElementById("hideWa").addEventListener("click",hideWhatsApp);
+
+/* =========================================================
+   CATEGORY 2 — CONVERSATION UNDERSTANDING AND BEHAVIOUR
+   ========================================================= */
+const ABOUT = {
+  ai:"I am Moses Ntembwa AI (Mr Tees Digital Assistance), an automated digital assistant created to help people understand education information and services. I am not a human and I do not replace official institutions or Moses.",
+  moses:"Moses Ntembwa, also known as Mr Tees, provides student and education support through MR TEES Education Services. This assistant helps answer common questions and prepares a WhatsApp hand-off when someone is ready for a service.",
+  help:"I can explain university admission steps, HELSB student-loan information, the ten HELSB-supported public universities, document verification guidance, service procedures and the listed service fees. I can also help you identify the next step."
+};
+const GREETING_LIBRARY = [
+ "Good morning","Good afternoon","Good evening","Good night","Morning! Hope you slept well",
+ "Afternoon! How is your day going?","Evening! How was your day?","Have a lovely day","Rise and shine","Good day to you",
+ "Hello","Hi there","Hey","Hey, how are you?","Hi, hope you are fine","What's up?","How is it going?","How are things?","Nice to see you","Howdy",
+ "Greetings, welcome","Hello sir","Hello madam","Dear customer, welcome","It is a pleasure to meet you","Welcome, how may I assist you?","Good to have you here","Kindly tell me how I can help","Honoured to serve you","Thank you for reaching out",
+ "Muli shani (Bemba)","Mwashibukeni (Bemba)","Mwapoleni (Bemba)","Muli bwanji (Nyanja)","Mwadzuka bwanji (Nyanja)","Mwaswera bwanji (Nyanja)","Mwabuka buti (Tonga)","Mwapona buti (Tonga)","Lumela (Lozi)","Mu zuhile (Lozi)","Mwauka bwanji (Nyanja)","Muli bwino (Nyanja)",
+ "God bless you today","Blessed morning to you","Peace be with you","May your day be full of joy","Wishing you a blessed day","Stay blessed, welcome","Grace and peace to you","Welcome, may favour follow you",
+ "Welcome back","Nice to see you again","Good to hear from you again","Long time, how have you been?","Welcome back, how can I help today?","Happy you came back","Back again! Great to see you","Glad you returned",
+ "Welcome, today is a great day to start","Great things start with one step, hello","Hello champion","Hello future graduate","Your dream is valid, welcome","Hello, let us make progress today","Keep going, hello","Believe in yourself, welcome",
+ "How are you feeling today?","How was your week?","Hope everything is well with you","How is school going?","Did you rest well?","Are you doing okay?","How is your family?","How are you today, truly?",
+ "Hello student, welcome","Hi, are you preparing for university?","Hello, are you a Grade 12 learner?","Welcome, future student","Hello, do you need help with your application?","Hi, are you checking HELSB today?","Welcome, returning student","Hello, ready to start your application?","Hi, looking for accommodation?","Welcome, let us plan your studies",
+ "Welcome to Mr Tees Digital Assistance","How can I serve you today?","What service can I help you with?","Welcome, tell me what you need","Glad you are here, what do you need help with?","Let us solve it together, hello","Hello, I am ready to help","Welcome, ask me anything",
+ "Thank you for chatting, goodbye","Take care and stay blessed","Have a wonderful day","See you soon","Talk to you later","Good night and sleep well","Thank you, come back anytime","All the best with your studies"
+];
+const GREETINGS = GREETING_LIBRARY.map((g,i)=>{
+ if(i===0)return "Good morning! I hope you slept well. I am Moses Ntembwa AI. How can I help you today?";
+ if(i===1)return "Good afternoon! I hope your day is going well. What would you like help with?";
+ if(i===2)return "Good evening! Thank you for visiting. How may I assist you today?";
+ if(i===3)return "Good night! I hope you have had a peaceful day. What can I help you with before you rest?";
+ return g+". Thank you for reaching out. How can I help you today?";
+});
+const LANG_GREETINGS = {
+ "muli shani":"Muli bwino, zikomo! Welcome. How can I help you today?",
+ "muli bwanji":"Muli bwino, zikomo! I am happy to assist. What would you like to know?",
+ "mwashibukeni":"Mwashibukeni! I hope you have started your day well. How can I help?",
+ "mwauka bwanji":"Mwadzuka bwino, zikomo! What would you like help with today?",
+ "muli bwino":"Muli bwino! Thank you for greeting me. How can I assist you?"
+};
+const FEELINGS = {
+ sad:"I am sorry that you are going through a difficult moment. Please do not judge your whole future by one hard day. We can take the issue slowly and look at practical options. Would you like to tell me what happened?",
+ happy:"That is wonderful news! I am happy to celebrate this progress with you. Keep building on it one step at a time. What good news would you like to share?",
+ stressed:"I understand. When many things happen at once, it can feel heavy. Let us identify one issue and handle it first. What is troubling you most right now?",
+ failed:"I am sorry about the result. One setback does not remove your ability to make progress. We can look at a retake, another programme, another institution or an appeal where the rules allow it. What examination or application result are you referring to?",
+ motivation:"Keep going. Progress is not always fast, but every correct step matters. Make a small plan, follow it consistently and ask for help when you need it. What goal are you working towards?"
+};
+function isGreeting(t){return /^(hi|hello|hey|good morning|good afternoon|good evening|good night|greetings|howdy|muli shani|muli bwanji|mwashibukeni|mwauka bwanji|muli bwino)\b/.test(t);}
+function answerEmotion(t){
+ if(containsAny(t,["sad","depressed","heartbroken","crying","down","not okay","bad day"]))return FEELINGS.sad;
+ if(containsAny(t,["happy","passed","succeeded","got admission","thank god","good news","excited"]))return FEELINGS.happy;
+ if(containsAny(t,["stress","stressed","worried","confused","overwhelmed","tired"]))return FEELINGS.stressed;
+ if(containsAny(t,["failed","failure","I want to give up","gave up","not selected","rejected"]))return FEELINGS.failed;
+ if(containsAny(t,["motivate","motivation","encourage","hopeless","no hope"]))return FEELINGS.motivation;
+ return "";
+}
+function followUp(question){return question?("\n\n"+question):"";}
+
+/* =========================================================
+   CATEGORY 3 — THE TEN HELSB-SUPPORTED PUBLIC UNIVERSITIES
+   Verified institution list from HELSB partner information.
+   Programme examples are broad subject areas, not promises
+   that every course is offered in every intake.
+   ========================================================= */
+const UNIVERSITIES = [
+ {name:"University of Zambia",short:"UNZA",town:"Lusaka",province:"Lusaka Province",focus:"A broad public university with academic areas including agriculture, education, engineering, business, health sciences, humanities, law, medicine, natural and applied sciences and veterinary medicine.",website:"https://www.unza.zm/",apply:"https://www.unza.zm/",note:"Check the current undergraduate prospectus for exact programmes, subject combinations, entry grades, fees and intake dates."},
+ {name:"Copperbelt University",short:"CBU",town:"Kitwe",province:"Copperbelt Province",focus:"A public university with study areas including business, engineering, built environment, natural resources, health-related fields and technology.",website:"https://www.cbu.edu.zm/",apply:"https://www.cbu.edu.zm/",note:"Use the official admissions and academic programme pages for the current programme list and requirements."},
+ {name:"Mulungushi University",short:"MU",town:"Kabwe",province:"Central Province",focus:"A public university with academic areas that include business, education, agriculture, social sciences, health and other professional fields.",website:"https://www.mu.ac.zm/",apply:"https://www.mu.ac.zm/",note:"Programme availability and entry requirements depend on the current intake."},
+ {name:"Kwame Nkrumah University",short:"KNU",town:"Kabwe",province:"Central Province",focus:"A public university with programmes in education, science, technology, business and related academic fields.",website:"https://www.nkrumah.edu.zm/",apply:"https://www.nkrumah.edu.zm/",note:"Confirm the exact programme, subject requirements and application process from the university."},
+ {name:"Mukuba University",short:"MKU",town:"Kitwe",province:"Copperbelt Province",focus:"A public university known for teacher education and programmes across education, science, technology and related fields.",website:"https://mukuba.edu.zm/",apply:"https://mukuba.edu.zm/",note:"Check the official prospectus for current programmes and admission conditions."},
+ {name:"Chalimbana University",short:"CHAU",town:"Chalimbana, Lusaka Province",province:"Lusaka Province",focus:"A public university offering programmes across education, business studies, humanities, leadership, management, early childhood and vocational or practical skills education.",website:"https://www.chau.ac.zm/",apply:"https://www.chau.ac.zm/",note:"The official website lists programmes and admissions information. Confirm the current intake details."},
+ {name:"Palabana University",short:"PU",town:"Palabana, Chongwe",province:"Lusaka Province",focus:"A public university with an agriculture and livestock focus, including areas such as animal science, agriculture education, aquaculture and capture fisheries.",website:"https://pu.ac.zm/",apply:"https://pu.ac.zm/",note:"Confirm current programmes, entry requirements and application dates directly with the university."},
+ {name:"Kapasa Makasa University",short:"KMU",town:"Chinsali",province:"Muchinga Province",focus:"A public university in Mulakupikwa, Chinsali, with a science, technology and innovation orientation and a growing range of academic programmes.",website:"https://www.kmu.ac.zm/",apply:"https://www.kmu.ac.zm/",note:"For admission information, use the official KMU website and its admissions portal links. Do not rely on old intake deadlines."},
+ {name:"Zambia University College of Technology",short:"ZUT",town:"Ndola",province:"Copperbelt Province",focus:"A public institution with a strong technology, ICT, engineering and business education orientation.",website:"https://zut.ac.zm/",apply:"https://zut.ac.zm/",note:"Check the official website for programmes, admission requirements, application payment instructions and current intakes."},
+ {name:"Levy Mwanawasa Medical University",short:"LMMU",town:"Lusaka",province:"Lusaka Province",focus:"A public specialist university focused on medical, clinical, nursing, dental, public health and other health-science education.",website:"https://www.lmmu.ac.zm/",apply:"https://www.lmmu.ac.zm/",note:"Health programmes can have specific subject combinations, practical requirements and professional conditions. Confirm each programme directly."}
+];
+const HELSB_INSTITUTIONS = ["UNZA","CBU","KMU","MKU","MU","CHAU","KNU","PU","LMMU","ZUT"];
+function universityList(){
+ return "HELSB's official partner information lists these ten institutions:\n"+UNIVERSITIES.map((u,i)=>`${i+1}. ${u.name} (${u.short}) — ${u.town}`).join("\n")+
+ "\n\nThese are the ten institutions in the HELSB student-loan partner list. Admission to a university does not automatically mean a loan will be awarded. Which university or programme are you interested in?";
+}
+function findUniversity(t){return UNIVERSITIES.find(u=>t.includes(u.short.toLowerCase())||t.includes(u.name.toLowerCase()));}
+function universityAnswer(u){
+ return `${u.name} (${u.short}) is located in ${u.town}, ${u.province}. ${u.focus}\n\nCommon questions:\n• What courses are offered? Check the current prospectus and programme list on the official website.\n• What grades are required? Requirements depend on the programme and intake; check the latest prospectus.\n• How do I apply? Open the official website, find Admissions, select the current intake and follow the published steps.\n• How much is the application fee? The fee can change, so confirm it on the official website before paying.\n• When is the deadline? Confirm the current closing date on the official website and Facebook page.\n• How do I get an acceptance letter? Apply through the official process and wait for the university's admission decision. The university issues the acceptance letter.\n• Is accommodation available? Ask the university about campus accommodation; availability may be limited.\n\nOfficial website: ${u.website}\n\n${u.note}\n\nFor HELSB student-loan information, check https://helsb.gov.zm/ and confirm whether the institution and programme are supported for the current intake. Please confirm updates on the official website and Facebook page. Which programme are you considering?`;
+}
+
+/* =========================================================
+   CATEGORY 4 — GREETINGS, WELCOME-BACK, RESPECT AND LANGUAGE
+   ========================================================= */
+function greetingReply(t){
+ for(const [key,value] of Object.entries(LANG_GREETINGS)){if(t.includes(key))return value;}
+ if(containsAny(t,["thank you","thanks","thx","ndatotela","natotela"]))return "You are most welcome. I am glad I could help. Is there anything else you would like us to clarify?";
+ if(containsAny(t,["bye","goodbye","see you","good night"]))return "Thank you for chatting with Moses Ntembwa AI. Take care, stay focused on your goals and come back whenever you need guidance. All the best!";
+ if(containsAny(t,["welcome back","back again"]))return "Welcome back! It is good to see you again. We can continue from where we left off. What would you like to work on now?";
+ const h=new Date().getHours();
+ if(t.includes("good morning")||t.includes("morning"))return "Good morning! I hope you slept well. How can I help you today?";
+ if(t.includes("good afternoon")||t.includes("afternoon"))return "Good afternoon! I hope your day is going well. What would you like help with?";
+ if(t.includes("good evening")||t.includes("evening"))return "Good evening! Thank you for visiting. How may I assist you today?";
+ if(t.includes("good night"))return "Good night! I hope you have a peaceful rest. Is there anything important I can help you with first?";
+ const start=(h>=5&&h<12)?0:(h>=12&&h<17)?1:(h>=17&&h<21)?2:3;
+ const pool=GREETINGS.slice(4);
+ return pool[(greetingIndex++)%pool.length] || GREETINGS[start];
+}
+
+/* =========================================================
+   CATEGORY 5 — KNOWLEDGE USE AND WHATSAPP HAND-OFF
+   WhatsApp is never displayed for ordinary information.
+   It appears only after service explanation + customer yes.
+   ========================================================= */
+const SERVICE_WORDS = ["assist me","help me apply","do it for me","handle it for me","i want your service","i need your service","i want moses","contact moses","book this service","i am ready","i want to be assisted","please assist me"];
+function customerReady(t){return containsAny(t,SERVICE_WORDS)||/^(yes|yes please|yeah|yeah please|yep|yup|okay|ok|ok please|sure|sure please|please do|i agree|i am ready|im ready|proceed|go ahead|do it|help me|assist me|definitely|absolutely|of course|that is fine|thats fine)$/.test(t)||/^(yes|yeah|yep|yup|sure|okay|ok|please|definitely|absolutely|of course)\b/.test(t);}
+function serviceContextPrompt(s){
+ pendingService=s;lastServiceExplained=true;awaitingConfirmation=true;
+ return `${s.explanation}\n\nThe listed service fee is ${s.price}. ${s.caveat||""}\n\nWould you like Moses to assist you with this service?`;
+}
+
+/* =========================================================
+   CATEGORY 6 — HELSB KNOWLEDGE
+   Facts below are general guidance; live deadlines and
+   decisions must be checked on HELSB official channels.
+   ========================================================= */
+const HELSB = {
+ official:"https://helsb.gov.zm/",
+ loans:"https://helsb.gov.zm/loans/",
+ portal:"https://portal.helsb.gov.zm/",
+ partners:"https://helsb.gov.zm/about/partners",
+ contact:"https://helsb.gov.zm/contact",
+ about:"HELSB means Higher Education Loans and Scholarships Board. It is Zambia's public body responsible for administering student loans and scholarships under its mandate.",
+ eligibility:"HELSB's published loan guidance lists eligibility conditions such as Zambian citizenship, age limits set for the relevant intake, admission to a supported institution, demonstrated financial need, meeting academic requirements and not already benefiting from another government-funded student loan or scholarship. Always read the advert for the intake you are applying for.",
+ docs:["Applicant's passport-size photo","Applicant's certified NRC copy","Parent's or guardian's certified NRC copy","Certified Grade 12 statement of results or school certificate","Admission or acceptance letter from an eligible institution","Student application letter and guardian recommendation letter, where required by the current advert","Any supporting evidence requested by HELSB, such as proof of vulnerability or death certificates where relevant"],
+ repayment:"HELSB's current public information says beneficiaries are required to begin repayment after graduation and describes a one-year grace period. The exact loan agreement, repayment amount, deductions, interest and terms for an individual must be checked in the beneficiary's agreement and with HELSB.",
+ safety:"Never pay a person who promises to secure or guarantee a HELSB loan. Use the official HELSB website and portal. Admission does not guarantee a loan; the Board makes the award decision."
+};
+function helsbAnswer(t){
+ if(containsAny(t,["what is helsb","about helsb","meaning of helsb","helsb stand for","explain helsb","tell me more about helsb"]))
+  return `${HELSB.about}\n\nHELSB publishes student-loan application guidelines, eligibility requirements, supported institutions, application windows and beneficiary information. Start here: ${HELSB.official}\n\nAre you a new applicant, a returning student or someone who wants to appeal or follow up?`;
+ if(containsAny(t,["which universities","universities offer","public universities","ten universities","10 universities","helsb universities","eligible universities","supported universities"]))
+  return universityList();
+ if(containsAny(t,["requirement","documents","documents needed","what do i need","what are the requirements"]))
+  return "The documents commonly listed in HELSB's published guidance include:\n"+HELSB.docs.map((d,i)=>`${i+1}. ${d}`).join("\n")+"\n\nThe exact checklist can change by intake and applicant category. Read the latest advert and guidelines at "+HELSB.loans+"\n\nHave you already received an admission letter?";
+ if(containsAny(t,["eligible","qualify","age limit","26 years","who can apply"]))
+  return HELSB.eligibility+"\n\nPlease compare your situation with the current intake advert. Have you already been admitted to one of the ten supported institutions?";
+ if(containsAny(t,["repay","repayment","pay back","interest","grace period","loan terms"]))
+  return HELSB.repayment+"\n\nOfficial repayment information: "+HELSB.official+" Are you asking as a current beneficiary or as a new applicant?";
+ if(containsAny(t,["appeal","not selected","rejected","unsuccessful"]))
+  return "If your application was unsuccessful, first read the result notice and any reason given. Follow only the appeal instructions and deadline published by HELSB for that intake. Keep relevant evidence ready and do not assume every applicant is eligible to appeal. Official updates: "+HELSB.official+"\n\nWere you given a reason for not being selected?";
+ if(containsAny(t,["screening","screened","verification status","screening status"]))
+  return "Screening is the review of the information and supporting documents submitted by applicants. Follow the instructions shown in your HELSB account and official announcements. If information is missing or incorrect, use the official correction or support route. Do not share your password or PIN here. What status or message are you seeing?";
+ if(containsAny(t,["deadline","closing date","when does it close","when is the deadline"]))
+  return "HELSB deadlines are intake- and institution-specific. I will not guess a date. Check the current application-window notice here: "+HELSB.loans+" and the official news page at "+HELSB.official+". Which university and intake are you asking about?";
+ if(containsAny(t,["portal","login","account","password","forgot password","cannot log in","can't log in"]))
+  return "The official HELSB portal is "+HELSB.portal+". Use the portal's own account-recovery instructions if you cannot sign in. Never send your password, PIN or one-time verification code to me or anyone else. Are you having trouble creating an account, signing in or submitting an application?";
+ if(containsAny(t,["t pin","tpin","zra","taxpayer identification"]))
+  return "A TPIN is a Taxpayer Identification Number issued by the Zambia Revenue Authority (ZRA). It is different from a HELSB loan document. If HELSB or another institution asks for a TPIN certificate, follow the request instructions and obtain the certificate through official ZRA channels. Would you like information about the TPIN certificate service?";
+ if(containsAny(t,["how long","waiting time","when will results","when are names","beneficiary list","list of beneficiaries"]))
+  return "Processing and publication dates can vary by intake and application volume. HELSB publishes notices and award information through its official website and portal. I do not want to promise a waiting period that may be wrong. Have you already submitted your application?";
+ return "";
+}
+
+/* =========================================================
+   CATEGORY 7 — THE 25 SERVICES AND PRICES
+   These prices are transcribed from the user's guideline.
+   Moses should review them before public launch.
+   ========================================================= */
+const SERVICES = [
+ {id:1,name:"Student accommodation — secure a Boarding House",price:"K260",keys:["boarding house","boarding","student accommodation","find accommodation"],explanation:"Moses can assist you with finding or arranging a boarding-house option. Tell him the university or town, your expected arrival date and your accommodation needs. Availability and final arrangements must be confirmed before payment."},
+ {id:2,name:"HELSB Application",price:"K50",keys:["helsb application","student loan application","loan application","apply for helsb"],explanation:"This service is for guidance and assistance with preparing and submitting a HELSB application. You should have your admission information and the documents listed in the current HELSB advert. The Board—not Moses—decides whether a loan is awarded."},
+ {id:3,name:"HELSB Appeal",price:"K30",keys:["helsb appeal","appeal help","appeal assistance"],explanation:"Moses can help you understand the published appeal instructions and organise the information you need. Eligibility, evidence and deadlines are controlled by HELSB. An appeal service cannot guarantee selection."},
+ {id:4,name:"HELSB Returning Student",price:"K50",keys:["returning student","continuing student","progression helsb"],explanation:"Support for a returning HELSB student who needs guidance with the relevant progression or continuing-student process. Follow the current HELSB instructions and have the academic information requested by the Board."},
+ {id:5,name:"Scholarship Application",price:"K150",keys:["scholarship application","apply for scholarship","scholarship help"],explanation:"Moses can help you understand a scholarship advert, organise the required documents and prepare an application. Each scholarship has its own eligibility rules and deadline; selection is not guaranteed."},
+ {id:6,name:"University Admission",price:"K50",keys:["university admission","admission application","apply for admission","university application","college admission"],explanation:"Moses can guide you through choosing an institution and programme, checking entry requirements, preparing documents and following the official application process. Admission decisions remain with the university."},
+ {id:7,name:"ECZ Results Verification",price:"K40",keys:["ecz verification","ecz results verification","verify results","results verification","ecz results"],explanation:"This service helps you understand and arrange an ECZ results-verification request where required by an institution. The requesting institution's instructions and ECZ procedures must be followed. Do not post your NRC or certificate details in this chat."},
+ {id:8,name:"ZAQA Certificate Verification",price:"K40",keys:["zaqa verification","zaqa certificate","certificate verification","qualification verification"],explanation:"Moses can guide you on a ZAQA qualification or certificate verification request and the documents the receiving organisation asks for. Processing and acceptance are determined by ZAQA and the receiving institution."},
+ {id:9,name:"ZRA TPIN Certificate",price:"K30",keys:["tpin certificate","zra tpin","tpin"],explanation:"This service concerns guidance on obtaining or preparing a ZRA TPIN certificate. A TPIN is issued by ZRA. Use official ZRA channels and never share your ZRA password or PIN in this chat."},
+ {id:10,name:"CV Writing",price:"K50",keys:["cv writing","write cv","curriculum vitae","resume"],explanation:"Moses can help prepare or improve a clear CV for a job, internship or scholarship. You should prepare your education, skills, experience, achievements and contact details. Do not send passwords or banking details."},
+ {id:11,name:"Application Letter",price:"K20",keys:["application letter","write a letter","letter writing"],explanation:"Moses can help draft a formal application letter based on your purpose, institution or organisation and relevant background. You should check all names and facts before submitting it."},
+ {id:12,name:"Past Papers with Solutions (one course)",price:"K30",keys:["past papers","past paper","solutions","revision paper"],explanation:"This service provides past-paper learning support and worked solutions for one course where materials are available. Use the solutions to learn the method, not to submit dishonest work."},
+ {id:13,name:"Accommodation Application",price:"K30",keys:["accommodation application","apply for hostel","hostel application","campus accommodation"],explanation:"Moses can guide you through an accommodation application and help organise the information requested by the university. Room availability and allocation are decided by the institution."},
+ {id:14,name:"Screening Support",price:"K30",keys:["screening support","helsb screening","screening help"],explanation:"This service helps you understand a screening notice and organise the requested documents. The institution or HELSB performs the official screening and makes the final decision."},
+ {id:15,name:"TPIN Retrieval",price:"K30",keys:["tpin retrieval","forgot tpin","retrieve tpin"],explanation:"Guidance for retrieving or locating an existing ZRA TPIN through the official process. Do not send your login password or one-time code in this chat."},
+ {id:16,name:"Passport Sized Photo",price:"K10",keys:["passport photo","passport sized photo","passport size"],explanation:"Assistance preparing a passport-sized photograph that meets the receiving institution's stated format. Confirm background, dimensions and file type before use."},
+ {id:17,name:"Email or Account Creation",price:"K20",keys:["create email","email creation","create account","gmail account"],explanation:"Guidance with creating an email or online account. You must keep the password and recovery codes private and enter them yourself."},
+ {id:18,name:"Interview Preparation",price:"K40",keys:["interview preparation","prepare for interview","interview questions"],explanation:"Moses can help you practise likely interview questions, structure your answers and prepare professionally. The final selection belongs to the employer or institution."},
+ {id:19,name:"Correction of Errors",price:"K50",keys:["correction of errors","correct mistake","made a mistake","wrong information","edit application","change application"],explanation:"Moses can review the type of mistake and guide you to the official correction process. Some portals do not allow changes after submission, so no correction should be promised before checking the institution's rules."},
+ {id:20,name:"Documents Attachment and Scanning",price:"K5 each",keys:["scan documents","attach documents","document scanning","upload documents","merge pdf"],explanation:"Assistance with scanning, arranging or attaching documents. The receiving portal may set file-size, format and naming rules. Keep original documents safe."},
+ {id:21,name:"Assignment and Research Help",price:"K50",keys:["assignment help","research help","research assistance"],explanation:"Learning support with understanding a topic, planning research, structuring an assignment and improving writing. You remain responsible for your own academic work and must follow your institution's integrity rules."},
+ {id:22,name:"Online Application Support",price:"K50",keys:["online application support","online application","application support"],explanation:"Guidance through an online application, including understanding fields, document preparation and checking the submission steps. You should enter your own private credentials."},
+ {id:23,name:"Learn Basics of AI, Create AI",price:"K200",keys:["learn ai","create ai","artificial intelligence","build an ai","ai training"],explanation:"Introductory guidance on AI concepts and planning or building a simple AI assistant. The exact scope, tools and delivery plan should be agreed before work begins."},
+ {id:24,name:"Other services that require Moses' time, work or MBs",price:"K30 to K50",keys:["other service","something else","special service","custom service"],explanation:"For work not listed, Moses will review the task and confirm the exact fee. The guideline gives a range of K30 to K50; do not assume a final price before confirmation.",caveat:"The final amount depends on the work required and will be confirmed by Moses."},
+ {id:25,name:"Career and Academic Advice",price:"K30",keys:["career advice","academic advice","course advice","career guidance","what should i study"],explanation:"A guidance conversation to help you consider study interests, strengths, programme options and next steps. Final programme choices should be checked against official entry requirements."}
+ ];
+const SERVICE_QUESTIONS = [
+ "I need help securing student accommodation or a boarding house.",
+ "I want assistance with my HELSB student loan application.",
+ "I need help understanding or preparing a HELSB appeal.",
+ "I am a returning HELSB student and need assistance.",
+ "I need help applying for a scholarship.",
+ "I need advice and help with university admission or an acceptance letter.",
+ "I want assistance with ECZ results verification.",
+ "I need help with verification of my ZAQA certificate.",
+ "I need help obtaining a ZRA TPIN certificate.",
+ "I want Moses to help me write or improve my CV.",
+ "I need help preparing an application letter.",
+ "I need past papers with solutions for one course.",
+ "I need help with a university accommodation application.",
+ "I need help understanding HELSB or university screening.",
+ "I need help retrieving my existing ZRA TPIN.",
+ "I need a passport-sized photograph prepared.",
+ "I need help creating an email or online account.",
+ "I want help preparing for an interview.",
+ "I made an error and need help correcting my application or documents.",
+ "I need help scanning or attaching my documents.",
+ "I need assignment or research guidance.",
+ "I need support completing an online application.",
+ "I want to learn the basics of AI or create an AI assistant.",
+ "I need another service that requires Moses's time, work or data bundles.",
+ "I need career or academic advice about what to study."
+];
+function serviceMenuAnswer(service){
+ const common="A simple way to proceed is:\n1. Read the official requirements for this service and confirm that you qualify.\n2. Prepare the documents or information requested by the relevant institution.\n3. Check names, dates and details carefully before submitting anything.\n4. Keep your official reference number and proof of payment.\n5. Follow up through the official institution if a decision or verification is pending.";
+ let specific="";
+ if(service.id===2) specific="For HELSB, begin with the current advert and application guide at https://helsb.gov.zm/ and the official portal https://portal.helsb.gov.zm/. Commonly requested documents include the admission letter, applicant and guardian identification, Grade 12 results and any supporting documents specified in the current advert. The current advert is the final checklist.";
+ else if(service.id===3) specific="For a HELSB appeal, first read the result or notice and the appeal instructions for that intake. Confirm the appeal window, eligibility and evidence required on https://helsb.gov.zm/. Do not assume every applicant can appeal.";
+ else if(service.id===4) specific="For a returning student, check the current HELSB continuing-student or progression instructions. Prepare the academic progress information and documents requested in that year's notice. Use https://helsb.gov.zm/ for the current rules.";
+ else if(service.id===6) specific="For admission, choose the university and programme, read its current prospectus, check subject and grade requirements, prepare the requested documents, complete the official application and keep the reference. An acceptance letter is issued by the university only after its admission process; it cannot be created by an outside helper. University application fees and deadlines must be confirmed on the official university website and Facebook page.";
+ else if(service.id===7) specific="For ECZ results verification, first ask the organisation requesting verification which ECZ verification format it needs. Confirm the current process and charges directly with ECZ, submit through its approved channel and keep the receipt or reference. Do not share sensitive certificate or NRC details in this chat.";
+ else if(service.id===8) specific="For ZAQA verification, identify the qualification and purpose, check the current document checklist and process on https://www.zaqa.gov.zm/, submit through the official ZAQA channel and keep your reference or receipt. The receiving organisation decides what verification it accepts.";
+ else if(service.id===9||service.id===15) specific="For ZRA TPIN services, use the official ZRA website https://www.zra.org.zm/ and follow its taxpayer registration or retrieval instructions. Keep your password, PIN and one-time codes private; Moses should never ask you to send those secrets.";
+ else if(service.id===1||service.id===13) specific="First identify the university or town, the dates you need accommodation, your preferred location and budget. Check whether the university has available campus accommodation. Any boarding-house option, availability and final cost must be confirmed before you pay.";
+ else if(service.id===14) specific="Read the screening notice carefully, identify the documents requested, compare them with your original records and follow the institution's official submission instructions. Only HELSB or the relevant institution can perform official screening and make the decision.";
+ else if(service.id===5) specific="Start by reading the scholarship advert. Check eligibility, eligible programmes, required documents, closing date and submission method. Prepare the application according to that advert; selection is decided by the scholarship provider.";
+ else if(service.id===19) specific="First identify whether the application is still a draft or has already been submitted. Do not pay again or create another application until the university or portal confirms the correct correction procedure. Some submitted applications cannot be edited.";
+ else if(service.id===22) specific="Use only the official application portal. Read each field carefully, prepare documents in the required file format and save the application reference. Enter your password and one-time codes yourself; never send them to Moses or this chat.";
+ else if(service.id===17) specific="Choose a trusted email provider, use your own phone number or recovery email, create a strong password and save it privately. Enter all passwords and verification codes yourself.";
+ else if(service.id===10) specific="Prepare your education history, work or volunteer experience, skills, achievements and a suitable contact email or phone number. Moses can organise these details into a clear CV. Do not send passwords or banking details.";
+ else if(service.id===11) specific="Prepare the purpose of the letter, the name of the institution or recipient, the programme or position and the key facts to include. Check every name and date before using the final letter.";
+ else if(service.id===12) specific="Tell Moses the course name, institution and topics you are revising. Materials depend on availability. Use worked solutions to understand the method and follow your institution's academic-integrity rules.";
+ else if(service.id===16) specific="Check the organisation's required photo dimensions, background, file size and format before preparing the photograph. Different portals may use different specifications.";
+ else if(service.id===18) specific="Share the type of interview, role or programme and any instructions you received. Practise clear answers about your background, motivation, strengths and experience. The employer or institution makes the final selection.";
+ else if(service.id===20) specific="Check the receiving portal's accepted file type, size and naming rules. Make clear scans, confirm every page is readable and keep copies of the original documents.";
+ else if(service.id===21) specific="Prepare the assignment question, course, topic and lecturer's instructions. Moses can help you understand the topic, plan research and improve structure, while you remain responsible for your own submitted work.";
+ else if(service.id===23) specific="Start by identifying what you want to learn or build, your phone or computer access and the task you want AI to perform. Agree on the project scope, tools and deliverables before work begins.";
+ else if(service.id===24) specific="Describe the work you need in general terms without sharing passwords, PINs or private account access. Moses will review the task and confirm the exact fee within the stated range.";
+ else if(service.id===25) specific="Think about your interests, strongest school subjects, career goals, preferred location and the grades you achieved. Compare programmes against official entry requirements before choosing.";
+ const guide=`${service.explanation}\n\n${specific||common}\n\nFor additional general guidance, you may also visit ChatGPT: https://chatgpt.com/ . Always treat the official institution's current instructions as the final authority.`;
+ return serviceContextPrompt({...service,explanation:guide});
+}
+function showServiceQuestion(id){
+ const service=SERVICES[id-1]; const question=SERVICE_QUESTIONS[id-1];
+ document.getElementById("serviceMenu").classList.remove("open");
+ document.getElementById("serviceStar").setAttribute("aria-expanded","false");
+ addMessage(question,"user"); hideWhatsApp();
+ showTyping(); setTimeout(()=>{hideTyping();addMessage(serviceMenuAnswer(service),"ai");},450);
+}
+function buildServiceMenu(){
+ const grid=document.getElementById("serviceQuestionGrid");
+ SERVICE_QUESTIONS.forEach((q,i)=>{const b=document.createElement("button");b.type="button";b.textContent=(i+1)+". "+q;b.addEventListener("click",()=>showServiceQuestion(i+1));grid.appendChild(b);});
+ document.getElementById("serviceStar").addEventListener("click",()=>{const menu=document.getElementById("serviceMenu");const open=menu.classList.toggle("open");document.getElementById("serviceStar").setAttribute("aria-expanded",String(open));if(open)menu.scrollIntoView({behavior:"smooth",block:"nearest"});});
+}
+function findService(t){
+ let best=null,bestScore=0;
+ for(const s of SERVICES){for(const k of s.keys){if(t.includes(k)&&k.length>bestScore){best=s;bestScore=k.length;}}}
+ return best;
+}
+function servicePriceList(){return "Here are the 25 services and the prices in Moses's current training guideline:\n"+SERVICES.map(s=>`${s.id}. ${s.name} — ${s.price}`).join("\n")+"\n\nA one-time customer registration fee of K20 is separate from service charges. Please confirm the latest prices with Moses before payment. Which service would you like to understand?";}
+
+/* =========================================================
+   CATEGORY 8 — POLITE FALLBACK AND UNKNOWN-QUESTION LOG
+   ========================================================= */
+function logUnknown(text){
+ try{const a=JSON.parse(localStorage.getItem(APP.unknownKey)||"[]");a.push({text,at:new Date().toISOString()});localStorage.setItem(APP.unknownKey,JSON.stringify(a.slice(-300)));}catch(e){}
+}
+function fallbackReply(){
+ return "Sorry I can't help, try to research it, let me know if I can help you with something else. I can help with HELSB, public universities, admission guidance and student services. Which of these would you like to discuss?";
+}
+
+/* =========================================================
+   CATEGORY 9 — PROCEDURES, FOLLOW-UP QUESTIONS AND CONTEXT
+   ========================================================= */
+function admissionProcedure(){
+ return "A safe general admission process is:\n1. Choose the university and programme you want.\n2. Open that university's official website and current prospectus.\n3. Check the exact subject requirements, grades, programme duration and mode of study.\n4. Prepare the documents requested in the current advert.\n5. Complete the official application form and pay only through the official payment instructions.\n6. Save your application reference and monitor official communication.\n\nApplication fees and deadlines change. Which university are you considering?";
+}
+function verificationProcedure(kind){
+ if(kind==="ecz")return "ECZ verification guidance:\n1. Check which organisation requested verification and what form of verification it accepts.\n2. Confirm the current ECZ procedure and any required payment through official ECZ channels.\n3. Prepare the requested results information and supporting documents.\n4. Submit through the approved process and keep the receipt or reference.\n5. Send the verification outcome to the requesting organisation as instructed.\n\nDo not post your NRC, certificate image or private details in this chat. Who is requesting the verification?";
+ return "ZAQA verification guidance:\n1. Ask the receiving organisation which qualification verification or evaluation it requires.\n2. Check ZAQA's current official procedure and document checklist.\n3. Prepare the qualification documents in the format requested.\n4. Submit through the official ZAQA process and keep the reference or receipt.\n5. Follow up through official ZAQA channels.\n\nRequirements depend on the qualification and purpose. Is this for employment, university admission or another purpose?";
+}
+function correctionProcedure(){
+ return "I can help you identify the right next step. First, do not submit another application or make another payment until you know whether the portal allows corrections. Check whether the application is still a draft, already submitted or under review. The university or portal administrator must confirm whether editing is possible. Which university or application portal did you use?";
+}
+function nextQuestion(t){
+ if(containsAny(t,["admission","apply","university"]))return "Which university and programme are you interested in?";
+ if(containsAny(t,["helsb","loan","bursary"]))return "Are you a new applicant, a returning student or appealing?";
+ if(containsAny(t,["ecz","zaqa","verification"]))return "Which organisation asked you to verify the document?";
+ if(containsAny(t,["tpin","zra"]))return "Do you need a new TPIN certificate or help retrieving an existing TPIN?";
+ return "What is the main result you are hoping to achieve?";
+}
+
+/* =========================================================
+   CATEGORY 10 — SAFETY, PRIVACY, HONESTY AND QUALITY CONTROL
+   ========================================================= */
+function privacyGuard(t){
+ const credentialPatterns=[
+  /\bpassword\b/i,/\bpasscode\b/i,/\bpin number\b/i,/\botp\b/i,
+  /\bverification code\b/i,/\bbank account\b/i,/\bcard number\b/i
+ ];
+ const asksForSecret=credentialPatterns.some(re=>re.test(t));
+ if(asksForSecret)return "For your safety, please do not share passwords, PINs, one-time codes, bank details or login credentials here. I do not need them. If you need help with a portal, I can guide you while you keep your details private. What step is giving you difficulty?";
+ return "";
+}
+function honestyGuard(t){
+ if(containsAny(t,["guarantee","promise me","ensure i get","make sure i get","buy helsb","pay to get loan"]))
+  return "I cannot guarantee admission, a scholarship or a HELSB loan. The university or HELSB makes the official decision. Moses can help you understand the requirements, prepare documents and follow the correct process. Would you like help checking the requirements?";
+ if(containsAny(t,["pay someone","send money to a personal number","loan guaranteed","someone promised me a loan"]))
+  return "Please be careful. Do not pay an individual who promises to secure a HELSB loan or change an official decision. Confirm payments and application instructions through the official institution or HELSB website. Have you received a written notice or payment request?";
+ return "";
+}
+function safeSensitiveReply(t){
+ if(containsAny(t,["suicide","kill myself","end my life","hurt myself","self harm"]))
+  return "I am really sorry you are feeling this much pain. Your safety matters. Please move near someone you trust now and tell them directly that you may not be safe alone. If you are in immediate danger, contact local emergency services or go to the nearest hospital. I am an AI and cannot provide emergency care, but I can stay with you while you reach a trusted person.";
+ if(containsAny(t,["sex","sexual","relationship","girlfriend","boyfriend","love"]))
+  return "Relationships can bring strong feelings, and it is important to treat yourself and others with respect, consent and honesty. I can discuss healthy communication and boundaries in an age-appropriate way. What part of the situation would you like advice about?";
+ if(containsAny(t,["bible","god","pray","prayer","jesus","christ"]))
+  return "Many people draw strength from faith, prayer and scripture. Philippians 4:13 is often remembered as a message about finding strength through Christ. I respect different beliefs and am happy to discuss this respectfully. Is there a particular question on your heart?";
+ return "";
+}
+
+/* =========================================================
+   CATEGORY ROUTER — USES THE TEN KNOWLEDGE CATEGORIES
+   ========================================================= */
+function generateReply(raw){
+ const t=normalize(raw);
+ if(!t)return "Please type a question so I can help you.";
+ const privacy=privacyGuard(raw);if(privacy)return privacy;
+ const sensitive=safeSensitiveReply(t);if(sensitive)return sensitive;
+ const honest=honestyGuard(t);if(honest)return honest;
+
+ // A user has confirmed a service only after the procedure was explained.
+ if(awaitingConfirmation && pendingService && customerReady(t)){
+   const s=pendingService;awaitingConfirmation=false;showWhatsApp(s);
+   return `Thank you for confirming. Moses Ntembwa (Mr Tees) can discuss the ${s.name} service with you. The listed fee is ${s.price}. Please review the editable WhatsApp message below and send it when you are ready. Remember, no result such as admission or loan approval can be guaranteed.`;
+ }
+ if(awaitingConfirmation && pendingService && containsAny(t,["no","not now","just information","only asking","not ready"])){
+   awaitingConfirmation=false;pendingService=null;return "That is completely fine. You can ask questions first without requesting a service. What else would you like to understand?";
+ }
+
+ if(isGreeting(t))return greetingReply(t);
+ if(containsAny(t,["who are you","what are you","your name","are you real","are you human","who built you"]))return ABOUT.ai;
+ if(containsAny(t,["who is moses","about moses","mr tees","owner"]))return ABOUT.moses;
+ if(containsAny(t,["what can you do","how can you help","what do you help"]))return ABOUT.help;
+
+ const emotion=answerEmotion(t);if(emotion)return emotion;
+
+ // HELSB and university topics are checked before generic service detection.
+ const hu=helsbAnswer(t);if(hu)return hu;
+ const uni=findUniversity(t);
+ if(uni && containsAny(t,["university","unza","cbu","mulungushi","nkrumah","mukuba","chalimbana","palabana","kapasa","kmu","zut","lmmu","levy mwanawasa"]))
+   return universityAnswer(uni);
+ if(containsAny(t,["list of services","services and prices","how much are your services","all services","price list","what services do you offer"]))
+   return servicePriceList();
+ if(containsAny(t,["how can i apply for admission","admission process","steps to apply","how to apply for university"]))
+   return admissionProcedure();
+ if(containsAny(t,["made a mistake","wrong admission","correct my application","mistake with admission","change my application","edit my application"]))
+   return correctionProcedure();
+ if(containsAny(t,["ecz","results verification","verify my results"]))
+   return serviceContextPrompt(SERVICES[6]);
+ if(containsAny(t,["zaqa","certificate verification"]))
+   return serviceContextPrompt(SERVICES[7]);
+ if(containsAny(t,["tpin certificate","zra tpin"]))
+   return serviceContextPrompt(SERVICES[8]);
+ if(containsAny(t,["verification procedure","how do i verify"]))
+   return verificationProcedure("ecz");
+
+ const service=findService(t);
+ if(service){
+   currentContext.service=service.id;
+   // Price is shown immediately only if customer explicitly asks for price.
+   if(containsAny(t,["how much","price","cost","fee","charges"]))
+     return `${service.name} costs ${service.price} according to the current service list. ${service.explanation}\n\nWould you like to understand the procedure, or are you ready to request Moses's assistance?`;
+   return serviceContextPrompt(service);
+ }
+
+ if(containsAny(t,["hello","hi","hey","how are you"]))return greetingReply(t);
+ if(containsAny(t,["thank","thanks"]))return "You are most welcome. I am glad to help. What would you like to ask next?";
+ logUnknown(raw);
+ return fallbackReply();
+}
+
+/* =========================================================
+   SEND / REPLY ENGINE — KEEPING THE CONVERSATION GOING
+   ========================================================= */
+function sendMessage(){
+ const text=inputEl.value.trim();if(!text)return;
+ addMessage(text,"user");inputEl.value="";inputEl.style.height="auto";sendBtn.disabled=true;showTyping();
+ // A short typing delay makes the exchange feel natural; answers are generated locally.
+ setTimeout(()=>{
+   hideTyping();
+   const reply=generateReply(text);
+   addMessage(reply,"ai");
+   sendBtn.disabled=false;inputEl.focus();
+ },650);
+}
+sendBtn.addEventListener("click",sendMessage);
+inputEl.addEventListener("keydown",e=>{
+ if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}
+});
+inputEl.addEventListener("input",()=>{inputEl.style.height="auto";inputEl.style.height=Math.min(inputEl.scrollHeight,120)+"px";});
+document.querySelectorAll("[data-question]").forEach(b=>b.addEventListener("click",()=>{
+ inputEl.value=b.dataset.question;sendMessage();
+}));
+document.getElementById("clearBtn").addEventListener("click",()=>{
+ if(confirm("Clear the conversation history saved on this device?")){
+  history=[];localStorage.removeItem(APP.storageKey);chatEl.innerHTML="";hideWhatsApp();
+  pendingService=null;awaitingConfirmation=false;
+  addMessage("Welcome! I am Moses Ntembwa AI (Mr Tees Digital Assistance). How can I help you today?","ai");
+ }
+});
+document.getElementById("exportBtn").addEventListener("click",()=>{
+ const content=history.map(m=>`${m.who==="user"?"YOU":"MOSES NTEMBWA AI"} [${m.at}]\n${m.text}`).join("\n\n");
+ downloadText("mr-tees-chat-history.txt",content||"No chat history.");
+});
+document.getElementById("unknownBtn").addEventListener("click",()=>{
+ let content="MR TEES AI — UNANSWERED QUESTIONS\n\n";
+ try{const a=JSON.parse(localStorage.getItem(APP.unknownKey)||"[]");content+=a.map(x=>`${x.at}\n${x.text}`).join("\n\n")||"No unanswered questions logged.";}catch(e){content+="No unanswered questions logged.";}
+ downloadText("mr-tees-unanswered-questions.txt",content);
+});
+function downloadText(name,content){
+ const blob=new Blob([content],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);
+}
+
+/* Start the assistant and restore this browser's saved chat. */
+buildServiceMenu();
+restoreHistory();
 </script>
 </body>
 </html>
