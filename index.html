@@ -2,192 +2,237 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#06152f">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <title>Moses Ntembwa AI | Mr Tees Digital Assistance</title>
 <style>
- :root{--navy:#06152f;--deep:#020817;--white:#fff;--green:#42f59b;--muted:#c4d8f3}
+:root{--ink:#000;--ai:#0b1f5c;--accent:#1d3fa8;--line:#e6e9f0;--soft:#f5f7fb}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#020817;color:var(--white)}
-body{overflow-x:hidden;background:radial-gradient(ellipse at 50% 0%,#174d8d 0%,#09244d 38%,#020817 82%);min-height:100vh}
-.sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:radial-gradient(circle at 78% 16%,rgba(92,155,255,.15),transparent 23%),linear-gradient(160deg,rgba(5,23,55,.2),rgba(0,0,0,.25))}
-.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.75;box-shadow:0 0 9px #fff;animation:twinkle 3s infinite ease-in-out alternate}
-@keyframes twinkle{from{opacity:.18;transform:scale(.65)}to{opacity:1;transform:scale(1.65)}}
-.moon{position:absolute;top:7%;right:9%;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff,#d8e8ff 55%,#91b8ec);box-shadow:0 0 45px 15px rgba(170,210,255,.2)}
-.moon:after{content:"";position:absolute;left:25px;top:-9px;width:82px;height:82px;border-radius:50%;background:#0a2046}
-.orbit{position:absolute;border:1px solid rgba(127,190,255,.14);border-radius:50%;width:340px;height:100px;top:16%;left:-100px;transform:rotate(-25deg);animation:drift 24s linear infinite}
-.shooting{position:absolute;width:130px;height:2px;background:linear-gradient(90deg,transparent,#d9f0ff,transparent);top:24%;left:-150px;transform:rotate(-25deg);animation:shoot 13s linear infinite}
-@keyframes shoot{0%{left:-150px;top:20%;opacity:0}5%{opacity:1}18%{left:110%;top:45%;opacity:0}100%{left:110%;opacity:0}}
-@keyframes drift{to{transform:translate(70px,35px) rotate(-25deg)}}
-.app{position:relative;z-index:1;max-width:900px;margin:0 auto;min-height:100vh;padding:12px 16px;display:flex;flex-direction:column}
-header{position:relative;text-align:center;padding:14px 8px 8px;background:transparent;border:0;box-shadow:none;backdrop-filter:none}
-.brand{display:inline-block;font-weight:900;font-size:clamp(23px,5vw,34px);letter-spacing:.35px;animation:brandMove 8s ease-in-out infinite,brandColors 11s linear infinite}
-@keyframes brandMove{0%,100%{transform:translate(0,0)}25%{transform:translateY(-4px)}50%{transform:translateX(5px)}75%{transform:translateY(3px) translateX(-4px)}}
-@keyframes brandColors{0%{color:#ff4d4d}9%{color:#ff8c42}18%{color:#ffd43b}27%{color:#b7f34a}36%{color:#35e58b}45%{color:#27d7d7}54%{color:#36a3ff}63%{color:#6574ff}72%{color:#a66bff}81%{color:#ef70d5}90%{color:#ff78a8}100%{color:#ff4d4d}}
-.subtitle{font-size:13px;color:#d8e7ff;margin-top:5px;letter-spacing:1.2px}
-.star-launcher{display:flex;justify-content:center;margin:4px auto 7px}
-.star-button{width:76px;height:76px;border:0;background:transparent;cursor:pointer;position:relative;filter:drop-shadow(0 0 13px rgba(255,215,90,.45));animation:starFloat 3.6s ease-in-out infinite}
-.star-button svg{width:100%;height:100%;overflow:visible;animation:starSpin 14s linear infinite}
-.star-button .star-shape{fill:url(#starRainbow);stroke:#fff5bd;stroke-width:1.3;animation:starGlow 3.5s ease-in-out infinite alternate}
-@keyframes starFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes starSpin{to{rotate:360deg}}
-@keyframes starGlow{from{filter:drop-shadow(0 0 5px #ffdc67)}to{filter:drop-shadow(0 0 17px #71eaff)}}
-.star-menu{display:none;margin:0 auto 10px;width:100%;max-width:700px;padding:12px 14px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(2,12,31,.94);box-shadow:0 10px 35px #0008}
-.star-menu.open{display:block}
-.star-menu h2{font-size:15px;margin:0 0 10px;text-align:center;color:#fff}
-.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.question-grid button{border:1px solid rgba(132,185,255,.35);background:rgba(14,48,91,.65);color:#f3f8ff;border-radius:8px;padding:9px;text-align:left;font-size:12px;line-height:1.35;cursor:pointer}
-.question-grid button:active{background:#1d548b}
-.chat{flex:1;min-height:390px;max-height:calc(100vh - 245px);overflow-y:auto;padding:14px 9px;margin:0 0 10px;border:0;border-radius:0;background:transparent;backdrop-filter:none;scroll-behavior:smooth}
-.message{max-width:96%;padding:5px 0;margin:10px 0;line-height:1.55;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:none;border:0;border-radius:0;background:transparent}
-.user{margin-left:auto;color:#fff;text-align:right}
-.ai{margin-right:auto;color:var(--green);text-align:left}
-.msg-label{display:none}
-.message a{color:#a8eaff;text-decoration:underline}
-.typing{display:none;color:#9af3c0;font-size:12px;margin:4px 0 12px 8px}.typing.show{display:block}
-.composer{display:flex;gap:8px;padding:8px 0;border:0;border-radius:0;background:transparent}
-#messageInput{flex:1;min-width:0;resize:none;max-height:120px;border:1px solid #5275a4;border-radius:12px;padding:12px;background:rgba(3,17,40,.88);color:#fff;font-size:15px;outline:none}
-#messageInput::placeholder{color:#b1c4df}
-#sendBtn{border:0;border-radius:12px;padding:0 18px;background:#168b59;color:white;font-weight:bold;cursor:pointer}
+html,body{margin:0;height:100%;background:#fff;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.app{max-width:820px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;padding:0 14px}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0 6px}
+.mid{text-align:center;flex:1;min-width:0}
+.brand{font-weight:800;font-size:clamp(20px,5vw,28px);letter-spacing:.2px;animation:brandColor 12s linear infinite}
+@keyframes brandColor{0%{color:#e0245e}20%{color:#f08a00}40%{color:#12a150}60%{color:#0a8fd6}80%{color:#7a3df0}100%{color:#e0245e}}
+.sub{font-size:12px;color:#5b6477;margin-top:2px;letter-spacing:.6px}
+.star-wrap{display:flex;flex-direction:column;align-items:center;width:56px}
+.star-btn{width:36px;height:36px;border:0;background:none;padding:0;cursor:pointer;animation:float 4s ease-in-out infinite}
+.star-btn svg{width:100%;height:100%;overflow:visible;transition:transform .25s}
+.star-btn:hover svg,.star-btn[aria-expanded=true] svg{transform:scale(1.18) rotate(18deg)}
+.star-btn path{stroke-width:7;stroke-linejoin:round;animation:starColor 6s linear infinite,glow 2.4s ease-in-out infinite alternate}
+#knowledgeStar path{animation-delay:-3s,-1s}
+@keyframes starColor{0%{fill:#ff4d6d;stroke:#ff4d6d}17%{fill:#ff9f1c;stroke:#ff9f1c}34%{fill:#f2cc0c;stroke:#f2cc0c}50%{fill:#2ec27e;stroke:#2ec27e}67%{fill:#22a6f2;stroke:#22a6f2}84%{fill:#8b5cf6;stroke:#8b5cf6}100%{fill:#ff4d6d;stroke:#ff4d6d}}
+@keyframes glow{from{filter:drop-shadow(0 0 1px rgba(0,0,0,.15))}to{filter:drop-shadow(0 0 6px rgba(80,120,255,.55))}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.star-label{font-size:10px;color:#5b6477;margin-top:2px;font-weight:600}
+.bar{display:flex;gap:8px;justify-content:center;padding:6px 0 8px;border-bottom:1px solid var(--line)}
+.pill{border:1px solid var(--line);background:#fff;color:var(--ai);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.pill:hover{background:var(--soft)}
+.pill.primary{background:var(--ai);color:#fff;border-color:var(--ai)}
+.chat{flex:1;overflow-y:auto;padding:14px 2px;scroll-behavior:smooth}
+.message{max-width:88%;margin:12px 0;padding:11px 14px;border-radius:16px;line-height:1.6;font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.message .who{display:block;font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:3px;opacity:.7}
+.user{margin-left:auto;background:#f0f0f0;color:#000;border-bottom-right-radius:4px}
+.ai{margin-right:auto;background:var(--soft);color:var(--ai);border-left:3px solid var(--accent);border-bottom-left-radius:4px}
+.ai a{color:#1546d6;word-break:break-all}
+.ai strong{color:#06113a}
+.typing{display:none;padding:0 6px 8px;color:var(--ai);font-size:12px}.typing.show{display:block}
+.composer{display:flex;gap:8px;align-items:flex-end;padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:#fff}
+#messageInput{flex:1;min-width:0;resize:none;max-height:120px;border:1px solid #c9d0de;border-radius:14px;padding:12px;font:inherit;font-size:16px;color:#000;background:#fff;outline:none}
+#messageInput:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(29,63,168,.12)}
+#sendBtn{border:0;border-radius:14px;padding:0 20px;min-height:46px;background:var(--ai);color:#fff;font-weight:700;cursor:pointer}
 #sendBtn:disabled{opacity:.5}
-.whatsapp-wrap{display:none;margin:8px 0 15px;padding:12px 0;border:0;border-top:1px solid rgba(53,229,139,.35);border-radius:0;background:transparent}
+.note{font-size:10.5px;color:#7a8296;text-align:center;padding-bottom:6px}
+.whatsapp-wrap{display:none;margin:4px 0 8px;padding:10px 12px;border:1px solid #bfe8cf;border-radius:14px;background:#f2fbf6}
 .whatsapp-wrap.show{display:block}
-.wa-info{font-size:13px;color:#d7fbe8;line-height:1.45;margin-bottom:9px}
-.wa-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.wa-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#25D366;color:#052515;padding:12px 17px;border-radius:25px;font-weight:bold;font-size:15px}
-.wa-link svg{width:22px;height:22px;display:block}
+.wa-info{font-size:13px;color:#0b3d22;margin-bottom:8px}
+.wa-row{display:flex;gap:8px;align-items:center}
+.wa-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#25D366;color:#052515;padding:10px 16px;border-radius:24px;font-weight:700}
+.wa-link svg{width:20px;height:20px}
 #waMessage,.whatsapp-wrap label{display:none!important}
-.tools,.footer,.online,.notice,.quick{display:none!important}
-.small-btn{border:1px solid #31527f;background:rgba(14,47,91,.8);color:#eaf3ff;border-radius:18px;padding:8px 12px;font-size:12px;cursor:pointer}
-@media(max-width:520px){.app{padding:8px}.chat{max-height:calc(100vh - 245px);min-height:360px}.message{max-width:98%;font-size:14px}.moon{width:57px;height:57px}.moon:after{width:57px;height:57px;left:18px}.question-grid{grid-template-columns:1fr}.star-button{width:70px;height:70px}}
+.sheet-bg{position:fixed;inset:0;background:rgba(10,20,50,.35);display:none;z-index:30;align-items:flex-end;justify-content:center}
+.sheet-bg.open{display:flex}
+.sheet{width:100%;max-width:760px;max-height:78dvh;background:#fff;border-radius:20px 20px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.sheet h2{margin:0;padding:16px 18px 8px;font-size:16px;color:var(--ai)}
+.sheet p{margin:0;padding:0 18px 10px;font-size:12px;color:#5b6477}
+.grid{overflow-y:auto;padding:4px 14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid button{border:1px solid var(--line);background:#fff;color:#111;border-radius:12px;padding:10px 12px;text-align:left;font:inherit;font-size:13px;line-height:1.4;cursor:pointer}
+.grid button:hover{background:var(--soft);border-color:#b9c6ee}
+.close{position:absolute;right:14px;top:12px;border:0;background:var(--soft);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:16px}
+.sheet{position:relative}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(310px,86vw);background:#fff;z-index:40;transform:translateX(-102%);transition:transform .25s;box-shadow:6px 0 30px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer h2{margin:0;padding:16px;font-size:16px;color:var(--ai);border-bottom:1px solid var(--line)}
+#historyList{overflow-y:auto;padding:8px}
+.h-item{display:flex;align-items:center;gap:6px;border-radius:10px;padding:10px;cursor:pointer;font-size:13px;color:#111}
+.h-item:hover,.h-item.active{background:var(--soft)}
+.h-item span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.h-item small{display:block;color:#7a8296;font-size:11px}
+.h-item button{border:0;background:none;color:#a33;cursor:pointer;font-size:16px}
+.empty{padding:16px;color:#7a8296;font-size:13px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.message{max-width:94%}}
+
+/* v2: ChatGPT / Claude style */
+.chat{padding:10px 2px 6px}
+.message{max-width:100%;margin:20px 0;padding:0;border:0;border-radius:0;background:none;font-size:16px;line-height:1.7}
+.message.user{max-width:82%;margin-left:auto;margin-right:0;background:#f0f0f0;color:#000;padding:10px 16px;border-radius:20px}
+.message.ai{margin-right:0;background:none;color:var(--ai);border:0;padding:0 2px}
+.typing{padding:0 4px 8px}
+.typing span{display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:50%;background:var(--ai);opacity:.35;animation:dot 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes dot{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.composer{border:0;gap:8px;align-items:center;padding-top:6px}
+.input-wrap{flex:1;display:flex;align-items:flex-end;gap:6px;border:1px solid #d5d9e3;border-radius:26px;padding:5px 5px 5px 16px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.input-wrap:focus-within{border-color:var(--accent)}
+#messageInput{border:0!important;box-shadow:none!important;padding:9px 0;border-radius:0;max-height:120px}
+#sendBtn{width:38px;height:38px;min-height:0;padding:0;border-radius:50%;font-size:19px;flex:none}
+.icon{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ai);cursor:pointer;font-size:18px;line-height:1}
+.icon:hover{background:var(--soft)}
+header{padding:9px 0 8px;gap:5px}
+.star-wrap{width:34px;flex:none}
+.star-btn{width:30px;height:30px}
+.top-actions{display:flex;align-items:center;gap:5px;flex:none}
+.top-actions .icon{width:34px;height:34px;font-size:16px}
+.mid{flex:1}
+@media(max-width:520px){
+ .app{padding:0 10px}
+ header{gap:3px}
+ .star-wrap{width:29px}
+ .star-btn{width:27px;height:27px}
+ .top-actions{gap:3px}
+ .top-actions .icon{width:31px;height:31px;font-size:15px}
+ .brand{font-size:clamp(16px,4.6vw,22px)}
+ .sub{font-size:10px;letter-spacing:.2px}
+}
 </style>
 </head>
 <body>
-<div class="sky" aria-hidden="true" id="sky"><div class="moon"></div><div class="orbit"></div><div class="shooting"></div></div>
 <div class="app">
 <header>
-  <div class="brand">Moses Ntembwa AI</div>
-  <div class="subtitle">(Mr Tees Digital Assistance)</div>
+ <div class="star-wrap"><button class="star-btn" id="serviceStar" type="button" aria-label="What I can help you with" title="What I can help you with" aria-expanded="false"><svg viewBox="0 0 100 100"><path d="M50 10 L61 38 L90 40 L67 59 L75 88 L50 72 L25 88 L33 59 L10 40 L39 38 Z"/></svg></button></div>
+ <div class="mid"><div class="brand">Moses Ntembwa AI</div><div class="sub">(Mr Tees Digital Assistance)</div></div>
+ <div class="star-wrap"><button class="star-btn" id="knowledgeStar" type="button" aria-label="Explore knowledge" title="Explore knowledge" aria-expanded="false"><svg viewBox="0 0 100 100"><path d="M50 10 L61 38 L90 40 L67 59 L75 88 L50 72 L25 88 L33 59 L10 40 L39 38 Z"/></svg></button></div>
+ <div class="top-actions">
+  <button class="icon" id="newChatBtn" type="button" title="New chat" aria-label="New chat">＋</button>
+  <button class="icon" id="historyBtn" type="button" title="History" aria-label="History">☰</button>
+ </div>
 </header>
-<div class="star-launcher">
- <button class="star-button" id="serviceStar" type="button" aria-label="Open 25 service questions" aria-expanded="false">
-  <svg viewBox="0 0 100 100" role="img" aria-label="Colourful star"><defs><linearGradient id="starRainbow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff06a"/><stop offset="25%" stop-color="#ff7bd5"/><stop offset="50%" stop-color="#72eaff"/><stop offset="75%" stop-color="#a58bff"/><stop offset="100%" stop-color="#70ffb5"/></linearGradient></defs><path class="star-shape" d="M50 4 L61 35 L94 36 L68 56 L77 89 L50 70 L23 89 L32 56 L6 36 L39 35 Z"/></svg>
- </button>
-</div>
-<section class="star-menu" id="serviceMenu" aria-label="25 service questions">
- <h2>Choose one of the 25 services</h2>
- <div class="question-grid" id="serviceQuestionGrid"></div>
-</section>
-
-<div class="quick" aria-label="Suggested questions">
-  <button data-question="How can I apply for admission?">University admission</button>
-  <button data-question="Which public universities offer HELSB student loans?">HELSB universities</button>
-  <button data-question="Tell me more about HELSB.">About HELSB</button>
-  <button data-question="I want ECZ results verification.">ECZ verification</button>
-  <button data-question="I need help with a ZRA TPIN certificate.">TPIN certificate</button>
-  <button data-question="I made a mistake with my admission application.">Correct an application</button>
-</div>
-
 <main class="chat" id="chat" aria-live="polite"></main>
-<div class="typing" id="typing">Moses Ntembwa AI is typing…</div>
+<div class="typing" id="typing" aria-label="Typing"><span></span><span></span><span></span></div>
 <section class="whatsapp-wrap" id="whatsappPanel">
-  <div class="wa-info" id="waInfo">Your service request is ready. Tap WhatsApp to contact Moses.</div>
-  <div class="wa-row">
-    <a class="wa-link" id="waLink" href="#" target="_blank" rel="noopener" aria-label="Chat with Moses on WhatsApp">
-      <!-- Official WhatsApp-style brand mark, shown only for confirmed service requests -->
-      <svg viewBox="0 0 32 32" role="img" aria-label="WhatsApp">
-        <path fill="currentColor" d="M16.02 3.2A12.65 12.65 0 0 0 5.15 22.34L3.4 28.7l6.52-1.71A12.65 12.65 0 1 0 16.02 3.2Zm0 22.9c-1.95 0-3.86-.52-5.54-1.51l-.4-.24-3.87 1.02 1.03-3.77-.26-.42a10.25 10.25 0 1 1 9.04 4.92Zm5.63-7.68c-.31-.16-1.84-.91-2.12-1.02-.28-.1-.49-.16-.69.16-.2.31-.8 1.02-.98 1.23-.18.2-.36.23-.67.08-.31-.16-1.3-.48-2.47-1.52-.91-.81-1.52-1.81-1.7-2.12-.18-.31-.02-.48.13-.63.14-.14.31-.36.47-.54.16-.18.2-.31.31-.52.1-.2.05-.39-.03-.55-.08-.15-.69-1.66-.95-2.28-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.56s1.1 2.97 1.25 3.18c.15.2 2.17 3.31 5.26 4.64.73.31 1.3.5 1.74.64.73.23 1.4.2 1.93.12.59-.09 1.84-.75 2.1-1.48.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36Z"/>
-      </svg>
-      Chat with Moses
-    </a>
-    <button class="small-btn" id="hideWa" type="button">Hide</button>
-  </div>
-  <label for="waMessage" style="display:block;color:#bdf5d2;font-size:11px;margin-top:10px">Editable WhatsApp message</label>
-  <textarea id="waMessage"></textarea>
+ <div class="wa-info" id="waInfo">Your service request is ready. Tap WhatsApp to contact Moses.</div>
+ <div class="wa-row"><a class="wa-link" id="waLink" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2A12.65 12.65 0 0 0 5.15 22.34L3.4 28.7l6.52-1.71A12.65 12.65 0 1 0 16.02 3.2Zm0 22.9c-1.95 0-3.86-.52-5.54-1.51l-.4-.24-3.87 1.02 1.03-3.77-.26-.42a10.25 10.25 0 1 1 9.04 4.92Zm5.63-7.68c-.31-.16-1.84-.91-2.12-1.02-.28-.1-.49-.16-.69.16-.2.31-.8 1.02-.98 1.23-.18.2-.36.23-.67.08-.31-.16-1.3-.48-2.47-1.52-.91-.81-1.52-1.81-1.7-2.12-.18-.31-.02-.48.13-.63.14-.14.31-.36.47-.54.16-.18.2-.31.31-.52.1-.2.05-.39-.03-.55-.08-.15-.69-1.66-.95-2.28-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.56s1.1 2.97 1.25 3.18c.15.2 2.17 3.31 5.26 4.64.73.31 1.3.5 1.74.64.73.23 1.4.2 1.93.12.59-.09 1.84-.75 2.1-1.48.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36Z"/></svg>Chat with Moses</a><button class="pill" id="hideWa" type="button">Hide</button></div>
+ <textarea id="waMessage"></textarea>
 </section>
+<div class="composer"><div class="input-wrap"><textarea id="messageInput" rows="1" placeholder="Message Mr Tees Digital Assistant" aria-label="Type your message"></textarea><button id="sendBtn" type="button" aria-label="Send">&#8593;</button></div></div>
+</div>
 
-<div class="composer">
-  <textarea id="messageInput" rows="1" placeholder="Type your question here…" aria-label="Type your message"></textarea>
-  <button id="sendBtn" type="button">Send</button>
-</div>
-<div class="tools">
-  <button id="clearBtn" type="button">Clear chat on this device</button>
-  <button id="exportBtn" type="button">Download chat history</button>
-  <button id="unknownBtn" type="button">Export unanswered questions</button>
-</div>
-<div class="footer">Automated information assistant. Official institutions make admission and loan decisions. Never share passwords, PINs or bank details here.</div>
-</div>
+<div class="sheet-bg" id="serviceBg"><section class="sheet"><button class="close" data-close aria-label="Close">×</button><h2>What I can help you with</h2><p>Choose a topic to explore guidance, steps, requirements and useful official links. Services appear here when you choose to explore them.</p><div class="grid" id="serviceGrid"></div></section></div>
+<div class="sheet-bg" id="knowledgeBg"><section class="sheet"><button class="close" data-close aria-label="Close">×</button><h2>Knowledge and information</h2><p>Explore HELSB, the ten universities, student life, applications and useful information.</p><div class="grid" id="knowledgeGrid"></div></section></div>
+<div class="sheet-bg" id="historyBg"></div>
+<aside class="drawer" id="drawer" aria-label="Conversation history"><h2>Conversation history</h2><div id="historyList"></div></aside>
 
 <script>
 "use strict";
+const APP={name:"Moses Ntembwa AI",subtitle:"Mr Tees Digital Assistance",whatsapp:"260766427244",storageKey:"mrTeesSessionsV2",unknownKey:"mrTeesAssistantUnknownV1"};
+const $=id=>document.getElementById(id);
+const chatEl=$("chat"),inputEl=$("messageInput"),sendBtn=$("sendBtn"),typingEl=$("typing"),waPanel=$("whatsappPanel"),waMessage=$("waMessage"),waLink=$("waLink");
+let chatLog=[],sessions=[],currentId=null;
+let pendingService=null,lastServiceExplained=false,awaitingConfirmation=false,awaitingServiceChoice=false,currentContext={},greetingIndex=0;
 
-/* =========================================================
-   CATEGORY 1 — DESIGN, CHAT SCREEN, HISTORY AND QUICK REPLIES
-   ========================================================= */
-const APP = {
-  name: "Moses Ntembwa AI",
-  subtitle: "Mr Tees Digital Assistance",
-  owner: "Moses Ntembwa (Mr Tees)",
-  whatsapp: "260766427244", // Zambia country code + number, without the leading 0
-  storageKey: "mrTeesAssistantHistoryV1",
-  unknownKey: "mrTeesAssistantUnknownV1"
-};
-const chatEl = document.getElementById("chat");
-const inputEl = document.getElementById("messageInput");
-const sendBtn = document.getElementById("sendBtn");
-const typingEl = document.getElementById("typing");
-const waPanel = document.getElementById("whatsappPanel");
-const waMessage = document.getElementById("waMessage");
-const waLink = document.getElementById("waLink");
-let history = [];
-let pendingService = null;
-let lastServiceExplained = false;
-let awaitingConfirmation = false;
-let currentContext = {};
-let greetingIndex = 0;
-
-(function createStars(){
-  const sky=document.getElementById("sky");
-  for(let i=0;i<85;i++){
-    const s=document.createElement("span");s.className="star";
-    s.style.left=(Math.random()*100)+"%";s.style.top=(Math.random()*100)+"%";
-    s.style.animationDelay=(Math.random()*4)+"s";
-    s.style.animationDuration=(2+Math.random()*4)+"s";sky.appendChild(s);
-  }
-})();
-function saveHistory(){try{localStorage.setItem(APP.storageKey,JSON.stringify(history.slice(-150)));}catch(e){}}
-function safeText(text){return String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function addMessage(text,who,save=true){
-  const box=document.createElement("div");box.className="message "+(who==="user"?"user":"ai");
-  const label=document.createElement("span");label.className="msg-label";
-  label.textContent=who==="user"?"YOU":APP.name+" • "+APP.subtitle;
-  const body=document.createElement("div");body.textContent=text;
-  box.append(label,body);chatEl.appendChild(box);chatEl.scrollTop=chatEl.scrollHeight;
-  if(save){history.push({who,text,at:new Date().toISOString()});saveHistory();}
+/* ---------- Conversation history (multiple saved chats) ---------- */
+function loadSessions(){try{sessions=JSON.parse(localStorage.getItem(APP.storageKey)||"[]");if(!Array.isArray(sessions))sessions=[];}catch(e){sessions=[];}}
+function persist(){try{localStorage.setItem(APP.storageKey,JSON.stringify(sessions.filter(s=>s.messages.some(m=>m.who==="user")).slice(0,40)));}catch(e){}}
+function saveHistory(){
+ const s=sessions.find(x=>x.id===currentId);if(!s)return;
+ s.messages=chatLog.slice(-200);s.at=Date.now();
+ const u=chatLog.find(m=>m.who==="user");s.title=u?u.text.slice(0,48):"New chat";
+ persist();renderHistory();
 }
-function restoreHistory(){
-  try{const saved=JSON.parse(localStorage.getItem(APP.storageKey)||"[]");
-    if(Array.isArray(saved)&&saved.length){
-      history=saved.slice(-150);
-      history.forEach(m=>addMessage(m.text,m.who,false));
-      addMessage("Welcome back! It is good to continue with you. I can use the messages still saved on this device to follow our conversation. What would you like us to work on now?","ai",true);
-      return;
-    }
-  }catch(e){}
-  addMessage(getTimeGreeting()+" and welcome to Moses Ntembwa AI (Mr Tees Digital Assistance). I help with Zambian public universities, HELSB information, applications, verification guidance and other student services. What would you like help with today?","ai");
+function renderHistory(){
+ const box=$("historyList");box.innerHTML="";
+ const list=sessions.filter(s=>s.messages.some(m=>m.who==="user"));
+ if(!list.length){box.innerHTML='<div class="empty">No saved conversations yet.</div>';return;}
+ list.forEach(s=>{
+  const row=document.createElement("div");row.className="h-item"+(s.id===currentId?" active":"");
+  const t=document.createElement("span");t.textContent=s.title;
+  const d=document.createElement("small");d.textContent=new Date(s.at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"});t.appendChild(d);
+  const x=document.createElement("button");x.textContent="×";x.title="Delete";x.setAttribute("aria-label","Delete conversation");
+  x.onclick=e=>{e.stopPropagation();sessions=sessions.filter(z=>z.id!==s.id);persist();if(s.id===currentId)newChat();else renderHistory();};
+  row.onclick=()=>openSession(s.id);row.append(t,x);box.appendChild(row);
+ });
+}
+function resetState(){pendingService=null;lastServiceExplained=false;awaitingConfirmation=false;awaitingServiceChoice=false;currentContext={};hideWhatsApp();}
+function newChat(){
+ resetState();chatLog=[];chatEl.innerHTML="";
+ const s={id:Date.now().toString(36),title:"New chat",at:Date.now(),messages:[]};sessions.unshift(s);currentId=s.id;
+ addMessage(getTimeGreeting()+", welcome! 😊\n\nHow can I assist you today? ❤️","ai");
+ closeAll();renderHistory();inputEl.focus();
+}
+function openSession(id){
+ const s=sessions.find(x=>x.id===id);if(!s)return;
+ resetState();currentId=id;chatLog=[];chatEl.innerHTML="";
+ s.messages.forEach(m=>{addMessage(m.text,m.who,false);});chatLog=s.messages.slice();
+ closeAll();renderHistory();
+}
+function zambiaHour(){
+ const parts=new Intl.DateTimeFormat("en-ZM",{timeZone:"Africa/Lusaka",hour:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+ return Number(parts.find(p=>p.type==="hour")?.value ?? 12);
+}
+function getTimeGreeting(){
+ const h=zambiaHour();
+ return h>=5&&h<12?"Good morning":h>=12&&h<17?"Good afternoon":h>=17&&h<21?"Good evening":"Good night";
+}
+
+/* ---------- Messages (links become clickable) ---------- */
+function renderInto(el,text){
+ const re=/(https?:\/\/[^\s)]+[^\s).,;:!?])|\*\*([^*]+)\*\*/g;let last=0,m;
+ while((m=re.exec(text))){
+  if(m.index>last)el.append(text.slice(last,m.index));
+  if(m[1]){const a=document.createElement("a");a.href=m[1];a.target="_blank";a.rel="noopener noreferrer";a.textContent=m[1].replace(/^https?:\/\//,"").replace(/\/$/,"");el.append(a);}
+  else{const b=document.createElement("strong");b.textContent=m[2];el.append(b);}
+  last=re.lastIndex;
+ }
+ if(last<text.length)el.append(text.slice(last));
+}
+function addMessage(text,who,save=true){
+ const box=document.createElement("div");box.className="message "+(who==="user"?"user":"ai");
+  const body=document.createElement("div");renderInto(body,String(text));
+ box.append(body);chatEl.appendChild(box);chatEl.scrollTop=chatEl.scrollHeight;
+ if(save){chatLog.push({who,text:String(text),at:new Date().toISOString()});saveHistory();}
 }
 function showTyping(){typingEl.classList.add("show");}
 function hideTyping(){typingEl.classList.remove("show");}
-function getTimeGreeting(){
-  const h=new Date().getHours();
-  if(h>=5&&h<12)return "Good morning";
-  if(h>=12&&h<17)return "Good afternoon";
-  if(h>=17&&h<21)return "Good evening";
-  return "Good night";
-}
+
+/* ---------- Stars, sheets, drawer ---------- */
+function closeAll(){document.querySelectorAll(".sheet-bg").forEach(b=>b.classList.remove("open"));$("drawer").classList.remove("open");$("serviceStar").setAttribute("aria-expanded","false");$("knowledgeStar").setAttribute("aria-expanded","false");}
+function openSheet(bg,star){const wasOpen=$(bg).classList.contains("open");closeAll();if(!wasOpen){$(bg).classList.add("open");$(star).setAttribute("aria-expanded","true");}}
+function fillGrid(id,qs,handler){const g=$(id);g.innerHTML="";qs.forEach((q,i)=>{const b=document.createElement("button");b.type="button";b.textContent=(i+1)+". "+q;b.onclick=()=>{closeAll();handler(q,i);};g.appendChild(b);});}
+$("serviceStar").onclick=()=>openSheet("serviceBg","serviceStar");
+$("knowledgeStar").onclick=()=>openSheet("knowledgeBg","knowledgeStar");
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=closeAll);
+document.querySelectorAll(".sheet-bg").forEach(bg=>bg.addEventListener("click",e=>{if(e.target===bg)closeAll();}));
+$("historyBtn").onclick=()=>{const o=$("drawer").classList.contains("open");closeAll();if(!o){$("drawer").classList.add("open");$("historyBg").classList.add("open");$("historyBg").style.alignItems="stretch";}};
+$("historyBg").onclick=closeAll;
+$("newChatBtn").onclick=newChat;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll();});
+
+const COMMON_TYPO_MAP = {
+ "helo":"hello","helllo":"hello","hii":"hi","hie":"hi","thnks":"thanks","thanx":"thanks","pliz":"please","pls":"please",
+ "aplication":"application","aplications":"applications","applicaton":"application","applcation":"application","admisison":"admission","admision":"admission","admisson":"admission",
+ "universty":"university","unversity":"university","universitty":"university","collage":"college","accomodation":"accommodation","accommondation":"accommodation",
+ "certficate":"certificate","certifcate":"certificate","verfication":"verification","verificaton":"verification","requirments":"requirements",
+ "studnt":"student","studies":"studies","lecturar":"lecturer","assigment":"assignment","examinaton":"examination","exams":"exams",
+ "helsb":"helsb","helbs":"helsb","tpn":"tpin","tpin certficate":"tpin certificate","zra tpin certficate":"zra tpin certificate",
+ "whasapp":"whatsapp","watsapp":"whatsapp","watsap":"whatsapp","moses ntembwa":"moses ntembwa",
+ "bursary":"bursary","scholaship":"scholarship","scholarhsip":"scholarship","regstration":"registration","registation":"registration",
+ "finacial":"financial","finace":"finance","reslts":"results","reslt":"result","accomodate":"accommodate","recieve":"receive","recieved":"received",
+ "becos":"because","bcoz":"because","wht":"what","wat":"what","hw":"how","dnt":"dont","dont":"dont","cant":"cant"
+};
 function normalize(s){
- return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+ const base=String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
  .replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim();
+ return base.split(" ").map(word=>COMMON_TYPO_MAP[word]||word).join(" ").replace(/\s+/g," ").trim();
 }
 function containsAny(text,words){return words.some(w=>text.includes(w));}
 function hideWhatsApp(){waPanel.classList.remove("show");}
@@ -212,7 +257,7 @@ document.getElementById("hideWa").addEventListener("click",hideWhatsApp);
 const ABOUT = {
   ai:"I am Moses Ntembwa AI (Mr Tees Digital Assistance), an automated digital assistant created to help people understand education information and services. I am not a human and I do not replace official institutions or Moses.",
   moses:"Moses Ntembwa, also known as Mr Tees, provides student and education support through MR TEES Education Services. This assistant helps answer common questions and prepares a WhatsApp hand-off when someone is ready for a service.",
-  help:"I can explain university admission steps, HELSB student-loan information, the ten HELSB-supported public universities, document verification guidance, service procedures and the listed service fees. I can also help you identify the next step."
+  help:"I can answer questions about HELSB, university admissions, the ten public universities, document verification, student life and many other topics. I can also explain procedures and guide you step by step. 😊"
 };
 const GREETING_LIBRARY = [
  "Good morning","Good afternoon","Good evening","Good night","Morning! Hope you slept well",
@@ -229,11 +274,11 @@ const GREETING_LIBRARY = [
  "Thank you for chatting, goodbye","Take care and stay blessed","Have a wonderful day","See you soon","Talk to you later","Good night and sleep well","Thank you, come back anytime","All the best with your studies"
 ];
 const GREETINGS = GREETING_LIBRARY.map((g,i)=>{
- if(i===0)return "Good morning! I hope you slept well. I am Moses Ntembwa AI. How can I help you today?";
- if(i===1)return "Good afternoon! I hope your day is going well. What would you like help with?";
- if(i===2)return "Good evening! Thank you for visiting. How may I assist you today?";
- if(i===3)return "Good night! I hope you have had a peaceful day. What can I help you with before you rest?";
- return g+". Thank you for reaching out. How can I help you today?";
+ if(i===0)return "Good morning! ☀️ I hope you are well. Is there something that I can help you with?";
+ if(i===1)return "Good afternoon! 😊 I hope your day is going well. Is there something that I can help you with?";
+ if(i===2)return "Good evening! 🌆 I hope you are doing well. Is there something that I can help you with?";
+ if(i===3)return "Good night! 🌙 I hope you have a peaceful rest. Is there something that I can help you with before you go?";
+ return g+". Thank you for reaching out. Is there something that I can help you with?";
 });
 const LANG_GREETINGS = {
  "muli shani":"Muli bwino, zikomo! Welcome. How can I help you today?",
@@ -249,7 +294,124 @@ const FEELINGS = {
  failed:"I am sorry about the result. One setback does not remove your ability to make progress. We can look at a retake, another programme, another institution or an appeal where the rules allow it. What examination or application result are you referring to?",
  motivation:"Keep going. Progress is not always fast, but every correct step matters. Make a small plan, follow it consistently and ask for help when you need it. What goal are you working towards?"
 };
-function isGreeting(t){return /^(hi|hello|hey|good morning|good afternoon|good evening|good night|greetings|howdy|muli shani|muli bwanji|mwashibukeni|mwauka bwanji|muli bwino)\b/.test(t);}
+// Twenty-five greeting patterns with natural, emoji-friendly replies.
+const GREETING_TRAINING = [
+ {keys:["hello","hello there"],reply:"Hello! 😊 It is lovely to have you here. What would you like to talk about today?"},
+ {keys:["hi","hi there"],reply:"Hi there! 👋 I hope you are having a good day. What can I assist you with?"},
+ {keys:["hey","hey there"],reply:"Hey! 😄 Welcome. What is on your mind today?"},
+ {keys:["good morning","morning"],reply:"Good morning! ☀️ I hope you had a restful night. How can I assist you today?"},
+ {keys:["good afternoon","afternoon"],reply:"Good afternoon! 😊 I hope your day is going well. What can I help you with?"},
+ {keys:["good evening","evening"],reply:"Good evening! 🌆 It is nice to hear from you. What would you like us to discuss?"},
+ {keys:["good night"],reply:"Good night! 🌙 I wish you a peaceful and refreshing rest. Is there anything important you would like to discuss before you go?"},
+ {keys:["how are you","how are you doing","how r u"],reply:"I am doing well, thank you for asking! 😊 I am here and ready to chat. How are things going on your side?"},
+ {keys:["how is your day","how has your day been"],reply:"My day is going well, thank you! 😄 I hope yours is going smoothly too. What has been the best part of your day?"},
+ {keys:["what is up","whats up","what's up"],reply:"Not much on my side—just here, ready to help! 😎 What is happening with you today?"},
+ {keys:["how is everything","how are things"],reply:"Everything is going well here, thank you! 😊 How are things going for you?"},
+ {keys:["hope you are fine","hope you re fine","hope all is well"],reply:"Thank you! I am doing well. 🌟 I hope everything is fine with you too. What would you like to chat about?"},
+ {keys:["nice to meet you","pleasure to meet you"],reply:"It is a pleasure to meet you too! 🤝 Welcome! What can I assist you with today?"},
+ {keys:["welcome","glad to be here"],reply:"You are warmly welcome! ❤️ Feel free to ask me anything. What would you like help with today?"},
+ {keys:["welcome back","back again"],reply:"Welcome back! 😊 It is good to have you here again. What would you like to continue with today?"},
+ {keys:["greetings","greetings to you"],reply:"Greetings to you too! 🙏 I hope you are keeping well. How may I assist you today?"},
+ {keys:["howdy"],reply:"Howdy! 🤠 Great to have you here. What is on your mind?"},
+ {keys:["muli shani"],reply:"Muli bwino, natotela! 😊 Welcome. What can I help you with today?"},
+ {keys:["muli bwanji"],reply:"Ndili bwino, zikomo! 😊 Nanga inu muli bwanji? What would you like to talk about today?"},
+ {keys:["mwashibukeni","mwashibukeni"],reply:"Mwashibukeni! ☀️ I hope your morning has started well. How can I assist you today?"},
+ {keys:["mwauka bwanji","mwadzuka bwanji"],reply:"Mwadzuka bwino! 🌞 I hope you are well. What can I help you with today?"},
+ {keys:["mwaswera bwanji"],reply:"Mwaswera bwanji! 😊 I hope your day has gone well. What would you like to discuss?"},
+ {keys:["are you there","you there"],reply:"Yes, I am here! 👋 I am ready to listen and help. What would you like to talk about?"},
+ {keys:["long time","it has been a while"],reply:"It has been a while! 😄 Welcome back. How have you been keeping?"},
+ {keys:["am fine","i am fine","im fine","i am good","im good","doing fine","i am okay","im okay","i am well"],reply:"I am glad to hear that! 😊 I hope things continue going well for you. What would you like to talk about today?"}
+];
+// Add 75 further natural greeting styles (100+ total patterns including the core set).
+const EXTRA_GREETING_STYLES = [
+ ["hello friend","Hello, friend! 😊 It is nice to hear from you. Is there something that I can help you with?"],
+ ["hi friend","Hi, friend! 👋 I hope all is well. Is there something that I can help you with?"],
+ ["hey friend","Hey! 😄 Good to have you here. Is there something that I can help you with?"],
+ ["hello everyone","Hello! 🌟 Welcome. Is there something that I can help you with?"],
+ ["good day","Good day! 😊 I hope things are going well. Is there something that I can help you with?"],
+ ["top of the morning","Top of the morning to you! ☀️ Is there something that I can help you with?"],
+ ["hope you slept well","Thank you! 🌞 I hope you slept well too. Is there something that I can help you with?"],
+ ["hope your day is going well","Thank you! 😊 I hope your day is going well too. Is there something that I can help you with?"],
+ ["how is life","Life is moving along here, thank you! 😊 How can I help you today?"],
+ ["how is the day","The day is going well, thank you! ☀️ Is there something that I can help you with?"],
+ ["how is work","Work is going smoothly here. 😊 Is there something that I can help you with?"],
+ ["how is school","I hope school is going well for you! 📚 Is there something that I can help you with?"],
+ ["how are you today","I am doing well, thank you! 😊 Is there something that I can help you with?"],
+ ["how have you been","I am here and ready to help! 🌟 Is there something that I can help you with?"],
+ ["are you okay","Yes, I am running well, thank you! 😄 Is there something that I can help you with?"],
+ ["hope you are doing well","Thank you! ❤️ I hope you are doing well too. Is there something that I can help you with?"],
+ ["i greet you","Greetings to you too! 🙏 Is there something that I can help you with?"],
+ ["my greetings","Thank you for the greetings! 😊 Is there something that I can help you with?"],
+ ["warm greetings","Warm greetings to you too! 🌷 Is there something that I can help you with?"],
+ ["season greetings","Season's greetings! 🎉 Is there something that I can help you with?"],
+ ["salutations","Salutations! 🤝 Is there something that I can help you with?"],
+ ["howdy partner","Howdy! 🤠 Is there something that I can help you with?"],
+ ["hey there","Hey there! 👋 Is there something that I can help you with?"],
+ ["hi hi","Hi hi! 😄 Is there something that I can help you with?"],
+ ["hiii","Hiii! 😊 Is there something that I can help you with?"],
+ ["heyyy","Heyyy! 😄 Is there something that I can help you with?"],
+ ["hello again","Hello again! 👋 Is there something that I can help you with?"],
+ ["hi again","Hi again! 😊 Is there something that I can help you with?"],
+ ["good to see you","Good to see you too! 🌟 Is there something that I can help you with?"],
+ ["glad to meet you","I am glad to meet you too! 🤝 Is there something that I can help you with?"],
+ ["pleased to meet you","Pleased to meet you too! 😊 Is there something that I can help you with?"],
+ ["welcome to my chat","Thank you! 😊 I am ready to help. Is there something that I can help you with?"],
+ ["i am back","Welcome back! 🎉 Is there something that I can help you with?"],
+ ["back here","Welcome back! 😊 Is there something that I can help you with?"],
+ ["long time no see","Long time! 😄 It is good to hear from you. Is there something that I can help you with?"],
+ ["hope all is good","Thank you! 🌟 I hope all is good with you too. Is there something that I can help you with?"],
+ ["hope everything is fine","Thank you! 😊 I hope everything is fine with you too. Is there something that I can help you with?"],
+ ["blessed morning","Blessed morning to you! 🙏 Is there something that I can help you with?"],
+ ["blessed afternoon","Blessed afternoon! ☀️ Is there something that I can help you with?"],
+ ["blessed evening","Blessed evening! 🌙 Is there something that I can help you with?"],
+ ["peace be with you","And peace be with you too! 🕊️ Is there something that I can help you with?"],
+ ["god is good","All the time! 🙏 Is there something that I can help you with?"],
+ ["praise the lord","Amen! 🙏 Is there something that I can help you with?"],
+ ["ndatotela","Natotela! 😊 Is there something that I can help you with?"],
+ ["natotela sana","Natotela sana! ❤️ Is there something that I can help you with?"],
+ ["muli shani iwe","Muli bwino, natotela! 😊 Is there something that I can help you with?"],
+ ["mwabuka buti","Mwabuka bwino! ☀️ Is there something that I can help you with?"],
+ ["mwapona buti","Mwapona bwino! 😊 Is there something that I can help you with?"],
+ ["mwaswela buti","Mwaswela bwino! 🌆 Is there something that I can help you with?"],
+ ["muli bwino bwino","Ndili bwino, zikomo! 😊 Is there something that I can help you with?"],
+ ["moni","Moni! 😊 Is there something that I can help you with?"],
+ ["moni bwanji","Ndili bwino, zikomo! 🌟 Is there something that I can help you with?"],
+ ["mwadzuka","Mwadzuka bwino! ☀️ Is there something that I can help you with?"],
+ ["mwaswera","Mwaswera bwino! 🌆 Is there something that I can help you with?"],
+ ["dumela","Dumela! 😊 Is there something that I can help you with?"],
+ ["lumela","Lumela! 🌷 Is there something that I can help you with?"],
+ ["good morning to you","Good morning to you too! ☀️ Is there something that I can help you with?"],
+ ["good afternoon to you","Good afternoon to you too! 😊 Is there something that I can help you with?"],
+ ["good evening to you","Good evening to you too! 🌆 Is there something that I can help you with?"],
+ ["good night to you","Good night to you too! 🌙 Is there something that I can help you with before you go?"],
+ ["have a nice day","Thank you! 🌼 I wish you a lovely day too. Is there something that I can help you with?"],
+ ["have a great day","Thank you! 🌟 Have a great day too. Is there something that I can help you with?"],
+ ["have a blessed day","Thank you! 🙏 Have a blessed day too. Is there something that I can help you with?"],
+ ["enjoy your day","Thank you! 😊 I hope you enjoy your day too. Is there something that I can help you with?"],
+ ["hope you are fine","Thank you! ❤️ I hope you are fine too. Is there something that I can help you with?"],
+ ["trust you are well","Thank you! 😊 I trust you are well too. Is there something that I can help you with?"],
+ ["i hope this finds you well","Thank you! 🌷 I hope you are well too. Is there something that I can help you with?"],
+ ["just saying hello","Hello! 👋 It is nice of you to stop by. Is there something that I can help you with?"],
+ ["just checking in","Thanks for checking in! 😊 Is there something that I can help you with?"],
+ ["checking on you","I am here and ready to help! 😄 Is there something that I can help you with?"],
+ ["sending greetings","Greetings received with thanks! 🙏 Is there something that I can help you with?"],
+ ["a big hello","A big hello to you too! 😄 Is there something that I can help you with?"],
+ ["hello and blessings","Hello and blessings to you too! ❤️ Is there something that I can help you with?"],
+ ["hiya","Hiya! 👋 Is there something that I can help you with?"],
+ ["yo","Yo! 😎 Is there something that I can help you with?"],
+ ["sup","Not much here, just ready to help! 😎 Is there something that I can help you with?"],
+ ["what's happening","I am here and ready to help! 😊 Is there something that I can help you with?"],
+ ["whats happening","I am here and ready to help! 😊 Is there something that I can help you with?"]
+];
+EXTRA_GREETING_STYLES.forEach(([key,reply])=>GREETING_TRAINING.push({keys:[key],reply}));
+
+function isGreeting(t){
+ const n=normalize(t);
+ const hasGreeting=GREETING_TRAINING.some(g=>g.keys.some(k=>n===normalize(k)||n.startsWith(normalize(k)+" ")));
+ // Do not let a greeting hide a real request contained in the same message.
+ const hasRequest=containsAny(n,["help me","help with","assist me","i need","i want","how do i","where can i","when is","how much","helsb","admission","university","verification","tpin","service"]);
+ return hasGreeting && (!hasRequest || n.split(" ").length<=3);
+}
 function answerEmotion(t){
  if(containsAny(t,["sad","depressed","heartbroken","crying","down","not okay","bad day"]))return FEELINGS.sad;
  if(containsAny(t,["happy","passed","succeeded","got admission","thank god","good news","excited"]))return FEELINGS.happy;
@@ -292,18 +454,14 @@ function universityAnswer(u){
    CATEGORY 4 — GREETINGS, WELCOME-BACK, RESPECT AND LANGUAGE
    ========================================================= */
 function greetingReply(t){
- for(const [key,value] of Object.entries(LANG_GREETINGS)){if(t.includes(key))return value;}
- if(containsAny(t,["thank you","thanks","thx","ndatotela","natotela"]))return "You are most welcome. I am glad I could help. Is there anything else you would like us to clarify?";
- if(containsAny(t,["bye","goodbye","see you","good night"]))return "Thank you for chatting with Moses Ntembwa AI. Take care, stay focused on your goals and come back whenever you need guidance. All the best!";
- if(containsAny(t,["welcome back","back again"]))return "Welcome back! It is good to see you again. We can continue from where we left off. What would you like to work on now?";
- const h=new Date().getHours();
- if(t.includes("good morning")||t.includes("morning"))return "Good morning! I hope you slept well. How can I help you today?";
- if(t.includes("good afternoon")||t.includes("afternoon"))return "Good afternoon! I hope your day is going well. What would you like help with?";
- if(t.includes("good evening")||t.includes("evening"))return "Good evening! Thank you for visiting. How may I assist you today?";
- if(t.includes("good night"))return "Good night! I hope you have a peaceful rest. Is there anything important I can help you with first?";
- const start=(h>=5&&h<12)?0:(h>=12&&h<17)?1:(h>=17&&h<21)?2:3;
- const pool=GREETINGS.slice(4);
- return pool[(greetingIndex++)%pool.length] || GREETINGS[start];
+ const n=normalize(t);
+ for(const g of GREETING_TRAINING){
+  if(g.keys.some(k=>n===normalize(k)||n.startsWith(normalize(k)+" ")))return g.reply;
+ }
+ for(const [key,value] of Object.entries(LANG_GREETINGS)){if(n.includes(normalize(key)))return value+" 😊";}
+ if(containsAny(n,["thank you","thanks","thx","ndatotela","natotela"]))return "You are most welcome! 😊 I am glad I could help. Is there something else that I can help you with?";
+ if(containsAny(n,["bye","goodbye","see you","talk later"]))return "Thank you for chatting with me. 👋 Take care and stay blessed. You are welcome anytime!";
+ return "Hello and welcome! 😊 Is there something that I can help you with?";
 }
 
 /* =========================================================
@@ -312,10 +470,30 @@ function greetingReply(t){
    It appears only after service explanation + customer yes.
    ========================================================= */
 const SERVICE_WORDS = ["assist me","help me apply","do it for me","handle it for me","i want your service","i need your service","i want moses","contact moses","book this service","i am ready","i want to be assisted","please assist me"];
-function customerReady(t){return containsAny(t,SERVICE_WORDS)||/^(yes|yes please|yeah|yeah please|yep|yup|okay|ok|ok please|sure|sure please|please do|i agree|i am ready|im ready|proceed|go ahead|do it|help me|assist me|definitely|absolutely|of course|that is fine|thats fine)$/.test(t)||/^(yes|yeah|yep|yup|sure|okay|ok|please|definitely|absolutely|of course)\b/.test(t);}
+function customerReady(t){return containsAny(t,SERVICE_WORDS)||/^(yes|yes please|yeah|yeah please|yep|yup|okay|ok|ok please|sure|sure please|please do|i agree|i am ready|im ready|proceed|go ahead|do it|help me|assist me|definitely|absolutely|of course|that is fine|thats fine|moses|moses should do it|let moses do it)$/.test(t)||/^(yes|yeah|yep|yup|sure|okay|ok|please|definitely|absolutely|of course)\b/.test(t);}
+function customerWantsSelf(t){return containsAny(t,["i can do it myself","i will do it myself","by myself","myself","guide me","show me how","teach me","i want to do it","i can manage","i will manage","self service","i will handle it","let me do it"]);}
+function serviceSelfHelp(s){
+ const id=s.id;
+ const guides={
+  2:"To apply yourself: open the official HELSB website at https://helsb.gov.zm/ and read the current intake advert. Confirm that your institution and programme are eligible, prepare the documents listed in the advert, use the official portal link, complete each field truthfully, upload clear documents and save your application reference. Never share your password or OTP. HELSB makes the award decision.",
+  3:"To prepare an appeal yourself: read your HELSB outcome notice, confirm that appeals are allowed for your intake, note the official deadline and required evidence, write a truthful explanation supported by documents, then submit only through the channel stated by HELSB. Keep a copy and receipt. An appeal does not guarantee a loan.",
+  6:"To apply yourself: choose the university and programme, open the university's official website, read the current prospectus, check entry requirements and deadline, prepare the requested documents, complete the official application and save the reference. Pay only using the university's published payment instructions.",
+  7:"For ECZ results verification: first ask the receiving organisation exactly which verification it requires. Then confirm the current process and payment directly with ECZ, submit using its approved channel and keep the receipt or reference. Do not post your NRC or certificate details in this chat.",
+  8:"For ZAQA certificate verification: visit https://www.zaqa.gov.zm/, identify the type of verification or evaluation required, read the current checklist, prepare the qualification documents, submit through ZAQA's official process and keep your reference or receipt.",
+  9:"To obtain a TPIN certificate yourself: use the Zambia Revenue Authority's official website https://www.zra.org.zm/ and follow its current TPIN registration or certificate instructions. Use only official ZRA channels, keep your login details private and never send your password, PIN or OTP to anyone. If you already have a TPIN, check whether you need to retrieve it or download a certificate.",
+  15:"To retrieve your TPIN yourself, use the official ZRA website https://www.zra.org.zm/ and follow its current recovery or taxpayer-service instructions. Do not share your login password, PIN or one-time code with anyone.",
+  17:"Create your email account through the official provider website or app. Choose a strong password, add your own recovery method and keep passwords and verification codes private. You should enter them yourself; a helper should never ask you to disclose them.",
+  19:"First identify the incorrect field and whether the application has already been submitted. Read the institution's correction policy and contact its official admissions or support office if the portal is locked. Do not submit duplicate applications unless instructed.",
+  20:"Scan each page clearly, keep all edges visible, arrange pages in the required order and save in the file type and size accepted by the receiving portal. Check that every page is readable before uploading.",
+  22:"Open the institution's official application portal, read its instructions, prepare your documents and complete the form carefully. You should type your own password and verification codes. Save your reference after submission.",
+  13:"Check your university's official accommodation notice for eligibility, dates, fees and allocation steps. Apply through the official channel and wait for confirmation before making any private accommodation payment.",
+  1:"Tell me the university or town, preferred location, budget and move-in date. Search for a place, visit or verify it, confirm the landlord or agent and get written terms before paying. Never pay based only on an unverified advert."
+ };
+ return (guides[id]||`You can manage the first steps yourself by checking the official instructions for ${s.name}, preparing the required information and documents, and following the institution's approved process. Requirements and fees can change, so confirm them with the responsible organisation. Do not share passwords, PINs or one-time codes.`)+"\n\nIf you get stuck at any step, tell me which part is difficult. I can explain it in simple steps. You can still ask Moses for hands-on assistance later.";
+}
 function serviceContextPrompt(s){
- pendingService=s;lastServiceExplained=true;awaitingConfirmation=true;
- return `${s.explanation}\n\nThe listed service fee is ${s.price}. ${s.caveat||""}\n\nWould you like Moses to assist you with this service?`;
+ pendingService=s;lastServiceExplained=true;awaitingConfirmation=true;awaitingServiceChoice=true;
+ return `${s.explanation}\n\nThe listed service fee is ${s.price}. ${s.caveat||""}\n\nWould you like to manage this yourself with my step-by-step guidance, or would you prefer Moses Ntembwa to handle the assistance for you? Reply: “I will do it myself” or “Moses should do it.”`;
 }
 
 /* =========================================================
@@ -446,28 +624,55 @@ function serviceMenuAnswer(service){
  else if(service.id===23) specific="Start by identifying what you want to learn or build, your phone or computer access and the task you want AI to perform. Agree on the project scope, tools and deliverables before work begins.";
  else if(service.id===24) specific="Describe the work you need in general terms without sharing passwords, PINs or private account access. Moses will review the task and confirm the exact fee within the stated range.";
  else if(service.id===25) specific="Think about your interests, strongest school subjects, career goals, preferred location and the grades you achieved. Compare programmes against official entry requirements before choosing.";
- const guide=`${service.explanation}\n\n${specific||common}\n\nFor additional general guidance, you may also visit ChatGPT: https://chatgpt.com/ . Always treat the official institution's current instructions as the final authority.`;
+ const guide=`${service.explanation}\n\n${specific||common}\n\n**Resources**\n${serviceLinks(service)}\n\nAlways treat the official institution's current instructions as the final authority.`;
  return serviceContextPrompt({...service,explanation:guide});
 }
-function showServiceQuestion(id){
- const service=SERVICES[id-1]; const question=SERVICE_QUESTIONS[id-1];
- document.getElementById("serviceMenu").classList.remove("open");
- document.getElementById("serviceStar").setAttribute("aria-expanded","false");
- addMessage(question,"user"); hideWhatsApp();
- showTyping(); setTimeout(()=>{hideTyping();addMessage(serviceMenuAnswer(service),"ai");},450);
+const KNOWLEDGE_QUESTIONS = [
+ "What is HELSB and what does it do?","Which ten public universities are supported by HELSB?","What documents are needed for a HELSB application?","Who can apply for a HELSB student loan?","Does university admission guarantee a HELSB loan?",
+ "How do I check the current HELSB deadline?","How can I appeal a HELSB decision?","What should I do if my HELSB account has old guardian details?","What is the difference between a new and returning HELSB applicant?","How do I protect my HELSB account?",
+ "Tell me about Kapasa Makasa University.","What programmes can I study at KMU?","How do university intakes work in Zambia?","How do I choose a university programme?","How can I find student accommodation?",
+ "Who is Moses Ntembwa?","What is Moses Ntembwa AI?","What does MR TEES Education Services do?","How can I succeed in my first year at university?","How do I improve my academic English?",
+ "How do I manage my study timetable?","How can I handle sadness or stress at university?","What makes a healthy relationship?","How do I build good friendships?","How can I greet the AI in different ways?"
+];
+const ALT_SERVICE_QUESTIONS = [
+ "I want assistance with a university application. Can you guide me or can Moses handle it for me?","I want help with my ZRA TPIN certificate. Can I do it myself or can Moses assist me?","Can someone help me prepare my HELSB appeal documents?","I am already at university and need help with HELSB progression.","I want to apply for a scholarship; can MR TEES guide me?",
+ "Can you help me secure admission at a public university?","Where can I get help verifying my ECZ results?","Can you guide me through ZAQA certificate verification?","I need assistance getting my ZRA TPIN certificate.","Can MR TEES prepare a professional CV for me?",
+ "I need a formal letter written; can you assist?","Can I get revision papers and worked solutions?","Please help me apply for student accommodation.","I need help understanding a screening message.","I cannot find my TPIN; can you guide me?",
+ "Can you prepare my passport-size photo?","I need help setting up an email account.","Can you coach me for an interview?","I entered incorrect details on my application; what can I do?","Can you scan and arrange my documents?",
+ "I need guidance with my assignment or research topic.","Can someone guide me while I complete an online application?","I want to learn how to build an AI assistant.","I have a different task that needs your assistance.","Can MR TEES advise me on a career or course choice?"
+];
+// 500 additional student questions: 50 common student topics x 10 natural question styles.
+const STUDENT_TOPICS = [
+["admission requirements","How do I check the exact entry requirements for my chosen programme?"],["application deadline","How can I confirm the correct application closing date?"],["application fee","Where should I pay a university application fee safely?"],["acceptance letter","When and how do I receive an official acceptance letter?"],["course selection","How do I choose a course that matches my strengths and career plans?"],["changing a programme","Can I change my programme after submitting an application?"],["checking application status","How do I follow up on my university application status?"],["missing application documents","What should I do if one required document is missing?"],["certified documents","Where can I get copies of my school results or NRC certified?"],["student registration","What happens during university registration?"],
+["tuition fees","How can I understand the tuition and other university fees?"],["payment receipts","Why should I keep proof of every university payment?"],["student identity card","How do I get a student identity card?"],["course registration","How do I register for courses at the beginning of a semester?"],["academic calendar","How do I read a university academic calendar?"],["lecture attendance","Why is attending lectures important?"],["missing lectures","How can I catch up after missing lectures?"],["continuous assessment","What is continuous assessment and how is it used?"],["tests and examinations","How should I prepare for a test or examination?"],["examination timetable","Where do I confirm my examination timetable?"],
+["exam venues","How do I find my examination venue before exam day?"],["supplementary examinations","What should I do if I am told to write a supplementary examination?"],["academic results","How do I check and understand my semester results?"],["failed course","What should I do after failing a course?"],["course retake","How do course retakes usually work?"],["appealing a result","How can I respectfully query a result I believe is incorrect?"],["deferred examination","What should I do if illness prevents me from writing an examination?"],["plagiarism","What is plagiarism and how can I avoid it?"],["referencing sources","How do I reference books and websites in an assignment?"],["group assignments","How can group members share assignment work fairly?"],
+["assignment planning","How do I break a large assignment into smaller tasks?"],["research topic","How can I choose a manageable research topic?"],["research objectives","What are research objectives and how do I write them?"],["research methodology","How do I understand the methodology section of research?"],["presentation skills","How can I present confidently in class?"],["academic writing","How can I improve my academic writing?"],["English improvement","How can I improve my English as a university student?"],["computer beginner skills","What computer skills should a first-year student learn first?"],["typing skills","How can I improve my typing speed and accuracy?"],["email etiquette","How should I write a respectful email to a lecturer?"],
+["lecturer communication","How do I approach a lecturer when I do not understand a topic?"],["study timetable","How can I create a realistic weekly study timetable?"],["time management","How can I balance lectures, assignments and personal time?"],["procrastination","How can I stop postponing my studies?"],["concentration","How can I concentrate when studying in a noisy environment?"],["note taking","How do I make useful notes during lectures?"],["revision methods","What is an effective way to revise difficult topics?"],["memory techniques","How can I remember definitions and formulas?"],["mathematics anxiety","How can I become more confident with mathematics?"],["statistics basics","How should a beginner start learning statistics?"]
+];
+const STUDENT_FORMS = [
+"Please guide me on {topic}.","I have a question about {topic}.","How can I deal with {topic}?","What should a new student know about {topic}?","Can you explain {topic} in simple English?","I am struggling with {topic}; what can I do?","What are the steps for {topic}?","Where can I get reliable information about {topic}?","Can you give me practical advice about {topic}?","What is the best way to handle {topic}?"
+];
+const STUDENT_QUESTIONS = STUDENT_TOPICS.flatMap(([topic,answer],i)=>STUDENT_FORMS.map((f,j)=>f.replace("{topic}",topic)));
+const STUDENT_ANSWERS = STUDENT_TOPICS.flatMap(([topic,answer])=>STUDENT_FORMS.map(()=>`${answer} Start by checking the instructions from your university or lecturer, write down what you already know, identify the exact part you do not understand and take one step at a time. If this concerns a deadline, fee, result or official decision, confirm it with the institution because rules can change. Tell me your course or situation and I can break it down further.`));
+// 100 everyday conversation prompts: 10 conversation themes x 10 question styles.
+const GENERAL_TOPICS = ["confidence","friendship","handling disappointment","making a decision","building good habits","stress and rest","communication","personal goals","motivation","being respectful online"];
+const GENERAL_FORMS = ["Can we talk about {x}?","I need some advice about {x}.","How can I improve my {x}?","What would you suggest about {x}?","I am thinking about {x}; can you listen?","Please share a simple thought about {x}.","How do people handle {x} in a healthy way?","I want to understand {x} better.","What is one practical step for {x}?","Can you encourage me about {x}?"];
+const GENERAL_QUESTIONS = GENERAL_TOPICS.flatMap(x=>GENERAL_FORMS.map(f=>f.replace("{x}",x)));
+function generalConversationReply(t){
+ if(containsAny(t,["how are you","how r u","are you fine"]))return "I am here and ready to chat with you. Thank you for asking! How are you doing today — is it a good day, a difficult day, or just an ordinary one?";
+ if(containsAny(t,["i am bored","im bored","feeling bored"]))return "That happens sometimes. We could talk about your day, your plans, something funny, your studies or a goal you want to work on. What has been on your mind lately?";
+ if(containsAny(t,["i am happy","im happy","good news","i passed","i succeeded"]))return "That is lovely to hear! You deserve to enjoy the progress. What happened? I would be happy to celebrate the good news with you.";
+ if(containsAny(t,["i am sad","im sad","feeling sad","lonely","heartbroken"]))return "I am sorry things feel heavy right now. You do not have to explain everything at once. If you feel comfortable, tell me what happened. It may also help to talk with someone you trust.";
+ if(containsAny(t,["i am tired","im tired","exhausted"]))return "It sounds like you may need a little rest. If you can, pause, drink some water and give yourself a short break. Is it physical tiredness, study pressure or something on your mind?";
+ if(containsAny(t,["thank you for listening","i just wanted to talk","just chatting"]))return "You are welcome. Sometimes a simple conversation helps. I am here to listen and respond respectfully. What else is happening in your world today?";
+ return "I hear you. There is no need to rush your thoughts. Tell me a little more about what is happening, and we can think it through together. I can offer ideas, but the final decision is always yours.";
 }
-function buildServiceMenu(){
- const grid=document.getElementById("serviceQuestionGrid");
- SERVICE_QUESTIONS.forEach((q,i)=>{const b=document.createElement("button");b.type="button";b.textContent=(i+1)+". "+q;b.addEventListener("click",()=>showServiceQuestion(i+1));grid.appendChild(b);});
- document.getElementById("serviceStar").addEventListener("click",()=>{const menu=document.getElementById("serviceMenu");const open=menu.classList.toggle("open");document.getElementById("serviceStar").setAttribute("aria-expanded",String(open));if(open)menu.scrollIntoView({behavior:"smooth",block:"nearest"});});
-}
+
 function findService(t){
  let best=null,bestScore=0;
  for(const s of SERVICES){for(const k of s.keys){if(t.includes(k)&&k.length>bestScore){best=s;bestScore=k.length;}}}
  return best;
 }
-function servicePriceList(){return "Here are the 25 services and the prices in Moses's current training guideline:\n"+SERVICES.map(s=>`${s.id}. ${s.name} — ${s.price}`).join("\n")+"\n\nA one-time customer registration fee of K20 is separate from service charges. Please confirm the latest prices with Moses before payment. Which service would you like to understand?";}
-
 /* =========================================================
    CATEGORY 8 — POLITE FALLBACK AND UNKNOWN-QUESTION LOG
    ========================================================= */
@@ -475,7 +680,7 @@ function logUnknown(text){
  try{const a=JSON.parse(localStorage.getItem(APP.unknownKey)||"[]");a.push({text,at:new Date().toISOString()});localStorage.setItem(APP.unknownKey,JSON.stringify(a.slice(-300)));}catch(e){}
 }
 function fallbackReply(){
- return "Sorry I can't help, try to research it, let me know if I can help you with something else. I can help with HELSB, public universities, admission guidance and student services. Which of these would you like to discuss?";
+ return "I want to make sure I understand you correctly. Could you explain a little more or rephrase your question? I will do my best to help without guessing. 😊";
 }
 
 /* =========================================================
@@ -521,10 +726,389 @@ function honestyGuard(t){
 function safeSensitiveReply(t){
  if(containsAny(t,["suicide","kill myself","end my life","hurt myself","self harm"]))
   return "I am really sorry you are feeling this much pain. Your safety matters. Please move near someone you trust now and tell them directly that you may not be safe alone. If you are in immediate danger, contact local emergency services or go to the nearest hospital. I am an AI and cannot provide emergency care, but I can stay with you while you reach a trusted person.";
- if(containsAny(t,["sex","sexual","relationship","girlfriend","boyfriend","love"]))
+ if(containsAny(t,["sex","sexual","relationship","girlfriend","boyfriend","love"])&&!convoAnswer(t,false))
   return "Relationships can bring strong feelings, and it is important to treat yourself and others with respect, consent and honesty. I can discuss healthy communication and boundaries in an age-appropriate way. What part of the situation would you like advice about?";
- if(containsAny(t,["bible","god","pray","prayer","jesus","christ"]))
+ if(containsAny(t,["bible","god","pray","prayer","jesus","christ"])&&!convoAnswer(t,false))
   return "Many people draw strength from faith, prayer and scripture. Philippians 4:13 is often remembered as a message about finding strength through Christ. I respect different beliefs and am happy to discuss this respectfully. Is there a particular question on your heart?";
+ return "";
+}
+
+/* =========================================================
+   CATEGORY 11 — BUILT-IN QUESTION / ANSWER LIBRARY
+   500 existing + 400 additional topic-based question variants.
+   Answers are topic-specific; repeated phrasings help the local
+   assistant recognise how different visitors ask the same thing.
+   ========================================================= */
+const QA_TOPICS = [
+ {keys:["love","romantic love","fall in love"],answer:"Love should include respect, honesty, patience, care and freedom to make choices. Strong feelings alone are not enough; healthy love also respects boundaries and does not involve pressure, threats or control. What is happening in your situation?"},
+ {keys:["relationship","dating","partner","girlfriend","boyfriend"],answer:"A healthy relationship is built on mutual respect, trust, communication, consent and shared responsibility. You should be able to say no, express concerns and maintain your education, friendships and personal goals. What would you like advice about?"},
+ {keys:["sexual health","sex education","sexual activities","sexual activity"],answer:"Sexual health education includes consent, personal boundaries, contraception, STI prevention and understanding emotional readiness. Nobody should be pressured into sexual activity. For personal medical concerns, speak confidentially with a qualified health professional or clinic."},
+ {keys:["consent","permission","pressure for sex"],answer:"Consent means a clear, voluntary and informed agreement. It must be freely given, can be withdrawn at any time, and cannot be assumed from silence, a relationship, clothing or previous activity. Pressure, threats or intoxication undermine consent."},
+ {keys:["pregnancy prevention","contraception","family planning"],answer:"Contraception options include condoms and several medical methods. Condoms also reduce the risk of many sexually transmitted infections. A qualified healthcare worker can explain which method is suitable and how to use it correctly."},
+ {keys:["sti","std","sexually transmitted infection","hiv prevention"],answer:"STIs may have no obvious symptoms. Testing at a health facility is the reliable way to know your status. Correct condom use, reducing exposure risks and timely treatment help protect sexual health. Do not rely on symptoms or rumours."},
+ {keys:["friendship","make friends","good friends"],answer:"Good friendship grows through respect, trust, listening, honesty and mutual support. Choose friends who respect your boundaries and encourage your studies and wellbeing. You do not need to agree on everything to be a good friend."},
+ {keys:["trust","betrayal","friend betrayed"],answer:"Trust is rebuilt through honest communication, accountability and consistent behaviour over time. You can forgive someone while still setting boundaries. Take time to decide what is safe and healthy for you."},
+ {keys:["sadness","sad","feeling down","unhappy"],answer:"I am sorry you are feeling this way. You do not have to solve everything today. Try speaking with someone you trust, taking a short break, eating and resting, then identifying one manageable next step. If sadness persists or affects daily life, consider a counsellor or health professional."},
+ {keys:["stress","anxiety","overwhelmed","worried"],answer:"When you feel overwhelmed, pause and write down what is troubling you. Separate urgent tasks from tasks that can wait, then work on one small action. Breathing slowly, sleep, movement and talking to someone supportive may help. Seek professional support if it becomes difficult to cope."},
+ {keys:["sick","illness","not feeling well","unwell"],answer:"I am sorry you are unwell. Rest, drink safe fluids if appropriate and seek medical advice, especially if symptoms are severe, worsening or persistent. I cannot diagnose illness. For an emergency, go to the nearest health facility or contact local emergency services."},
+ {keys:["headache","fever","stomach pain"],answer:"Headache, fever and stomach pain can have many causes, so I cannot identify the cause from a message. A clinician or pharmacist can advise after assessing your symptoms. Seek urgent care for severe pain, difficulty breathing, confusion, fainting, dehydration or rapidly worsening symptoms."},
+ {keys:["university life","campus life","first year life"],answer:"University life involves lectures, independent study, assignments, tests, friendships, budgeting and learning to manage your time. Attend classes, know your academic calendar, ask lecturers for clarification and build a balanced routine."},
+ {keys:["first year","freshman","new student"],answer:"As a first-year student, focus on understanding course outlines, attending every lecture, recording deadlines, making useful study notes and asking for help early. Build friendships that support learning and learn how your university handles registration, accommodation and assessments."},
+ {keys:["study timetable","time management","manage time"],answer:"List your courses, fixed commitments and assessment dates first. Give difficult subjects regular short study sessions, include breaks and review each week. Keep your phone away during focused study and leave time for sleep."},
+ {keys:["academic writing","essay writing","assignment writing"],answer:"Start by understanding the question and command words. Make a simple outline, research reliable sources, write in your own words, support claims with evidence and proofread. Follow your lecturer's referencing and academic-integrity instructions."},
+ {keys:["exam preparation","prepare for exams","revision"],answer:"Prepare by checking the syllabus, identifying weak topics, practising past questions and correcting mistakes. Explain concepts in your own words and practise under timed conditions. Avoid relying only on last-minute reading."},
+ {keys:["fail","failed a course","academic failure"],answer:"A poor result is painful, but it does not define your future. Check the marks and feedback, identify what went wrong, ask about supplementary or retake rules and make a realistic improvement plan. Confirm all academic regulations with your department."},
+ {keys:["motivation","discouraged","give up"],answer:"You do not need to solve your whole future at once. Choose one small task you can complete today, then build consistency. Progress may be gradual. Ask for support when you need it and remember why you started."},
+ {keys:["english","improve english","academic english"],answer:"Improve English through daily reading, learning a few useful words, writing short paragraphs and speaking without fear of mistakes. For academic work, practise defining terms, explaining ideas and answering questions in complete sentences."},
+ {keys:["computer beginner","learn computer","computer skills"],answer:"Begin with the basics: using a keyboard and mouse or touchscreen, managing files and folders, typing, email, internet safety and office applications. Practise one skill at a time using small tasks."},
+ {keys:["information systems","isba","business analytics"],answer:"Information Systems and Business Analytics combines people, business processes, technology and data. Students learn how organisations use information systems and analysis to support decisions. Check your university course outline for the exact modules."},
+ {keys:["moses ntembwa","who is moses","mr tees"],answer:"Moses Ntembwa, also known as MR TEES, is the creator and human support contact behind this digital education-assistance project. The assistant shares general guidance about education, HELSB, universities and listed services. For personal or complicated matters, request human support."},
+ {keys:["moses ntembwa ai","about this ai","who made this ai"],answer:"Moses Ntembwa AI is an automated digital assistant created for MR TEES Digital Assistance. It provides prepared educational information and service guidance. It is not a human and may not know every new announcement; important details should be checked with official institutions."},
+ {keys:["mr tees services","education services","what does mr tees do"],answer:"MR TEES Education Services provides guidance and support with university admissions, HELSB processes, document verification, letters, CVs, academic support and other listed services. Service fees and scope should be confirmed before work begins."},
+ {keys:["service payment","pay service fee","when do i pay"],answer:"The MR TEES service rule is that the service charge is paid before the service begins. Confirm the exact service, final price and payment method with Moses first. Never send money to someone claiming to guarantee a university or HELSB decision."},
+ {keys:["helsb requirements","helsb documents","documents for helsb"],answer:"HELSB's current online guidance lists a passport-size photo, certified applicant NRC, certified guardian NRC, certified Grade 12 results or certificate, admission letter, and supporting documents such as application and recommendation letters or proof of vulnerability where required. The current intake advert and portal checklist are final: https://helsb.gov.zm/loans/"},
+ {keys:["helsb deadline","loan deadline","closing date"],answer:"HELSB deadlines differ by university and intake and can change. Do not rely on an old date or social-media message. Check the live application-window notice at https://helsb.gov.zm/ and the loan page at https://helsb.gov.zm/loans/. Tell me the institution and intake you mean."},
+ {keys:["helsb appeal","appeal loan","not selected helsb"],answer:"Read the outcome notice and the appeal instructions for that intake. Check whether an appeal is permitted, the closing date and the evidence required. An appeal does not guarantee an award. Use HELSB's official channels: https://helsb.gov.zm/"},
+ {keys:["helsb guardian","guardian details","change guardian"],answer:"If your HELSB account contains an old guardian's details, check the official portal or contact HELSB support to ask for the approved correction process. Prepare truthful supporting documents explaining the change. Do not create false information or share your password or one-time code with anyone."},
+ {keys:["helsb loan levels","100 percent loan","loan percentage"],answer:"HELSB describes support levels of 100%, 75%, 50% and 25%. The Board determines the final level based on its current rules and assessment. Applicants should state their circumstances honestly and provide supporting evidence where requested."},
+ {keys:["helsb repayment","repay student loan","loan grace period"],answer:"HELSB publishes repayment information and terms. Its website describes a one-year grace period after graduation; individual obligations must be checked against the current loan agreement and official repayment guidance: https://helsb.gov.zm/"},
+ {keys:["ten public universities","helsb universities","supported universities"],answer:"HELSB currently lists ten supported public institutions: University of Zambia (UNZA), Copperbelt University (CBU), Kapasa Makasa University (KMU), Mukuba University (MKU), Mulungushi University (MU), Chalimbana University (CHAU), Kwame Nkrumah University (KNU), Palabana University (PU), Levy Mwanawasa Medical University (LMMU) and Zambia University College of Technology (ZUT). Confirm current eligibility for your intake at https://helsb.gov.zm/loans/overview."},
+ {keys:["unza","university of zambia"],answer:"The University of Zambia (UNZA) is a public university based in Lusaka. Its official programme pages list a broad range of undergraduate study areas including education, engineering, business, health sciences, humanities, law and sciences. Programme entry requirements, accommodation availability and intake dates must be checked in the current prospectus at https://www.unza.zm/."},
+ {keys:["cbu","copperbelt university"],answer:"Copperbelt University (CBU) is a public university in Kitwe. It offers programmes across areas such as business, engineering, technology, built environment, natural resources and health-related fields. Check the current programme list, entry requirements, accommodation information and intake notices at https://www.cbu.edu.zm/."},
+ {keys:["mulungushi university","mulungushi"],answer:"Mulungushi University is a public university in Zambia with its main academic presence in Kabwe and other learning locations. Its programme areas include business, education, agriculture, social sciences and professional disciplines. Confirm the latest programme catalogue, accommodation and intakes at https://www.mu.ac.zm/."},
+ {keys:["kwame nkrumah university","nkrumah university","knu"],answer:"Kwame Nkrumah University is a public university in Kabwe with programmes in education, science, technology, business and related areas. Exact programmes, entry grades, accommodation and intake dates should be verified through the official university website: https://www.nkrumah.edu.zm/."},
+ {keys:["mukuba university","mukuba"],answer:"Mukuba University is a public higher-education institution in Kitwe, historically developed from Copperbelt Secondary Teachers College. Its programme areas include education, mathematical and natural sciences, applied science and technology, agriculture and environmental sciences. Check current accredited programmes and intake dates at https://mukuba.edu.zm/."},
+ {keys:["chalimbana university","chalimbana","chau"],answer:"Chalimbana University is a public university in Lusaka Province. Its official programme information includes education, humanities and social sciences, ICT with education, guidance and counselling and other fields. Its published programme page gives intake patterns by mode; verify current details at https://www.chau.ac.zm/programs."},
+ {keys:["palabana university","palabana"],answer:"Palabana University is a public institution in the Palabana area of Chongwe, with an agriculture and livestock-oriented profile. Programme availability, entry requirements, student accommodation and current intakes must be confirmed directly through https://pu.ac.zm/."},
+ {keys:["kapasa makasa university","kmu","kapasa"],answer:"Kapasa Makasa University is located at Mulakupikwa, north of Chinsali, along the Great North Road. Its site records that the facility was originally intended as Chinsali Combined Staff Training College; Cabinet transferred it in 1996, and it was later recommended for development as a science-and-technology university. It was proclaimed a university on 28 June 2016. Check programmes, accommodation and current intakes at https://www.kmu.ac.zm/."},
+ {keys:["zambia university college of technology","zut"],answer:"Zambia University College of Technology (ZUT) is a public institution based in Ndola with a technology, ICT, engineering and business orientation. Confirm its current programme catalogue, entry requirements, accommodation arrangements and intake notices at https://zut.ac.zm/."},
+ {keys:["levy mwanawasa medical university","lmmu"],answer:"Levy Mwanawasa Medical University (LMMU) is a public specialist university in Lusaka focused on health sciences, including medical, clinical, nursing, dental and public-health fields. Each programme may have specific subject and professional requirements. Check current programmes and intakes at https://www.lmmu.ac.zm/."},
+ {keys:["university accommodation","hostel","boarding house"],answer:"Accommodation may be on-campus or privately arranged. Ask the university about application dates, allocation rules, fees, room availability and what is included. Do not pay a private landlord before verifying the room, owner or agent, location and written terms."},
+ {keys:["university intake","intake dates","january intake","september intake"],answer:"Intake dates vary by university, programme and study mode. Some institutions have more than one intake, while others offer specific programmes only in particular periods. Always check the current official admissions notice rather than assuming every programme opens together."},
+ {keys:["university history","history of university","when established"],answer:"University histories differ and should be taken from each institution's official About or History page. Ask about a named university and I can provide the history available in this assistant's knowledge, while directing you to its official website for confirmation."},
+ {keys:["university programmes","courses offered","what can i study"],answer:"Programmes differ by institution, campus, mode and intake. Start with the official prospectus, check whether the programme is currently accredited and compare its subject requirements with your results. Tell me the university and course name for more focused guidance."},
+ {keys:["greetings","greet","hello","good morning"],answer:"Hello and welcome! It is good to have you here. You can greet me in any way you like. I will respond politely and then ask how I can help. What would you like to talk about today?"},
+ {keys:["thank you","thanks","appreciate"],answer:"You are most welcome! Thank you for taking the time to chat with Moses Ntembwa AI. I appreciate your visit. I am here whenever you need general guidance."},
+ {keys:["goodbye","bye","see you"],answer:"Thank you for visiting Moses Ntembwa AI. Take care, stay safe and keep working towards your goals. You are welcome to return whenever you need assistance."},
+ {keys:["privacy","personal information","nrc details"],answer:"Protect your personal information. Do not share passwords, PINs, one-time codes, full bank details or unnecessary identity documents in this public chat. Use official portals and share sensitive documents only through verified, appropriate channels."}
+];
+
+// 400 additional question-answer entries: 40 further topics x 10 natural phrasings.
+const ADDITIONAL_QA_TOPICS = [
+  {
+    "keys": [
+      "choosing a university"
+    ],
+    "answer": "Compare the programme, entry requirements, location, fees, learning facilities, student support and career relevance. Do not choose only because a friend is applying there. Read the current prospectus and confirm that the programme is available for your intended intake."
+  },
+  {
+    "keys": [
+      "choosing a degree programme"
+    ],
+    "answer": "Start with subjects you enjoy and perform well in, the work you may want to do, and the actual entry requirements. Compare course content across institutions and ask the department for clarification before paying an application fee."
+  },
+  {
+    "keys": [
+      "distance learning"
+    ],
+    "answer": "Distance learning may involve online lessons, printed materials, scheduled assessments or occasional campus sessions. Confirm the study mode, internet requirements, examination arrangements, recognition and total fees with the institution before enrolling."
+  },
+  {
+    "keys": [
+      "part time studies"
+    ],
+    "answer": "Part-time study can help people balance education with work or family responsibilities. Check the timetable, programme duration, attendance rules, fees and whether the qualification is the same as the full-time route."
+  },
+  {
+    "keys": [
+      "deferment of studies"
+    ],
+    "answer": "If you need to pause studies, contact the registrar or academic office before simply stopping attendance. Ask about the formal deferment form, deadline, supporting evidence, fees and how to resume. Keep written confirmation of the decision."
+  },
+  {
+    "keys": [
+      "withdrawing from university"
+    ],
+    "answer": "Before withdrawing, speak to the academic office and understand the consequences for fees, accommodation, sponsorship, student loans and future readmission. Submit the required formal notice and keep a copy."
+  },
+  {
+    "keys": [
+      "transferring universities"
+    ],
+    "answer": "A transfer is not automatic. Ask the receiving institution about vacancies, programme compatibility, credit transfer, entry requirements and deadlines. Also ask your current institution about clearance and official transcripts."
+  },
+  {
+    "keys": [
+      "changing a course"
+    ],
+    "answer": "Check whether the university permits programme changes at your stage of study. Ask about available places, subject requirements, credit transfer, extra fees and the approval process before making assumptions."
+  },
+  {
+    "keys": [
+      "student portal login problems"
+    ],
+    "answer": "Use the official portal address and the password-recovery option. Check your email spam folder and confirm that you are using the correct student number. Never send your password or one-time code to someone offering help."
+  },
+  {
+    "keys": [
+      "university email account"
+    ],
+    "answer": "Use the student email address provided by your institution for official communication. Check it regularly, keep recovery details current and use a clear subject line when writing to lecturers or administrators."
+  },
+  {
+    "keys": [
+      "writing to a lecturer"
+    ],
+    "answer": "Begin with a respectful greeting, identify your name, programme and course, explain the issue briefly and ask one clear question. Avoid demanding language and allow reasonable time for a reply."
+  },
+  {
+    "keys": [
+      "writing to the registrar"
+    ],
+    "answer": "State your full name, student number only through the official channel, programme, year of study and the exact matter. Attach only requested evidence and ask what action or documents are required."
+  },
+  {
+    "keys": [
+      "student complaints"
+    ],
+    "answer": "Describe the problem factually, include relevant dates and previous communication, explain the outcome you are seeking and submit it through the official complaint route. Keep copies and avoid insults or threats."
+  },
+  {
+    "keys": [
+      "academic misconduct"
+    ],
+    "answer": "Academic misconduct includes cheating, plagiarism, fabrication or unauthorised collaboration. Read your institution's rules, do your own work, acknowledge sources and ask your lecturer what collaboration is allowed."
+  },
+  {
+    "keys": [
+      "using artificial intelligence for assignments"
+    ],
+    "answer": "AI can help explain concepts, brainstorm or improve clarity, but follow your institution's policy. Do not submit generated work as your own if prohibited, invent references or rely on AI instead of understanding the topic."
+  },
+  {
+    "keys": [
+      "finding academic sources"
+    ],
+    "answer": "Use your university library, textbooks, scholarly databases and credible institutional websites. Check the author's expertise, publication date, evidence and relevance. Avoid relying on anonymous social-media posts for academic claims."
+  },
+  {
+    "keys": [
+      "group work conflict"
+    ],
+    "answer": "Agree on the task, deadline and roles early. Keep a shared record of contributions, communicate respectfully and raise persistent problems with the group leader or lecturer before the deadline."
+  },
+  {
+    "keys": [
+      "class presentation nerves"
+    ],
+    "answer": "Prepare a clear opening, organise three or four main points and practise aloud. Use slides as prompts rather than reading every word. Breathe slowly, speak clearly and remember that the audience wants to understand your message."
+  },
+  {
+    "keys": [
+      "exam anxiety"
+    ],
+    "answer": "Prepare with short revision sessions, practise questions and adequate rest. During the exam, read instructions carefully, begin with questions you understand and manage your time. If anxiety becomes overwhelming, seek support from a trusted person or student services."
+  },
+  {
+    "keys": [
+      "sleep and studying"
+    ],
+    "answer": "Sleep supports attention and memory. Try to keep a regular sleep schedule, avoid all-night study where possible and use focused revision sessions. If sleep problems persist or affect daily functioning, consider speaking with a qualified health professional."
+  },
+  {
+    "keys": [
+      "student budgeting"
+    ],
+    "answer": "List essential costs such as food, transport, accommodation, data and learning materials. Set weekly limits, record spending and keep a small emergency amount if possible. Avoid borrowing for non-essential purchases and compare prices carefully."
+  },
+  {
+    "keys": [
+      "finding part time work"
+    ],
+    "answer": "Look for legitimate opportunities that fit your timetable and do not interfere with classes. Verify the employer, duties, pay and location. Never pay an upfront fee to obtain a job or share sensitive account details with an unknown recruiter."
+  },
+  {
+    "keys": [
+      "internship applications"
+    ],
+    "answer": "Read the advert carefully, check eligibility and deadline, prepare a tailored CV and application letter, and submit through the stated channel. Keep copies and prepare examples of your skills. Be cautious of requests for unexplained payments."
+  },
+  {
+    "keys": [
+      "writing a student cv"
+    ],
+    "answer": "Include accurate contact details, education, relevant skills, projects, volunteering and experience. Use clear headings, consistent formatting and action words. Do not invent qualifications or work history."
+  },
+  {
+    "keys": [
+      "scholarship search"
+    ],
+    "answer": "Check official university, government, embassy and recognised organisation announcements. Confirm eligibility, coverage, documents and deadlines from the original source. Be cautious of agents who promise guaranteed awards for a fee."
+  },
+  {
+    "keys": [
+      "student loan versus scholarship"
+    ],
+    "answer": "A scholarship is usually an award that may not need repayment, while a student loan is generally repayable under its agreement. The exact conditions vary, so read the official offer and understand coverage, obligations and repayment terms."
+  },
+  {
+    "keys": [
+      "student loan responsibilities"
+    ],
+    "answer": "Read the loan agreement, keep your contact details updated, meet academic progression requirements and understand reporting and repayment conditions. Ask HELSB directly if any clause is unclear; do not rely only on rumours."
+  },
+  {
+    "keys": [
+      "lost student identity card"
+    ],
+    "answer": "Report the loss to the relevant university office and ask about replacement requirements and fees. Follow any security instructions, especially if the card gives access to buildings, accommodation or services."
+  },
+  {
+    "keys": [
+      "lost academic documents"
+    ],
+    "answer": "Contact the issuing institution for the official replacement or statement process. Ask what identification, affidavit or fee is required. Keep digital copies of important documents in a secure place for future reference."
+  },
+  {
+    "keys": [
+      "internet data for online learning"
+    ],
+    "answer": "Check whether lecturers use a learning platform, video calls or downloadable notes. Download materials when connected to reliable Wi-Fi, monitor data use and ask the department about campus access or low-data alternatives."
+  },
+  {
+    "keys": [
+      "learning programming as a beginner"
+    ],
+    "answer": "Start with problem-solving, variables, input and output, conditions, loops and simple functions. Practise small programs consistently, read error messages and change one thing at a time. You do not need to master everything in one day."
+  },
+  {
+    "keys": [
+      "learning statistics as a beginner"
+    ],
+    "answer": "Begin with data types, tables, graphs, mean, median, mode, range and basic probability. Understand what each measure means before memorising formulas, then practise with small real-life examples."
+  },
+  {
+    "keys": [
+      "learning economics as a beginner"
+    ],
+    "answer": "Start with scarcity, choice, opportunity cost, demand, supply, markets and basic economic systems. Define each term in simple words, draw diagrams where needed and connect ideas to familiar Zambian examples."
+  },
+  {
+    "keys": [
+      "learning information systems"
+    ],
+    "answer": "An information system combines people, processes, data and technology to support operations and decisions. Learn the purpose of each component and use practical examples such as student registration or mobile banking."
+  },
+  {
+    "keys": [
+      "learning business analytics"
+    ],
+    "answer": "Business analytics uses data to understand performance and support decisions. Begin with asking a clear question, collecting reliable data, organising it, analysing patterns and explaining what the results mean."
+  },
+  {
+    "keys": [
+      "making friends at university"
+    ],
+    "answer": "Start with small, respectful conversations, join study groups or campus activities and show genuine interest in others. Healthy friendships grow over time; keep boundaries and do not feel pressured to follow behaviour that makes you uncomfortable."
+  },
+  {
+    "keys": [
+      "homesickness at university"
+    ],
+    "answer": "Missing home is common when adjusting to a new environment. Keep in touch with supportive people, build a routine, explore campus services and give yourself time to settle. If it becomes difficult to cope, talk to someone you trust."
+  },
+  {
+    "keys": [
+      "resolving misunderstandings"
+    ],
+    "answer": "Ask the other person calmly what they meant, explain how you understood it and listen without interrupting. Focus on the issue rather than attacking the person. If emotions are high, pause and continue later."
+  },
+  {
+    "keys": [
+      "setting personal boundaries"
+    ],
+    "answer": "A boundary is a respectful limit about what you can accept or do. Communicate it clearly, calmly and consistently. You can say no without insulting someone, and you should respect other people's boundaries too."
+  },
+  {
+    "keys": [
+      "dealing with peer pressure"
+    ],
+    "answer": "Peer pressure is influence from people around you to act in a certain way. Pause and consider your values, safety and long-term goals. You can refuse politely, suggest another activity or leave an unsafe situation. Choose friends who respect your decisions."
+  }
+];
+const ALL_QA_TOPICS = [...QA_TOPICS, ...ADDITIONAL_QA_TOPICS];
+const QUESTION_FORMS = [
+ "Can you explain {topic}?","I want to know about {topic}.","Please tell me more about {topic}.","What should I understand about {topic}?","How does {topic} work?","Can you help me with {topic}?","I have a question concerning {topic}.","Give me guidance on {topic}.","What information do you have about {topic}?","Please advise me about {topic}."
+];
+function makeQAEntries(topics){
+ return topics.flatMap(topic=>{
+  const label=topic.keys[0];
+  return QUESTION_FORMS.map((form,index)=>({question:form.replaceAll("{topic}",label),answer:topic.answer,topic:label,variant:index+1}));
+ });
+}
+const QA_BANK = [...makeQAEntries(QA_TOPICS.slice(0,50)), ...makeQAEntries(ADDITIONAL_QA_TOPICS)];
+function editDistanceWithinOne(a,b){
+ if(a===b)return true;if(Math.abs(a.length-b.length)>1)return false;
+ let i=0,j=0,edits=0;
+ while(i<a.length&&j<b.length){
+  if(a[i]===b[j]){i++;j++;continue;}
+  if(++edits>1)return false;
+  if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++;}
+ }
+ if(i<a.length||j<b.length)edits++;
+ return edits<=1;
+}
+function answerFromQABank(t){
+ let best=null,bestScore=0;
+ const queryWords=t.split(" ").filter(Boolean);
+ for(const topic of ALL_QA_TOPICS){
+  for(const key of topic.keys){
+   const k=normalize(key);if(!k)continue;
+   let score=0;
+   if(t===k)score=1000+k.length;
+   else if(t.includes(k))score=500+k.length;
+   else {
+    const kt=k.split(" "),matched=kt.filter(w=>queryWords.includes(w)).length;
+    if(matched===kt.length && kt.length>1)score=250+k.length;
+    else if(kt.every(w=>queryWords.some(qw=>qw===w||(w.length>=6&&qw.length>=6&&editDistanceWithinOne(w,qw)))))score=180+k.length;
+   }
+   if(score>bestScore){best=topic;bestScore=score;}
+  }
+ }
+ return best?best.answer:"";
+}
+
+/* ---------- Conversation memory: interpret short replies in context ---------- */
+function recentConversationText(){
+ return chatLog.slice(-12).map(m=>String(m.text||"")).join(" ").toLowerCase();
+}
+function conversationFollowUp(raw){
+ const n=normalize(raw);
+ const recent=chatLog.slice(-10);
+ const lastAI=[...recent].reverse().find(m=>m.who==="ai");
+ const recentUsers=recent.filter(m=>m.who==="user").map(m=>normalize(m.text)).join(" ");
+ if(!lastAI)return "";
+ const ai=normalize(lastAI.text);
+ const helsbContext=/helsb|student loan|loan appeal|not selected|shortlisted|loan application/.test(recentUsers+" "+ai);
+ if(helsbContext && /reason|why were you|given a reason|outcome|appeal|not selected/.test(ai)){
+  if(/^(no|no i was not given a reason|i was not given a reason|they did not give a reason|not given any reason|no reason|nothing|not really)$/.test(n)){
+   currentContext.topic="helsb-appeal";
+   return "Thank you for clarifying. If HELSB did not give you a reason, explain that clearly in your appeal and request a review of your application. Include your application details and any relevant supporting documents, and follow the appeal instructions for your intake. An appeal does not guarantee an award. Have you received an official message saying you were not selected?";
+  }
+  if(/^(yes|yes they did|i was given a reason|they gave me a reason)$/.test(n)){
+   currentContext.topic="helsb-appeal";
+   return "Thank you. The reason given is important because your appeal should respond directly to it and include evidence where possible. What reason did HELSB give you?";
+  }
+ }
+ // If the assistant has just asked a question, do not throw away the topic on short replies.
+ if(/^(yes|no|okay|ok|alright|not yet|maybe|i dont know|i do not know|none|both|the first one|the second one)$/.test(n)){
+  const topic=recentUsers;
+  if(/helsb|loan|appeal/.test(topic)){
+   currentContext.topic="helsb";
+   if(n==="not yet")return "That is okay. You can first check your HELSB portal and the official notice for your application status. What status is currently showing on your account?";
+   if(n==="i dont know"||n==="i do not know")return "That is understandable. Tell me what message or status you can see on your HELSB account, without sharing your password or OTP, and I will help you interpret it.";
+  }
+ }
  return "";
 }
 
@@ -532,28 +1116,41 @@ function safeSensitiveReply(t){
    CATEGORY ROUTER — USES THE TEN KNOWLEDGE CATEGORIES
    ========================================================= */
 function generateReply(raw){
+ const follow=conversationFollowUp(raw);if(follow)return follow;
+ const detail=detailAnswer(raw);if(detail)return detail;
  const t=normalize(raw);
  if(!t)return "Please type a question so I can help you.";
  const privacy=privacyGuard(raw);if(privacy)return privacy;
  const sensitive=safeSensitiveReply(t);if(sensitive)return sensitive;
  const honest=honestyGuard(t);if(honest)return honest;
-
- // A user has confirmed a service only after the procedure was explained.
- if(awaitingConfirmation && pendingService && customerReady(t)){
-   const s=pendingService;awaitingConfirmation=false;showWhatsApp(s);
-   return `Thank you for confirming. Moses Ntembwa (Mr Tees) can discuss the ${s.name} service with you. The listed fee is ${s.price}. Please review the editable WhatsApp message below and send it when you are ready. Remember, no result such as admission or loan approval can be guaranteed.`;
- }
- if(awaitingConfirmation && pendingService && containsAny(t,["no","not now","just information","only asking","not ready"])){
-   awaitingConfirmation=false;pendingService=null;return "That is completely fine. You can ask questions first without requesting a service. What else would you like to understand?";
- }
-
+ // Handle greetings and short social replies before service and topic matching.
  if(isGreeting(t))return greetingReply(t);
+ if(containsAny(t,["i am fine","im fine","am fine","i am good","im good","doing fine","i am okay","im okay","i am well","not bad","cant complain","can't complain"]))return greetingReply(t);
+ const pre=preRoute(raw,t);if(pre)return pre;
+
+ // Let customers choose self-service guidance or a WhatsApp hand-off to Moses.
+ if(awaitingConfirmation && pendingService && awaitingServiceChoice && customerWantsSelf(t)){
+   const s=pendingService;awaitingConfirmation=false;awaitingServiceChoice=false;pendingService=null;
+   return serviceSelfHelp(s);
+ }
+ if(awaitingConfirmation && pendingService && (customerReady(t)||containsAny(t,["moses should do it","let moses do it","moses can do it","do it for me"]))){
+   const s=pendingService;awaitingConfirmation=false;awaitingServiceChoice=false;showWhatsApp(s);
+   return `Thank you for choosing Moses Ntembwa (Mr Tees). The listed fee is ${s.price}. Please review the prepared WhatsApp message below and send it when you are ready. Moses can confirm the requirements and final arrangements with you. No admission or loan outcome can be guaranteed.`;
+ }
+ if(awaitingConfirmation && pendingService && containsAny(t,["no","not now","just information","only asking","not ready","neither"])){
+   awaitingConfirmation=false;awaitingServiceChoice=false;pendingService=null;return "That is completely fine. You can ask questions first without requesting a service. What else would you like to understand?";
+ }
+
+ if(containsAny(t,["greet","greetings","salutation"]))return "You can greet me with Hello, Hi, Hey, Good morning, Good afternoon, Good evening, Good night, Muli shani, Muli bwanji, Mwashibukeni or any respectful greeting. I will greet you back and ask how I can help.";
  if(containsAny(t,["who are you","what are you","your name","are you real","are you human","who built you"]))return ABOUT.ai;
  if(containsAny(t,["who is moses","about moses","mr tees","owner"]))return ABOUT.moses;
  if(containsAny(t,["what can you do","how can you help","what do you help"]))return ABOUT.help;
 
  const emotion=answerEmotion(t);if(emotion)return emotion;
 
+ // Clear service-intent wording is routed to the service choice before general TPIN/HELSB information.
+ if(containsAny(t,["help me with tpin","help with tpin","i want tpin","need tpin","get me tpin","i want assistance with tpin","tpin certificate"]))return serviceContextPrompt(SERVICES[8]);
+ if(containsAny(t,["assistance with application","help me with application","help with my application","i want to apply","i need application help"]))return serviceContextPrompt(SERVICES[5]);
  // HELSB and university topics are checked before generic service detection.
  const hu=helsbAnswer(t);if(hu)return hu;
  const uni=findUniversity(t);
@@ -574,6 +1171,12 @@ function generateReply(raw){
  if(containsAny(t,["verification procedure","how do i verify"]))
    return verificationProcedure("ecz");
 
+ if(containsAny(t,["assistance with application","help me with application","help with my application","i want to apply","i need application help"])){
+   return serviceContextPrompt(SERVICES[5]);
+ }
+ if(containsAny(t,["help me with tpin","help with tpin","tpin certificate","tax certificate","taxpayer certificate","zra certificate","i want tpin","need tpin","get me tpin"])){
+   return serviceContextPrompt(SERVICES[8]);
+ }
  const service=findService(t);
  if(service){
    currentContext.service=service.id;
@@ -585,56 +1188,278 @@ function generateReply(raw){
 
  if(containsAny(t,["hello","hi","hey","how are you"]))return greetingReply(t);
  if(containsAny(t,["thank","thanks"]))return "You are most welcome. I am glad to help. What would you like to ask next?";
+ const trained=answerFromQABank(t);if(trained)return trained;
+ if(containsAny(t,["how are you","i am bored","im bored","i am happy","im happy","good news","i am sad","im sad","feeling sad","lonely","heartbroken","i am tired","im tired","just chatting","talk to me","advice","confidence","friendship","motivation","personal goals","decision","disappointment"])||GENERAL_TOPICS.some(x=>t.includes(normalize(x))))return generalConversationReply(t);
+ for(let i=0;i<STUDENT_TOPICS.length;i++){if(t.includes(normalize(STUDENT_TOPICS[i][0])))return STUDENT_ANSWERS[i*10];}
+ const sm=smartAnswer(t);if(sm)return sm;
  logUnknown(raw);
  return fallbackReply();
 }
 
+
 /* =========================================================
-   SEND / REPLY ENGINE — KEEPING THE CONVERSATION GOING
+   DETAILED ANSWERS FOR THE TWO STARS (with resource links)
+   ========================================================= */
+const L={helsb:["HELSB official website","https://helsb.gov.zm/"],loans:["HELSB loans and adverts","https://helsb.gov.zm/loans/"],portal:["HELSB application portal","https://portal.helsb.gov.zm/"],partners:["HELSB partner institutions","https://helsb.gov.zm/about/partners"],contact:["Contact HELSB","https://helsb.gov.zm/contact"],ecz:["Examinations Council of Zambia","https://www.ecz.gov.zm/"],zaqa:["ZAQA","https://www.zaqa.gov.zm/"],zra:["Zambia Revenue Authority","https://www.zra.org.zm/"],unza:["University of Zambia","https://www.unza.zm/"],owl:["Purdue OWL writing guides","https://owl.purdue.edu/"],mind:["MindTools study and time skills","https://www.mindtools.com/"],eng:["British Council LearnEnglish","https://learnenglish.britishcouncil.org/"],who:["World Health Organization: mental health","https://www.who.int/health-topics/mental-health"],help:["HelpGuide: healthy relationships","https://www.helpguide.org/"],wa:["Ask Moses on WhatsApp","https://wa.me/"+APP.whatsapp]};
+const uniLinks=()=>UNIVERSITIES.map(u=>[u.name+" ("+u.short+")",u.website]);
+const kmu=()=>UNIVERSITIES.find(u=>u.short==="KMU");
+const fmtLinks=a=>"\n\n**Resources**\n"+a.map(([n,u])=>"• "+n+": "+u).join("\n");
+const VERIFY="\n\nAlways confirm current dates, fees and rules on the official website before you act.";
+const KD=[
+/*1*/()=>["**HELSB** stands for the Higher Education Loans and Scholarships Board, Zambia's public body that administers student loans and scholarships.\n\nIn practice it publishes the application advert for each intake, receives applications through its online portal, screens the information and documents submitted, decides who receives a loan, and later collects repayments from beneficiaries. It works with a list of supported institutions, so your university must be on that list. HELSB, not any agent or helper, makes the award decision."+VERIFY,[L.helsb,L.loans,L.portal,L.contact]],
+/*2*/()=>[universityList()+VERIFY,[L.partners,...uniLinks()]],
+/*3*/()=>["Documents commonly listed in HELSB guidance:\n"+HELSB.docs.map((d,i)=>`${i+1}. ${d}`).join("\n")+"\n\n**Tips:** certify copies as the advert requires, scan every page clearly, check that names match across all documents, and upload in the file type and size the portal asks for. The advert for your intake is the final checklist."+VERIFY,[L.loans,L.portal]],
+/*4*/()=>[HELSB.eligibility+"\n\n**How to check yourself:** read the eligibility section of the current advert, confirm your university and programme are supported, and make sure your documents are complete. Meeting the conditions makes you eligible to apply; it does not guarantee an award."+VERIFY,[L.loans,L.helsb]],
+/*5*/()=>["**No.** Admission and a loan are two separate decisions. The university decides admission; HELSB decides loans after screening applications against its criteria and available funds.\n\nSo apply to HELSB on time, even if you are waiting for admission news, and have a back-up plan for fees (another scholarship, family support or part payments). Be careful with anyone who promises a guaranteed loan. "+HELSB.safety,[L.helsb,L.loans]],
+/*6*/()=>["HELSB deadlines change with each intake and sometimes by applicant category, so no fixed date is safe to quote.\n\n**To check the current deadline:**\n1. Open the HELSB loans page and read the latest advert.\n2. Check the news or notices section for extensions.\n3. Log in to the portal, which usually shows the open application window.\n4. Put the date in your phone calendar with a reminder 3 days earlier.\n\nDo not wait for the last day: portals get busy near closing."+VERIFY,[L.loans,L.helsb,L.portal]],
+/*7*/()=>["**How an appeal works:** if your application was unsuccessful, read your outcome notice and any reason given, then follow the appeal instructions HELSB publishes for that intake. Not every applicant can appeal, and there is a deadline.\n\n**Steps:**\n1. Confirm that appeals are open for your intake and category.\n2. Note the deadline and the evidence required.\n3. Write a short, truthful explanation and attach supporting documents.\n4. Submit only through the official channel and keep your receipt or reference.\n\nAn appeal does not guarantee selection."+VERIFY,[L.loans,L.portal,L.contact]],
+/*8*/()=>["Old or wrong guardian details can delay screening, so act early.\n\n**What to do:**\n1. Log in to the official portal and check whether the profile can be edited.\n2. If the field is locked, contact HELSB through its official contact page and explain what needs correcting, with the supporting document (for example the correct guardian's NRC).\n3. Do not create a second account or duplicate application unless HELSB tells you to.\n4. Keep proof of every message you send.\n\nNever pay anyone to \"fix\" your account."+VERIFY,[L.portal,L.contact]],
+/*9*/()=>["**New applicant:** a student applying to HELSB for the first time, usually after admission to a supported institution. You create an account, submit the full application and documents, and go through screening.\n\n**Returning (continuing) student:** a student who already benefited from HELSB and must follow the continuing or progression process each year, normally with academic progress information such as results and registration confirmation.\n\nThe two processes have different steps and notices, so open the one that matches your status on the HELSB site."+VERIFY,[L.loans,L.portal]],
+/*10*/()=>["Your HELSB account holds personal and family information, so protect it.\n\n• Use a strong, unique password and never share it, your PIN or any one-time code.\n• Log in only from the official address (portal.helsb.gov.zm). Ignore links from unknown WhatsApp or Facebook messages.\n• Log out on shared phones and computers.\n• Keep your email and phone number up to date for recovery.\n• Do not give your login to an \"agent\"; you can ask for guidance without handing over your account.\n• Report suspicious messages to HELSB.\n\n"+HELSB.safety,[L.portal,L.contact]],
+/*11*/()=>{const u=kmu();return [`**${u.name} (${u.short})** is located in ${u.town}, ${u.province}. ${u.focus}\n\n${u.note||""}\n\nUse its official website for the prospectus, entry requirements, fees, accommodation and application steps. KMU is on HELSB's list of supported institutions, but admission still does not guarantee a loan.`+VERIFY,[[u.name,u.website],L.partners]];},
+/*12*/()=>{const u=kmu();return [`${u.focus}\n\nProgramme lists change between intakes, so do not rely on old posts. **To confirm what is offered:**\n1. Open the KMU website and find the Admissions or Programmes section.\n2. Read the current prospectus for each programme's entry requirements (subjects and grades), duration and mode of study.\n3. Compare with your Grade 12 results.\n4. Ask the admissions office if a programme is unclear.`+VERIFY,[[u.name,u.website],L.partners]];},
+/*13*/()=>["Zambian public universities generally run a main annual intake, and some programmes or institutions add extra intakes. Exact dates differ by university and year.\n\n**Typical flow:** the university advertises the intake and application window; you apply with your results and documents; selection lists or offers are published; accepted students pay or arrange fees, then register and attend orientation. HELSB applications often open around the same period, so track both.\n\nCheck each university's website and official notices for the current intake."+VERIFY,[L.unza,...uniLinks().slice(1,4)]],
+/*14*/()=>["Choosing a programme is easier with a simple process:\n1. **Interests:** which subjects do you enjoy and do well in?\n2. **Career goal:** what job or field do you want in 5 to 10 years?\n3. **Requirements:** check the exact subject and grade requirements in the prospectus.\n4. **Job market:** ask people working in that field and look at the skills they use.\n5. **Practicalities:** location, cost, accommodation and whether HELSB supports the institution.\n6. **Back-up:** choose a first and a second option.\n\nMoses also offers a Career and Academic Advice service if you want a guided conversation."+VERIFY,[L.unza,L.partners,L.wa]],
+/*15*/()=>["**Where to look:** your university's official accommodation notice first (campus hostels, how to apply, fees), then nearby boarding houses.\n\n**Staying safe:**\n1. Visit or verify the place and meet the landlord or agent.\n2. Get written terms: rent, deposit, rules, who pays utilities.\n3. Never pay based on a photo or advert alone.\n4. Check distance, transport, security and water and power.\n5. Keep receipts.\n\nMoses offers a Boarding House service (K260) and an Accommodation Application service (K30); availability must be confirmed before payment."+VERIFY,[L.unza,L.wa]],
+/*16*/()=>[ABOUT.moses+"\n\nHe offers practical services such as university admission and HELSB application guidance, verification help, CVs and letters, and more. Ask me for the price list if you want to see them.",[L.wa]],
+/*17*/()=>[ABOUT.ai+"\n\n"+ABOUT.help+"\n\nI explain things with steps and official links, I keep your conversations saved on this device, and when you want Moses to do the work for you I prepare a WhatsApp message. Please never share passwords, PINs or bank details with me.",[L.wa]],
+/*18*/()=>["MR TEES Education Services, run by Moses Ntembwa, supports students and job seekers with admissions, HELSB and scholarship applications, verification requests (ECZ, ZAQA), ZRA TPIN guidance, CVs, application letters, accommodation, past papers, interview preparation, document scanning and more.\n\n"+servicePriceList().replace(" Which service would you like to understand?","")+"\n\nTap the Services star to see how each one works.",[L.wa]],
+/*19*/()=>["**First-year success plan:**\n1. Attend orientation and learn how registration, timetables and results work.\n2. Go to every lecture in the first weeks; habits form early.\n3. Make a weekly study timetable and review notes within 24 hours.\n4. Start assignments early and submit on time.\n5. Use the library, lecturers' consultation hours and study groups.\n6. Manage money with a monthly budget.\n7. Sleep, eat and exercise; health affects grades.\n8. Ask for help early if you are struggling.\n\nSmall consistent effort beats last-minute cramming."+VERIFY,[L.mind,L.owl]],
+/*20*/()=>["Academic English improves with daily practice.\n\n• **Read** textbooks and articles every day and note new words with their meaning and an example sentence.\n• **Write** a short paragraph daily: one main idea, evidence, a conclusion.\n• **Listen** to lectures and podcasts, then summarise aloud.\n• **Learn structure:** introduction, body paragraphs, conclusion, and how to reference.\n• **Get feedback** from a lecturer, writing centre or classmate.\n• Avoid slang and text-speak in assignments.\n\nPlagiarism is serious, so always paraphrase and cite.",[L.eng,L.owl]],
+/*21*/()=>["**Build a timetable in 5 steps:**\n1. Write fixed items first: lectures, labs, church or work.\n2. Add study blocks of 45 to 90 minutes with 10-minute breaks.\n3. Give harder courses your best energy hours.\n4. Add assignment deadlines and exam dates, and work backwards with mini-deadlines.\n5. Leave free time and sleep; review every Sunday and adjust.\n\nA realistic plan you follow is better than a perfect plan you abandon.",[L.mind]],
+/*22*/()=>["Feeling sad or stressed at university is common: new place, money pressure, heavy workload. Your feelings are real and it is okay to ask for support.\n\n**What can help:** talk to a trusted friend, relative or mentor; keep a simple routine (sleep, meals, movement); break big tasks into small ones; limit comparing yourself with others; speak to the university counselling or student affairs office; and see a health professional if the feeling lasts or affects daily life.\n\nIf you ever feel unsafe or think about harming yourself, please contact local emergency services or a trusted person immediately. You do not have to carry it alone.",[L.who]],
+/*23*/()=>["A healthy relationship is built on:\n• **Respect:** your opinions, boundaries and privacy are honoured.\n• **Honesty and trust:** no lying, spying or controlling.\n• **Communication:** you can disagree without insults or fear.\n• **Equality:** decisions are shared; nobody is pressured.\n• **Support:** each person's studies and goals are encouraged.\n• **Safety:** no violence, threats or manipulation.\n\nIf you feel afraid, controlled or pressured, talk to a trusted person or university counselling.",[L.help]],
+/*24*/()=>["**Good friendships grow from:**\n1. Showing up: join clubs, study groups, church or sports.\n2. Being a good listener and asking real questions.\n3. Honesty and keeping promises.\n4. Giving support without keeping score.\n5. Respecting differences.\n6. Choosing friends who encourage your goals.\n\nIt is fine to step back from friendships that pressure you into harmful choices. Quality matters more than quantity.",[L.help]],
+/*25*/()=>["You can greet me in many ways and I will answer politely:\n• English: Hello, Hi, Good morning, Good afternoon, Good evening\n• Bemba: Muli shani, Mwashibukeni\n• Nyanja: Muli bwanji, Mwadzuka bwanji\n• Tonga: Mwabuka buti\n• Lozi: Lumela\n\nYou can also say thank you, tell me how your day is going, or share good news or a worry. I am here to help.",[]]
+];
+function knowledgeAnswer(i){const [t,l]=KD[i]();return t+(l.length?fmtLinks(l):"");}
+
+const SERVICE_LINKS={1:[L.unza,L.wa],13:[L.unza,L.wa],2:[L.loans,L.portal,L.helsb],3:[L.loans,L.portal,L.contact],4:[L.loans,L.portal],14:[L.helsb,L.portal],5:[L.helsb,["Scholars4Dev scholarship listings","https://www.scholars4dev.com/"]],6:[L.partners,...uniLinks()],7:[L.ecz],8:[L.zaqa],9:[L.zra],15:[L.zra],10:[["Indeed career advice","https://www.indeed.com/career-advice"]],11:[["Indeed career advice","https://www.indeed.com/career-advice"],L.owl],18:[["Indeed career advice","https://www.indeed.com/career-advice"],L.mind],12:[L.unza,L.owl],16:[["iLovePDF image and document tools","https://www.ilovepdf.com/"]],20:[["iLovePDF scan, merge and compress","https://www.ilovepdf.com/"]],17:[["Google Account help","https://support.google.com/accounts"]],19:[L.portal,L.contact],21:[L.owl,L.mind],22:[L.portal,L.partners],23:[["Elements of AI (free course)","https://www.elementsofai.com/"]],25:[L.partners,...uniLinks().slice(0,3)]};
+function serviceLinks(s){return (SERVICE_LINKS[s.id]||[L.wa]).map(([n,u])=>"• "+n+": "+u).join("\n");}
+const ALT_MAP=[6,9,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
+const KQ_NORM=KNOWLEDGE_QUESTIONS.map(normalize),SQ_NORM=ALT_SERVICE_QUESTIONS.map(normalize);
+function detailAnswer(raw){
+ const t=normalize(raw);let i=KQ_NORM.indexOf(t);if(i>-1)return knowledgeAnswer(i);
+ i=SQ_NORM.indexOf(t);if(i>-1){hideWhatsApp();const s=SERVICES[ALT_MAP[i]-1];currentContext.service=s.id;return serviceMenuAnswer(s);}
+ return "";
+}
+
+
+/* =========================================================
+   TRAINED CONVERSATIONS (110+): keys | reply | follow-up | strict
+   Strict entries only match short messages so that real
+   requests such as "I need you to help with admission" are not caught.
+   ========================================================= */
+const WA_TXT="+260 766 427 244 (https://wa.me/260766427244)";
+const CONVOS=[
+/* --- Warm, personal and relationship talk --- */
+["i like you|i really like you|i like you so much|i like you a lot|i like talking to you","Thank you, that is kind of you. I enjoy helping you too. I am an AI assistant, so I do not have romantic feelings, but I am glad to be a friendly and reliable helper.","What would you like us to work on today?",1],
+["i love you|love you|i love you so much|i think i love you","Thank you, that is a sweet thing to say. I am an AI, so I cannot love the way a person does, but I do care about giving you honest and useful help.","Is there something about your studies, HELSB or an application that I can help you with?",1],
+["i want you|i need you|i miss you|i miss you so much|i want you so much","I am here with you in this chat and I am glad you came back. I am an AI assistant, so I cannot be a person in your life, but I can help with real things.","Is something on your mind, or would you like help with a plan, an application or a question?",1],
+["can we fall in love|let's fall in love|fall in love with me|can i fall in love with you|can you fall in love with me|can we be in love","I appreciate your honesty, and I do not want to mislead you. I am an AI, so I cannot fall in love or be in a relationship. What I can be is a warm, respectful helper who listens and helps you plan.","Would you like to talk about what you are looking for, such as friendship, advice or someone to talk to?",1],
+["be my girlfriend|be my boyfriend|be my wife|be my husband|marry me|will you marry me|let's date|date me|can we date|will you be my girlfriend|will you be my boyfriend|i want you to be my girlfriend|i want you to be my boyfriend","That is flattering, but I have to be honest: I am an AI and cannot date or marry. A real relationship deserves a real person who can be there for you, and I hope you find that.","Would you like some tips for meeting good friends at university or for building a healthy relationship?",1],
+["do you love me|do you like me|do you care about me|do you miss me","I care about being helpful and respectful to you. As an AI I do not feel love the way people do, but I take you and your questions seriously.","What is the most important thing you want to achieve this month?",1],
+["you are beautiful|you are pretty|you are handsome|you are cute|you look nice|you are hot|you are lovely|you are so sweet","Thank you for the kind words. I am a digital assistant with no face or body, but I appreciate your friendliness.","How can I help you today?",1],
+["are you single|do you have a boyfriend|do you have a girlfriend|are you married|do you have a wife|do you have a husband|do you have a partner","I am an AI assistant, so I do not date or marry. My job is to help, and I enjoy it.","Shall we talk about your plans, such as university, a loan or a service?",1],
+["kiss me|hug me|send me a kiss|give me a hug|send me a hug|i need a hug","I cannot do anything physical, but here is a warm virtual hug and encouragement: you are doing better than you think.","Is something making you need encouragement today?",1],
+["send nudes|sexy chat|sex chat|talk dirty|let's have sex|sex with me|i want to have sex|send me pictures of yourself","I keep our conversation respectful, so I will not go in that direction. I am happy to help with studies, services, advice or just a friendly chat.","What would you like to talk about instead?",1],
+["i am lonely|i feel lonely|i have no friends|nobody loves me|i feel alone|i am alone","I am sorry you feel this way. Loneliness is common, especially when life changes, and it does not mean something is wrong with you. Talking to a trusted friend, relative, church or campus counsellor can help, and I am happy to listen here too.","Would you like to tell me more, or shall I share simple ways to make friends at university?"],
+["you are my best friend|be my friend|can we be friends|will you be my friend|you are my friend|i want a friend","I would be glad to be a friendly helper for you. I am an AI, so I cannot replace real friends, but I can chat, give advice and help you plan.","What has been going on in your life lately?",1],
+["are you a boy or a girl|are you male or female|are you a man or a woman|are you a boy|are you a girl|what is your gender","I am an AI, so I am neither a boy nor a girl. I do not have a body or a gender, but you can talk to me as you would to a helpful friend.","What can I help you with?",1],
+["are you real|are you human|are you a robot|are you a person|are you a bot|am i talking to a human|is this a real person","I am not a human. I am Moses Ntembwa AI (Mr Tees Digital Assistance), an automated assistant. When you want a person, I can connect you to Moses on WhatsApp.","Would you like me to help you directly, or connect you to Moses?"],
+["who created you|who made you|who built you|who is your owner|who owns you|who trained you","I was created to serve students and job seekers for Moses Ntembwa (Mr Tees) and MR TEES Education Services.","Would you like to know more about Moses and the services he offers?"],
+["what is your name|what's your name|who are you|introduce yourself","My name is Moses Ntembwa AI (Mr Tees Digital Assistance). I help with Zambian universities, HELSB, applications, verification guidance and student services.","What would you like to know?"],
+["how old are you|when were you born|what is your age","I do not have an age. I am software that was built to help people, and I keep learning new questions through Moses.","How old are you, and are you preparing for university?",1],
+["where do you live|where are you from|where are you|which country are you from","I live online, inside this chat. My knowledge focuses on Zambia: its public universities, HELSB, ECZ, ZAQA and ZRA.","Where are you chatting from, and what are you hoping to do?"],
+["do you have feelings|can you feel|do you get tired|do you sleep|do you eat|are you alive","I do not have feelings, tiredness or a body the way humans do. I can still be warm and respectful, and I am available whenever you need me.","How are you feeling today?"],
+["tell me a joke|make me laugh|say something funny|i want a joke","Why did the student bring a ladder to class? Because they wanted to go to higher education!","Would you like another joke, or shall we get back to your plans?"],
+["you are stupid|you are useless|i hate you|you are bad|you are annoying|you are not helpful|you are a fool","I am sorry I let you down. Let us fix it together. Tell me what you were trying to find out and I will try again, step by step.","What exactly did you need that I did not give you?"],
+["you are helpful|good job|well done|you are smart|you are clever|you are amazing|great answer|that was helpful|you are good","Thank you, I am glad that helped. Your kind words keep me motivated.","Is there anything else you would like to ask?"],
+["you are wrong|that is wrong|that is not correct|you made a mistake|not what i asked|that is not right|that's not true","Thank you for telling me. I can make mistakes, and rules or dates may have changed. Please check the official website for the final word, and tell me what is different so I can help you better.","What do you believe the correct information is?"],
+["i don't understand|i do not understand|explain simply|explain again|simpler please|i am confused|can you explain better|explain in simple words","No problem, I will explain it more simply. Tell me which part was unclear and I will break it into small steps with an example.","Which part would you like me to explain again?"],
+["can you speak bemba|can you speak nyanja|can you speak tonga|can you speak lozi|speak in bemba|speak in nyanja|do you speak local languages|can you speak in local language","I am strongest in English, but I can greet in Bemba, Nyanja, Tonga and Lozi. For example: Muli shani (Bemba), Muli bwanji (Nyanja), Mwabuka buti (Tonga), Lumela (Lozi).","Which language would you like to greet in, or shall I continue in English?"],
+["what can you do for me|what are you able to do|how can you help me|how do i use you|how does this work|what is this site|what is this for","I can help in three ways. First, I explain things: HELSB, universities, admissions and student life. Second, I give step-by-step guidance and official links. Third, when you want a person to do the work for you, I prepare a WhatsApp message to Moses.","Would you like to see the full list of services, the public universities or HELSB information?"],
+["what are the stars|what do the stars do|what are those stars|what is the star|what are the two stars|what are the colourful stars|what are the colorful stars","The two small colour-changing stars at the top are shortcuts. The left star opens ready-made questions about services (admission, HELSB appeals, TPIN, CVs and more). The right star opens ready-made questions about HELSB, universities and student life. Tap any question to get a full explanation with links.","Would you like me to start with one of them?"],
+["is this free|is the chat free|do i pay to chat|do i pay to ask questions|is it free to ask|does it cost to chat","Chatting with me and getting information is free. Moses's hands-on services have listed fees, and I will always explain the fee and what you get before anything is arranged.","Would you like to see the list of services and prices?"],
+["i want to talk|can we talk|can i talk to you|talk to me|let's chat|let us chat|i want to chat|chat with me","Of course. I am listening. We can talk about your studies, a worry, a plan or anything you would like help with.","What would you like to talk about?"],
+["good night|goodnight|sleep well|i am going to sleep","Good night. Rest well, and remember that small steps every day add up. I will be here when you come back.","Is there anything you want me to remind you of before you rest?"],
+["bye|goodbye|see you|see you later|talk later|i am leaving|ok bye|thanks bye|catch you later","Goodbye and take care. All the best with your studies. Your conversation is saved in History if you want to continue later.","Before you go, is there anything else I can help with?"],
+["how was your day|how is your day|how is your day going|what's up|whats up|how is life","My day is going well, thank you for asking. I am happy to be chatting with you.","How is your day going so far?"],
+["i am scared|i am afraid|i am nervous|i am worried about university|i am anxious","It is normal to feel nervous about new things. Fear usually shrinks when you break the task into small steps and talk to someone. We can plan the next step together.","What exactly is worrying you the most?"],
+["i don't know what to do|i am lost|i have no direction|i need guidance|i need advice|i don't know where to start|i do not know where to start","That is a very common feeling, and it is okay. We can begin with one small question: what is the next result you want? Then we can map the steps.","Are you trying to get into university, find funding, sort out documents or something else?"],
+["i have another question|one more question|can i ask something|i want to ask|can i ask you something|i have a question","Of course, please go ahead. No question is too small.","What would you like to ask?"],
+["thank you very much|thanks a lot|thank you so much|i appreciate you|god bless you|i appreciate it|thanks so much","You are most welcome, and God bless you too. It makes me happy to help.","Is there anything else you would like to ask?"],
+["i have lost motivation|how do i stay motivated|i am demotivated|i need motivation|i need encouragement","Motivation comes and goes, so build routine instead of waiting for it. Choose one small task today, finish it, and celebrate. Remember why you started and who you are doing this for.","What is the goal you are working towards?"],
+/* --- Services and Moses --- */
+["how do i pay|payment method|how can i pay|where do i send money|mobile money|airtel money|mtn money|zamtel money|payment details|how do i make payment","I do not share payment numbers in this chat. Moses will give you the correct payment details directly on WhatsApp after you agree on the service and fee. Pay only after the service is clear, and keep your proof of payment. Official fees (application, ECZ, ZAQA, tuition) must be paid through that institution's own channel.","Would you like me to prepare a WhatsApp message to Moses for the service you need?"],
+["can i pay later|pay in installments|pay half|pay after|payment plan|pay when finished","Payment terms are agreed with Moses personally. Please ask him on WhatsApp before the work starts, so everything is clear to both of you.","Which service are you asking about?"],
+["is it legit|are you a scam|can i trust you|is moses real|is this safe|are you genuine|is this a scam|can i trust moses","It is wise to ask. I am transparent: I am an AI assistant, I give official links so you can verify information yourself, and I never ask for passwords, PINs or bank details. Never pay anyone who promises a guaranteed admission or loan.","Would you like me to show you how to check an official website before you pay for anything?"],
+["do you guarantee admission|guarantee helsb|guarantee loan|guaranteed admission|promise admission|can you promise|can you guarantee|will i get admission if i pay","No. Admission is decided by the university and loans by HELSB. Moses can guide and prepare your application, but nobody honest can guarantee an outcome.","Which application are you preparing?"],
+["how long will it take|how long does it take|turnaround|how soon|how fast|when will it be ready|delivery time","Time depends on the service, the documents you have and the institution's processing. Moses can give you an honest estimate on WhatsApp once he sees your request.","Which service do you need, and is there a deadline?"],
+["how do i contact moses|moses whatsapp|moses phone number|whatsapp number|moses number|contact moses|contact details|call moses|phone number|how can i reach moses|how do i reach moses","You can reach Moses on WhatsApp: "+WA_TXT+". I can also prepare a ready message for the service you need.","Which service should the message be about?"],
+["where is your office|office location|where are you located|where can i find moses|physical address|do you have an office|where is moses","I do not have a verified physical address to share. Please ask Moses directly on WhatsApp: "+WA_TXT+".","Would you like me to prepare a message asking him for his location?"],
+["working hours|opening hours|are you available|available now|do you work on weekends|what time do you open|is moses available|are you online","I am available in this chat at any time. For Moses's own working hours and weekend availability, please ask him on WhatsApp: "+WA_TXT+".","What would you like help with while you wait?"],
+["speak to moses|talk to a human|talk to moses|i want a human|human assistance|real person|i want to speak to a person|speak to a person","Certainly. You can speak to Moses on WhatsApp: "+WA_TXT+". Tell him what you need so he can respond quickly.","Would you like me to prepare a short message for you?"],
+["refund|money back|refund policy|can i get my money back","I cannot promise refunds on Moses's behalf. Please agree on the work, the fee and what happens if something goes wrong before you pay, and keep a record on WhatsApp.","Is there a particular service you are worried about?"],
+["discount|cheaper|reduce the price|negotiate|can you reduce|price too high|too expensive|it is expensive|can you lower the price","The prices I have are the listed fees, and only Moses can change them. You can ask him on WhatsApp. Meanwhile, many official steps can be done by yourself and I will guide you for free.","Would you like step-by-step self-help guidance for the service you want?"],
+["i have no money|i cannot afford|i can not afford|i do not have money|free help|any free service|can i get it free|i can't afford it|i can't pay","I understand, and you are not alone. Many official steps can be done yourself, and I will guide you step by step at no cost. Official bodies such as HELSB also publish free guidance on their sites.","Which task would you like to do yourself first?"],
+["is my information safe|is my data safe|do you keep my data|do you store my messages|how do you use my information|do you save my chats","Your chat history is saved only in this browser on your device, and you can delete any conversation from History. Please never share passwords, PINs, one-time codes or bank details in this chat.","Would you like to know how to delete your saved conversations?"],
+["what documents should i send you|should i send my nrc|send my password|can i send my documents|where do i send my documents|should i send my results","Please do not send documents, passwords or PINs in this chat. If you decide to use Moses's service, he will tell you privately on WhatsApp what he needs and how to share it safely.","Which service do you need documents for?"],
+["i need urgent help|it is urgent|its urgent|emergency application|deadline is tomorrow|deadline today|deadline is close|i am running out of time","I understand it is urgent. First confirm the exact deadline on the official website. Then message Moses on WhatsApp ("+WA_TXT+") right away so he can tell you what is possible in your time.","What is the deadline, and which application is it for?"],
+["i want to register|how do i register with moses|become a customer|sign up|how do i start|how do i get started","Getting started is simple: tell me the service you need, I explain it and its fee, and if you want Moses to handle it, I prepare a WhatsApp message to him. There is no customer registration fee. If you request a service, the agreed service charge is confirmed before work begins.","Which service would you like to start with?"],
+["do you have a website|do you have facebook|social media|facebook page|are you on facebook|instagram|tiktok","I do not have verified social media pages to share. The safest contact is Moses on WhatsApp: "+WA_TXT+".","Is there anything I can help you with right now?"],
+["which service is best for me|what service do i need|i don't know which service|help me choose a service|which service should i choose","Let us find the right one. If you are going to university, think Admission, then HELSB Application, then Accommodation. If you are looking for work, think CV, Application Letter and Interview Preparation. If you need to prove your documents, think ECZ or ZAQA verification.","What is your goal right now: university, funding, a job or documents?"],
+["how many services|number of services|how many services do you have","Moses offers 25 services, from HELSB and admission support to CVs, verification, accommodation and AI training.","Would you like me to list all 25 with their prices?"],
+["cheapest service|lowest price|most expensive service|highest price|which service is cheapest|which service is the most expensive","The lowest-priced item is Documents Attachment and Scanning at K5 each, then Passport Sized Photo at K10. The highest is Student Accommodation (Boarding House) at K260, followed by Learn Basics of AI at K200 and Scholarship Application at K150.","Would you like me to list every service with its price?"],
+["do you help with job applications|job application|find a job|job hunting|looking for a job|i need a job","Yes, in these ways: CV Writing (K50), Application Letter (K20) and Interview Preparation (K40). Moses can help you present yourself clearly. He cannot guarantee a job offer.","Do you already have a CV, or shall we start with that?"],
+["business registration|pacra|company registration|register a company|register a business","Business registration is not on Moses's listed services, but the Other Services option (K30 to K50, confirmed after reviewing the work) may apply. Always use the official registration agency for the final process.","What kind of business are you planning, and what help do you need?"],
+["passport|national registration card|driver licence|driving licence|lost my nrc|nrc replacement|get an nrc","NRC, passport and licence processes are handled by official government offices, and requirements and fees change. These are not on the main service list, but you can ask Moses about Other Services.","Which document do you need, and have you already visited the official office?"],
+/* --- Universities, admission and HELSB --- */
+["find accommodation|need accommodation|looking for accommodation|find a boarding house|boarding house near|student accommodation near|accommodation near|where can i stay near campus","Start with your university's official accommodation notice for campus rooms. If you need a private boarding house, visit or verify the place, meet the landlord or agent, get written terms and never pay from an advert alone. Moses offers a Boarding House service (K260) and an Accommodation Application service (K30), with availability confirmed before payment.","Which university or town do you need accommodation in, and what is your budget?"],
+["help me with admission|help with admission|need help with admission|assist me with admission|i need help applying|help me apply to university","I can help with that. The first step is to choose the university and programme, check the entry requirements in the current prospectus, prepare your documents and apply through the official channel. Moses also offers a University Admission service (K50) if you want hands-on assistance.","Which university and programme are you interested in?"],
+["best university in zambia|which university is best|top university|best university|which is the best university","There is no single best university. The right one depends on your programme, grades, location, cost and whether it is supported by HELSB. UNZA and CBU are the largest and offer many programmes, while others specialise, for example Palabana in agriculture or Mukuba in teacher education.","Which programme or career are you aiming for?"],
+["cheapest university|affordable university|university with low fees|cheap university|lowest tuition","Fees differ by programme and year, so I will not guess figures. Compare the fee schedules on each university's website, and remember to add accommodation, books and transport.","Which programme and which universities are you comparing?"],
+["can i get admission with my results|are my grades good enough|will i qualify|minimum points|how many points|cut off points|cut off point|what grades do i need","Each programme has its own subject and grade requirements, and they can change by intake. Please check the current prospectus. Do not share your NRC or full results in this chat, but you can tell me the subjects you passed in general terms.","Which programme do you want to apply for?"],
+["i failed mathematics|failed maths|failed english|no credit in maths|no english credit|failed grade 12|i failed grade 12|i did not pass maths|i did not pass english","One result does not end your future. Options may include rewriting the subject as a candidate through ECZ, choosing a programme with different requirements, or a diploma or bridging route. The exact rules depend on the programme and institution.","Which subject was it, and which course did you want to study?"],
+["i don't have my results|results not out|waiting for results|statement of results|i have no results yet|results delayed","Follow the instructions on the intake advert, as some institutions accept a results slip or later submission. Use the official ECZ channels for results information and keep your examination details safe.","Is this for admission, HELSB or another application?"],
+["can i apply to more than one university|apply to two universities|apply to many universities|multiple applications|apply to several universities","In general you can apply to more than one university, because each runs its own process. Check each university's rules and application fees, and choose realistic first and second options.","Which universities are you thinking about?"],
+["when do admissions open|when does admission open|when to apply|application dates|intake dates|when do applications start","Dates vary by university and year, and I will not guess. Watch each university's official website and notices, and set a reminder before the closing date.","Which university or programme are you asking about?"],
+["which course pays well|best course|high paying courses|courses with jobs|best programme|which course should i take|what course is in demand","No course guarantees a job, but demand tends to be steady in health, engineering, education, agriculture, accounting and ICT. Choose a field you can do well in, not only one that pays well.","What subjects do you enjoy and do well in?"],
+["study medicine|doctor course|mbchb|become a doctor|i want to be a doctor","Medicine is highly competitive and needs strong science grades. UNZA lists medicine and health sciences among its academic areas, so start with its prospectus and check the exact requirements.","What science grades did you get, in general terms?"],
+["study nursing|nursing school|become a nurse|midwifery|nursing course|i want to be a nurse","Nursing and midwifery are offered through different training institutions, not only universities. Confirm that the programme is accredited and whether HELSB supports that institution. Use official sources and ZAQA information.","Which institution are you considering?"],
+["study engineering|engineering course|become an engineer|i want to be an engineer","CBU and UNZA list engineering among their academic areas. You will normally need good Mathematics and Science results. Check each prospectus for the branches offered.","Which type of engineering interests you?"],
+["study law|law school|become a lawyer|i want to be a lawyer|law course","UNZA lists law among its academic areas. Entry requirements are strict, so check the current prospectus for subjects and grades.","Do you have English and other required subjects with good grades?"],
+["study education|teaching course|become a teacher|teacher training|i want to be a teacher|education course","Teacher education is offered at several public universities. Mukuba University and Chalimbana University are known for it, and others such as KNU and Mulungushi also have education programmes. Check subject combinations in each prospectus.","Which subjects would you like to teach?"],
+["study agriculture|agriculture course|farming course|animal science|veterinary|i want to study agriculture|livestock course","Palabana University focuses on agriculture and livestock, and UNZA lists agriculture and veterinary medicine among its areas. Mulungushi also lists agriculture. Check programmes and requirements on each site.","Are you more interested in crops, livestock or agribusiness?"],
+["study business|accounting course|study accounting|business course|finance course|study marketing|business administration","Business, accounting and finance programmes are offered at several public universities, including CBU, UNZA and Mulungushi. Compare the specific degrees and entry requirements.","Do you prefer accounting, finance, marketing or management?"],
+["study ict|computer science|study computer|software engineering|it course|technology course|study information technology|study computing","Technology-related programmes are available at several institutions, including ZUT, CBU, UNZA and others. Names and requirements differ, so verify each prospectus.","Would you like to focus on programming, networks or general IT?"],
+["private university|private universities|can helsb pay private university|helsb private|helsb cover private|helsb support private","HELSB supports the institutions on its partner list. I have ten public universities on my list, and other institutions may be covered, so verify directly on the HELSB partners page: https://helsb.gov.zm/about/partners","Which institution are you considering?"],
+["how much is the helsb loan|helsb loan amount|how much money does helsb give|what does helsb cover|helsb tuition upkeep|helsb amount","I will not guess amounts. What a beneficiary receives is shown in the award details and agreement, and it depends on the programme and HELSB's rules for the intake. Check https://helsb.gov.zm/loans/ and your award information.","Are you a new applicant or already a beneficiary?"],
+["i was not selected|didn't get helsb|helsb rejected me|helsb said no|no loan|i didn't get the loan|i was rejected by helsb","I am sorry. That is disappointing, but it is not the end. First read your outcome notice. Then check if an appeal is allowed for your intake and look at other scholarships, bursaries or part-payment arrangements with the university.","Would you like to go through the appeal steps or other funding options?"],
+["i am an orphan|orphan|vulnerable|my parents are late|both parents died|single parent|i am from a poor family","I am sorry about your situation. HELSB's published guidance mentions supporting documents such as proof of vulnerability or death certificates where relevant, so read the current advert carefully and prepare them early.","Do you already have your admission letter and the supporting documents?"],
+["diploma|college|certificate programme|tevet|vocational|technical college|nursing college|skills training","Diploma, certificate and technical programmes are offered at many colleges. Check that the institution is accredited and whether HELSB or any bursary supports it, because support depends on the institution.","Which field and which college are you considering?"],
+["mature entry|mature age|i am old|i finished school long ago|old results|i completed school years ago","Some universities have mature entry or special entry routes, but conditions differ. Check the prospectus for the age, experience and test requirements.","Which university are you interested in?"],
+["deferment|defer my admission|postpone admission|delay my studies|i want to defer","Deferment rules are set by each university. Contact the admissions office early, in writing, and also tell HELSB if you are a beneficiary.","Have you already received your admission letter?"],
+["transfer university|change university|transfer programme|change course|change programme|switch course","Transfers and changes of programme follow the university's own rules and deadlines, and may affect funding. Ask the admissions or registrar's office before doing anything.","Which programme are you in now, and where do you want to go?"],
+["campus accommodation|hostel|university hostel|accommodation at campus|room at campus|where will i sleep at university","Campus hostels are usually limited and allocated by the university, so apply early using the official notice. If campus rooms run out, a verified boarding house is the alternative.","Which university are you going to?"],
+["how do i pay school fees|school fees payment|how to pay tuition|pay tuition fees|where do i pay fees|tuition payment","Pay only through the bank account or channel published by your university's finance office, and keep every receipt. Fake accounts are a known risk, so confirm details on the official website or at the office.","Would you like tips for verifying a payment account?"],
+["first day at campus|orientation|what to carry to campus|what to bring to university|packing list|joining instructions|going to campus","Bring your admission letter, original and certified copies of your results and NRC, passport photos, payment receipts, bedding and toiletries, a notebook and money for the first weeks. Read the joining instructions in your letter carefully.","Which university are you joining, and when?"],
+["scholarship|bursary|funding for university|sponsorship|who can pay my fees|where can i get funding|how do i pay for university","Funding options include HELSB loans, scholarships, bursaries and sponsorship, and each has its own eligibility and deadline. Use official adverts only, and never pay for a guaranteed scholarship.","Do you want to explore HELSB, a scholarship or both?"],
+["i got admission|i have been selected|i passed|i got accepted|congratulations to me|i was admitted|i got into university","Congratulations, that is wonderful news. Your next steps are to accept the offer if required, read the joining instructions and fees, apply to HELSB if you need funding, and plan accommodation.","Which university did you get into?"],
+["grade 12 results|ecz results|when are ecz results|results release|when will results come out","I cannot predict release dates. Follow official ECZ announcements for results and use the proper channel if an institution needs a verification.","Do you need your results for admission or for verification?"],
+["lost my certificate|lost my results|duplicate certificate|replacement certificate|lost my statement of results|i lost my certificate","Report it and use the issuing body's official replacement process, for ECZ results contact ECZ directly. Requirements and fees change, so confirm them first.","Which certificate did you lose?"],
+["fake documents|forged certificate|buy certificate|buy results|change my results|fix my results|fake certificate|false documents","I cannot help with fake or altered documents, because that is illegal and can destroy your future. I can help you find the legitimate path, such as a retake, an appeal or another programme.","Shall we look at your legitimate options?"],
+["can you pay my fees|do you give loans|can you lend me money|give me money|send me money|i need money|lend me money","I am an AI and cannot send or lend money, and Moses's services are guidance and assistance, not loans. For student funding, look at HELSB, scholarships and bursaries.","Would you like me to explain the funding options?"],
+["college vs university|difference between college and university|university vs college|what is the difference between college and university","A university usually offers degrees and has research and postgraduate programmes, while a college mainly offers diplomas and certificates and often has a practical focus. Both can lead to good careers.","Are you thinking of a degree or a diploma?"],
+["what is a prospectus|prospectus|what is a programme code|what is a prospectus used for","A prospectus is the university's official guide listing programmes, entry requirements, fees and how to apply. Always use the current one from the official website.","Would you like me to show you where to find a prospectus?"],
+["what is gpa|what is a credit|how is gpa calculated|what is a carry over|carry over|what is a carryover","GPA is an average of your course grades, weighted by credits. A carry-over is a course you must repeat or clear later. Rules differ, so check your university's examination regulations.","Are you asking about your own results?"],
+["how do i write a motivation letter|motivation letter|personal statement|scholarship essay|write an essay for scholarship","A strong motivation letter has an opening about who you are, why you chose the programme, your achievements and goals, and a polite close. Keep it honest, specific and free of mistakes. Moses also offers an Application Letter service (K20).","Would you like me to outline one for you?"],
+["how do i prepare for exams|study tips|how to pass exams|exam preparation|exam tips|how to revise|how do i study|how to study well","Start early, make a timetable, study past papers, test yourself, sleep well and ask lecturers about weak topics. Short focused sessions beat long tiring ones.","Which exam are you preparing for?"],
+["interview tips|i am nervous about interview|how to dress for interview|how to pass an interview|interview advice","Research the organisation, practise your answers about yourself, strengths and why you want the role, dress neatly, arrive early and ask one thoughtful question. Moses offers Interview Preparation (K40).","What kind of interview do you have, and when is it?"],
+["how do i write a cv|cv tips|what should a cv contain|cv format|how to make a cv","A CV usually has contact details, a short profile, education, experience, skills and references. Keep it to one or two clear pages with no spelling errors. Moses offers CV Writing (K50).","Do you already have a draft?"],
+["i don't have a smartphone|i have no phone|no internet|i have no data|data bundles|i have no airtime|i don't have data","You can use a friend's phone, an internet cafe or a library computer. Keep your logins private and always log out. Moses's other services also cover work that needs his time or data.","Which task needs the internet?"],
+["site not loading|something is not working|error|the app is not working|chat is not working|why is this not working|page is slow","Try refreshing the page, checking your internet or starting a new chat with the + button. If it still fails, message Moses on WhatsApp: "+WA_TXT+".","What did you see when it stopped working?"],
+["clear my history|delete my chats|delete conversation|how do i delete history|delete my messages","Tap the menu icon next to the message box to open History, then tap the x beside any conversation to delete it.","Would you like me to start a fresh conversation?"],
+["start over|new conversation|start a new chat|new chat|begin again|restart","Tap the + button next to the message box to start a new chat. Your old conversation stays saved in History.","Shall we begin with a fresh topic here?"],
+["where are my old chats|see old messages|previous chats|my history|show history|old conversations","Tap the menu icon next to the message box to open History. You will see your saved conversations and can tap any of them to continue.","Would you like to continue where you stopped?"]
+];
+/* ---- helpers: lists, number picks, follow-ups ---- */
+function findUniversity(t){
+ const pad=" "+t+" ";let best=null,bl=0;
+ for(const u of UNIVERSITIES){for(const k of [u.short.toLowerCase(),normalize(u.name)]){if(k&&pad.includes(" "+k+" ")&&k.length>bl){bl=k.length;best=u;}}}
+ if(!best){if(pad.includes(" levy mwanawasa "))return UNIVERSITIES.find(u=>u.short==="LMMU");if(pad.includes(" kapasa makasa "))return UNIVERSITIES.find(u=>u.short==="KMU");if(pad.includes(" nkrumah "))return UNIVERSITIES.find(u=>u.short==="KNU");}
+ return best;
+}
+function servicePriceList(){currentContext.list="services";return "Moses Ntembwa (Mr Tees) offers these "+SERVICES.length+" services:\n"+SERVICES.map(s=>`${s.id}. ${s.name}: ${s.price}`).join("\n")+"\n\nThere is no customer registration fee. Please confirm the service charge before work begins.\n\nType the number of a service (for example 6) or its name, and I will explain how it works.";}
+function universityList(){currentContext.list="universities";return "These are all "+UNIVERSITIES.length+" public universities on my HELSB-supported list:\n"+UNIVERSITIES.map((u,i)=>`${i+1}. ${u.name} (${u.short}), ${u.town}: ${u.website}`).join("\n")+"\n\nAdmission to a university does not automatically mean a loan will be awarded. Type a number or a name, for example UNZA, and I will tell you more about it.";}
+function fallbackReply(){return "I want to make sure I understand you correctly. Could you tell me a little more about what you mean? I am happy to discuss your question. 😊";}
+const CV=CONVOS.map(([k,r,f,s])=>({keys:k.split("|").map(normalize),r,f,s}));
+function convoAnswer(t,busy){
+ const pad=" "+t+" ",n=t.split(" ").length;let best=null,bl=0;
+ for(const c of CV){if(busy&&!c.s)continue;for(const k of c.keys){if(pad.includes(" "+k+" ")){const kn=k.split(" ").length;if(c.s&&n>kn+2)continue;if(k.length>bl){bl=k.length;best=c;}}}}
+ return best?best.r+(best.f?"\n\n"+best.f:""):"";
+}
+const SERVICE_LIST_RE=/\b(services?|offer|offers|offering)\b.*\b(have|offer|list|all|available|provide|price|prices)\b|\b(list|show|tell|give|what|which|all)\b.*\b(services?)\b|^services?$|what do you (do|offer|have)\b|service list|price list|what is on offer|what are you selling|what do you sell/;
+const UNI_LIST_RE=/\b(list|show|name|names|give|all|which|what|available)\b.*\buniversit(y|ies)\b|\buniversit(y|ies)\b.*\b(list|names|available|supported|offered|zambia)\b|public universit|universities in zambia|which universit|^universities$|helsb universities/;
+function moreReply(){
+ if(currentContext.service&&SERVICES[currentContext.service-1])return serviceSelfHelp(SERVICES[currentContext.service-1]);
+ return "Happy to go deeper. Which part would you like me to expand on: the steps, the documents, the fees or the official links?";
+}
+function preRoute(raw,t){
+ const busy=awaitingConfirmation&&pendingService;
+ const m=t.match(/^(?:number |no |option |service |university )?(\d{1,2})$/),n=m?+m[1]:0;
+ if(!busy&&n&&currentContext.list==="services"&&n>=1&&n<=SERVICES.length){currentContext.service=n;return serviceMenuAnswer(SERVICES[n-1]);}
+ if(!busy&&n&&currentContext.list==="universities"&&n>=1&&n<=UNIVERSITIES.length)return universityAnswer(UNIVERSITIES[n-1])+"\n\nWould you like the steps to apply, HELSB information, or another university?";
+ const c=convoAnswer(t,busy);if(c)return c;
+ if(busy)return "";
+ if(SERVICE_LIST_RE.test(t)&&!/\b(price of|cost of|how much is)\b/.test(t))return servicePriceList();
+ if(UNI_LIST_RE.test(t)&&(!findUniversity(t)||/\b(list|all|names)\b/.test(t)))return universityList();
+ if(/^(tell me more|more|more info|explain more|go on|continue|what next|and then|what else)$/.test(t))return moreReply();
+ return "";
+}
+/* ---- one connected brain: searches services, universities, HELSB, student topics and conversations together ---- */
+const STOP=new Set("the and for you your are was were with that this have has had not but from they them their will would should could can may any some what when where which who why how does did about please tell want need like know give get its out our all one also into than then there here been being just more most very much many".split(" "));
+const tok=s=>[...new Set(normalize(s).split(" ").filter(w=>w.length>2&&!STOP.has(w)))];
+let SMART=null;
+function buildSmart(){
+ const docs=[],add=(text,ans,nf)=>{const kw=new Set(tok(text));if(kw.size)docs.push({kw,ans,nf});};
+ ALL_QA_TOPICS.forEach(q=>add(q.keys.join(" "),()=>q.answer));
+ SERVICES.forEach(s=>add(s.name+" "+s.keys.join(" "),()=>serviceMenuAnswer(s),1));
+ UNIVERSITIES.forEach(u=>add([u.name,u.short,u.town,u.province,u.focus].join(" "),()=>universityAnswer(u)));
+ KNOWLEDGE_QUESTIONS.forEach((q,i)=>add(q,()=>knowledgeAnswer(i)));
+ CONVOS.forEach(c=>{if(!c[3])add(c[0].split("|").join(" "),()=>c[1]+(c[2]?"\n\n"+c[2]:""),1);});
+ const df={};docs.forEach(d=>d.kw.forEach(w=>df[w]=(df[w]||0)+1));
+ const idf=w=>Math.log(docs.length/(df[w]||1))+1;
+ SMART={docs,idf};
+}
+function smartAnswer(t){
+ if(!SMART)buildSmart();
+ const q=tok(t);if(!q.length)return "";
+ let best=null,bs=0,second=0;
+ for(const d of SMART.docs){
+  let s=0,hit=0;
+  for(const w of q){
+   if(d.kw.has(w)){s+=SMART.idf(w);hit++;}
+   else if(w.length>=5){for(const k of d.kw){if(k.length>=5&&k.slice(0,5)===w.slice(0,5)){s+=0.6*SMART.idf(w);hit+=0.6;break;}}}
+  }
+  if(hit/q.length<0.4)continue;
+  if(s>bs){second=bs;bs=s;best=d;}else if(s>second)second=s;
+ }
+ if(!best||bs<2.6||bs<second*1.05)return "";
+ const a=best.ans();return best.nf?a:a+"\n\n"+nextQuestion(t);
+}
+
+/* ---------- Zambia time and friendly emoji matching ---------- */
+function mirrorUserEmojis(userText, reply){
+ const found=String(userText).match(/\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu)||[];
+ const unique=[...new Set(found)].slice(0,3);
+ if(!unique.length)return reply;
+ const already=String(reply).match(/\p{Extended_Pictographic}/u);
+ return already?reply:reply+" "+unique.join("");
+}
+
+/* =========================================================
+   SEND ENGINE
    ========================================================= */
 function sendMessage(){
  const text=inputEl.value.trim();if(!text)return;
  addMessage(text,"user");inputEl.value="";inputEl.style.height="auto";sendBtn.disabled=true;showTyping();
- // A short typing delay makes the exchange feel natural; answers are generated locally.
  setTimeout(()=>{
-   hideTyping();
-   const reply=generateReply(text);
-   addMessage(reply,"ai");
-   sendBtn.disabled=false;inputEl.focus();
- },650);
+  hideTyping();
+  let reply;try{reply=generateReply(text);}catch(e){reply=fallbackReply();}
+  addMessage(reply,"ai");sendBtn.disabled=false;inputEl.focus();
+ },550);
 }
 sendBtn.addEventListener("click",sendMessage);
-inputEl.addEventListener("keydown",e=>{
- if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}
-});
+inputEl.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}});
 inputEl.addEventListener("input",()=>{inputEl.style.height="auto";inputEl.style.height=Math.min(inputEl.scrollHeight,120)+"px";});
-document.querySelectorAll("[data-question]").forEach(b=>b.addEventListener("click",()=>{
- inputEl.value=b.dataset.question;sendMessage();
-}));
-document.getElementById("clearBtn").addEventListener("click",()=>{
- if(confirm("Clear the conversation history saved on this device?")){
-  history=[];localStorage.removeItem(APP.storageKey);chatEl.innerHTML="";hideWhatsApp();
-  pendingService=null;awaitingConfirmation=false;
-  addMessage("Welcome! I am Moses Ntembwa AI (Mr Tees Digital Assistance). How can I help you today?","ai");
- }
-});
-document.getElementById("exportBtn").addEventListener("click",()=>{
- const content=history.map(m=>`${m.who==="user"?"YOU":"MOSES NTEMBWA AI"} [${m.at}]\n${m.text}`).join("\n\n");
- downloadText("mr-tees-chat-history.txt",content||"No chat history.");
-});
-document.getElementById("unknownBtn").addEventListener("click",()=>{
- let content="MR TEES AI — UNANSWERED QUESTIONS\n\n";
- try{const a=JSON.parse(localStorage.getItem(APP.unknownKey)||"[]");content+=a.map(x=>`${x.at}\n${x.text}`).join("\n\n")||"No unanswered questions logged.";}catch(e){content+="No unanswered questions logged.";}
- downloadText("mr-tees-unanswered-questions.txt",content);
-});
-function downloadText(name,content){
- const blob=new Blob([content],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);
- const a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);
-}
+const ask=q=>{inputEl.value=q;sendMessage();};
+fillGrid("knowledgeGrid",KNOWLEDGE_QUESTIONS,ask);
+fillGrid("serviceGrid",ALT_SERVICE_QUESTIONS,ask);
 
-/* Start the assistant and restore this browser's saved chat. */
-buildServiceMenu();
-restoreHistory();
+/* Start: restore saved conversations, open a fresh chat */
+loadSessions();
+newChat();
 </script>
 </body>
 </html>
